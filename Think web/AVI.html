@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="AVI - Asistente de Inteligencia Artificial. Disponible en 4 versiones: LITE, PRO, ULTRA y BUSINESS. Chat avanzado con IA, generación de imágenes, código, videos y más.">
+    <meta name="theme-color" content="#00f3ff">
+    <title>AVI AI | Asistente Inteligente — AVI LITE | PRO | ULTRA | BUSINESS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="AVI.css">
+    <style>
+        /* Estilos críticos para preloader */
+        .preloader-avi {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #03050b, #0a0a1a);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            transition: opacity 0.6s ease;
+        }
+        .preloader-avi.hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .loader-avi {
+            width: 80px;
+            height: 80px;
+            position: relative;
+        }
+        .loader-avi::before,
+        .loader-avi::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            animation: pulseAvi 1.2s ease-out infinite;
+        }
+        .loader-avi::before {
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 243, 255, 0.2);
+            animation-delay: 0s;
+        }
+        .loader-avi::after {
+            width: 60%;
+            height: 60%;
+            background: #00f3ff;
+            top: 20%;
+            left: 20%;
+            animation-delay: 0.3s;
+        }
+        @keyframes pulseAvi {
+            0% { transform: scale(0.8); opacity: 0.8; }
+            100% { transform: scale(1.2); opacity: 0; }
+        }
+        .loader-text {
+            margin-top: 30px;
+            font-family: 'Orbitron', monospace;
+            color: #00f3ff;
+            letter-spacing: 4px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="preloader-avi" id="preloaderAvi">
+        <div class="loader-avi"></div>
+        <div class="loader-text">⟡ AVI INIT ⟡</div>
+        <div class="loader-text" style="font-size:0.7rem;">Activando red neuronal...</div>
+    </div>
+
+    <!-- Dynamic Island Navigation -->
+    <nav id="dynamicIsland" class="dynamic-island">
+        <div class="island-content">
+            <a href="Think.html" class="island-logo-section">
+                <div class="island-logo">AVI</div>
+                <span class="island-text">CONNECTION <span class="avi-text">THINK</span></span>
+            </a>
+            <div class="version-buttons" id="versionButtons">
+                <button class="version-btn lite active" data-version="lite">
+                    <span class="version-icon">✨</span>
+                    <span class="version-name-btn">AVI LITE</span>
+                </button>
+                <button class="version-btn pro" data-version="pro">
+                    <span class="version-icon">⚡</span>
+                    <span class="version-name-btn">AVI PRO</span>
+                </button>
+                <button class="version-btn ultra" data-version="ultra">
+                    <span class="version-icon">🌀</span>
+                    <span class="version-name-btn">AVI ULTRA</span>
+                </button>
+                <button class="version-btn business" data-version="business">
+                    <span class="version-icon">🏢</span>
+                    <span class="version-name-btn">AVI BUSINESS</span>
+                </button>
+            </div>
+            <div class="user-menu" id="userMenu">
+                <div class="user-avatar" id="userAvatar">👤</div>
+                <button class="login-btn" id="loginBtn">🔐 Acceder</button>
+            </div>
+            <button class="menu-toggle-avi" id="menuToggle">☰</button>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="avi-container">
+        <!-- Sidebar Mejorada -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-logo">
+                    <div class="sidebar-logo-icon">AVI</div>
+                    <h2>AI Assistant</h2>
+                </div>
+                <div class="version-info" id="versionInfo">
+                    <div class="version-status">
+                        <span class="status-dot"></span>
+                        <span>ACTIVO</span>
+                    </div>
+                    <div class="version-name-display" id="versionNameDisplay">AVI LITE</div>
+                    <div class="version-limit-display" id="versionLimitDisplay">✨ 10 mensajes/día</div>
+                </div>
+            </div>
+            <div class="sidebar-menu">
+                <div class="sidebar-item active" data-tool="chat">
+                    <div class="sidebar-icon">💬</div>
+                    <div class="sidebar-text">Nuevo Chat</div>
+                    <div class="sidebar-badge">Nuevo</div>
+                </div>
+                <div class="sidebar-item" data-tool="image">
+                    <div class="sidebar-icon">🎨</div>
+                    <div class="sidebar-text">Generar Imagen</div>
+                    <div class="sidebar-badge pro-badge">PRO</div>
+                </div>
+                <div class="sidebar-item" data-tool="code">
+                    <div class="sidebar-icon">💻</div>
+                    <div class="sidebar-text">Generar Código</div>
+                </div>
+                <div class="sidebar-item" data-tool="analyze">
+                    <div class="sidebar-icon">📊</div>
+                    <div class="sidebar-text">Analizar Documento</div>
+                    <div class="sidebar-badge pro-badge">PRO</div>
+                </div>
+                <div class="sidebar-item" data-tool="video">
+                    <div class="sidebar-icon">🎬</div>
+                    <div class="sidebar-text">Generar Video</div>
+                    <div class="sidebar-badge ultra-badge">ULTRA</div>
+                </div>
+            </div>
+            <div class="sidebar-footer">
+                <div class="message-stats">
+                    <div class="stats-icon">📨</div>
+                    <div class="stats-info">
+                        <span class="stats-label">Mensajes hoy</span>
+                        <span class="stats-value"><span id="countValue">0</span>/<span id="maxCount">10</span></span>
+                    </div>
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar-fill" id="progressFill" style="width: 0%"></div>
+                </div>
+                <button class="upgrade-btn" id="upgradeBtn">
+                    <span class="upgrade-icon">✨</span>
+                    <span>Mejorar Plan</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Chat Area Mejorada -->
+        <main class="chat-area">
+            <div class="chat-header">
+                <div class="chat-header-info">
+                    <div class="chat-header-icon">🤖</div>
+                    <div class="chat-header-text">
+                        <h3>AVI AI Assistant</h3>
+                        <p id="currentVersionBadge">AVI LITE • Activo</p>
+                    </div>
+                </div>
+                <div class="chat-header-actions">
+                    <button class="clear-chat-btn" id="clearChatBtn" title="Limpiar conversación">
+                        <span>🗑️</span>
+                    </button>
+                </div>
+            </div>
+            <div class="chat-messages" id="chatMessages">
+                <div class="message avi fade-in">
+                    <div class="message-avatar">
+                        <div class="avatar-glow"></div>
+                        <span>🤖</span>
+                    </div>
+                    <div class="message-content">
+                        <div class="message-name">AVI AI</div>
+                        <div class="message-text">
+                            ¡Hola! Soy <strong>AVI</strong>, tu asistente de inteligencia artificial.<br>
+                            Actualmente estás usando la versión <strong class="highlight-text" id="welcomeVersion">AVI LITE</strong>.<br>
+                            ¿En qué puedo ayudarte hoy?
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="chat-input-container">
+                <div class="input-wrapper">
+                    <textarea id="messageInput" placeholder="Escribe tu mensaje aquí... (Ctrl + Enter para enviar)" rows="1"></textarea>
+                    <button id="sendBtn" class="send-btn">
+                        <span>📤</span>
+                        <span>Enviar</span>
+                    </button>
+                </div>
+                <div class="input-footer">
+                    <div class="footer-left">
+                        <span id="charCount">0</span> caracteres
+                    </div>
+                    <div class="footer-right">
+                        <span class="tool-indicator" id="toolIndicator">💬 Chat</span>
+                        <span class="separator">|</span>
+                        <span id="remainingMessages">10 mensajes restantes</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal de Login/Registro Mejorado -->
+    <div id="loginModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <div class="modal-header">
+                <div class="modal-logo">AVI</div>
+                <h2>Acceso al Ecosistema</h2>
+                <p>Inicia sesión con tu cuenta AVI para acceder a funciones premium</p>
+            </div>
+            <div class="modal-tabs">
+                <button class="modal-tab active" data-tab="login">Iniciar Sesión</button>
+                <button class="modal-tab" data-tab="register">Crear Cuenta</button>
+            </div>
+            <div id="loginForm" class="modal-form active">
+                <div class="input-group">
+                    <label>📧 Email AVI</label>
+                    <input type="email" id="loginEmail" placeholder="usuario@avi.connection" required>
+                </div>
+                <div class="input-group">
+                    <label>🔑 Contraseña</label>
+                    <input type="password" id="loginPassword" placeholder="••••••••" required>
+                </div>
+                <button id="submitLogin" class="modal-btn">Ingresar al Ecosistema</button>
+            </div>
+            <div id="registerForm" class="modal-form">
+                <div class="input-group">
+                    <label>👤 Nombre completo</label>
+                    <input type="text" id="regName" placeholder="Juan Gustavo Vargas" required>
+                </div>
+                <div class="input-group">
+                    <label>📧 Email AVI</label>
+                    <input type="email" id="regEmail" placeholder="usuario@avi.connection" required>
+                </div>
+                <div class="input-group">
+                    <label>🔑 Contraseña</label>
+                    <input type="password" id="regPassword" placeholder="Mínimo 8 caracteres" required>
+                </div>
+                <div class="input-group">
+                    <label>✓ Confirmar contraseña</label>
+                    <input type="password" id="regConfirm" placeholder="Repite tu contraseña" required>
+                </div>
+                <button id="submitRegister" class="modal-btn">Crear Cuenta AVI</button>
+            </div>
+            <p class="modal-note">
+                <span>🔒</span> Las versiones PRO, ULTRA y BUSINESS requieren cuenta AVI verificada
+            </p>
+        </div>
+    </div>
+
+    <script src="AVI.js"></script>
+</body>
+</html>

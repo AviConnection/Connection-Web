@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Acceso al Ecosistema AVI CONNECTION - Ingresa con tu cuenta AVI para explorar los 22 pilares tecnológicos.">
+    <meta name="theme-color" content="#00f3ff">
+    <title>Acceso Ecosistema | AVI CONNECTION</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #03050b, #0a0f1f);
+            font-family: 'Rajdhani', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Fondo de grid digital */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 243, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 243, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+        }
+
+        /* Partículas animadas */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(0, 243, 255, 0.4);
+            border-radius: 50%;
+            animation: floatParticle linear infinite;
+        }
+
+        @keyframes floatParticle {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.5;
+            }
+            90% {
+                opacity: 0.5;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Contenedor principal */
+        .login-container {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            max-width: 450px;
+            margin: 20px;
+        }
+
+        /* Tarjeta de login/registro */
+        .login-card {
+            background: rgba(5, 10, 20, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 243, 255, 0.3);
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 0 40px rgba(0, 243, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .login-card:hover {
+            border-color: rgba(0, 243, 255, 0.6);
+            box-shadow: 0 0 60px rgba(0, 243, 255, 0.2);
+        }
+
+        /* Logo */
+        .login-logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .logo-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #00f3ff, #0066ff);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            animation: pulseLogo 2s ease-in-out infinite;
+        }
+
+        @keyframes pulseLogo {
+            0%, 100% {
+                box-shadow: 0 0 20px rgba(0, 243, 255, 0.3);
+                transform: scale(1);
+            }
+            50% {
+                box-shadow: 0 0 40px rgba(0, 243, 255, 0.6);
+                transform: scale(1.05);
+            }
+        }
+
+        .logo-icon span {
+            font-size: 2.5rem;
+            font-weight: bold;
+            font-family: 'Orbitron', monospace;
+            color: #fff;
+        }
+
+        .login-logo h1 {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, #fff, #00f3ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .login-logo p {
+            color: #6c7a8a;
+            font-size: 0.85rem;
+            margin-top: 8px;
+        }
+
+        /* Tabs */
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            border-bottom: 1px solid rgba(0, 243, 255, 0.2);
+            padding-bottom: 10px;
+        }
+
+        .tab-btn {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: #6c7a8a;
+            font-family: 'Orbitron', monospace;
+            font-size: 1rem;
+            padding: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .tab-btn.active {
+            color: #00f3ff;
+        }
+
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -11px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #00f3ff;
+            box-shadow: 0 0 10px #00f3ff;
+        }
+
+        .tab-btn:hover:not(.active) {
+            color: #b0c4de;
+        }
+
+        /* Formularios */
+        .form-container {
+            display: none;
+        }
+
+        .form-container.active {
+            display: block;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .input-group label {
+            display: block;
+            color: #b0c4de;
+            font-size: 0.8rem;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 14px 16px;
+            background: rgba(10, 20, 30, 0.6);
+            border: 1px solid rgba(0, 243, 255, 0.2);
+            border-radius: 12px;
+            color: #fff;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: #00f3ff;
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.2);
+        }
+
+        .input-group input::placeholder {
+            color: #4a5568;
+        }
+
+        /* Botones */
+        .btn-submit {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #00f3ff, #0066ff);
+            border: none;
+            border-radius: 40px;
+            color: #03050b;
+            font-family: 'Orbitron', monospace;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 243, 255, 0.3);
+        }
+
+        /* Mensajes de error/éxito */
+        .message {
+            margin-top: 20px;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            text-align: center;
+            display: none;
+        }
+
+        .message.error {
+            background: rgba(255, 0, 85, 0.1);
+            border: 1px solid #ff0055;
+            color: #ff0055;
+            display: block;
+        }
+
+        .message.success {
+            background: rgba(0, 255, 85, 0.1);
+            border: 1px solid #00ff55;
+            color: #00ff55;
+            display: block;
+        }
+
+        /* Enlace de ayuda */
+        .help-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .help-link a {
+            color: #00f3ff;
+            text-decoration: none;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .help-link a:hover {
+            text-shadow: 0 0 5px #00f3ff;
+        }
+
+        /* Back link */
+        .back-link {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 20;
+            color: #00f3ff;
+            text-decoration: none;
+            font-family: 'Orbitron', monospace;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            gap: 12px;
+            text-shadow: 0 0 5px #00f3ff;
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .login-card {
+                padding: 30px 25px;
+            }
+            .login-logo h1 {
+                font-size: 1.2rem;
+            }
+            .tab-btn {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="particles" id="particles"></div>
+
+    <a href="../index.html" class="back-link">
+        <span>←</span> Volver a Matriz Central
+    </a>
+
+    <div class="login-container">
+        <div class="login-card">
+            <div class="login-logo">
+                <div class="logo-icon">
+                    <span>AVI</span>
+                </div>
+                <h1>ECOSISTEMA AVI</h1>
+                <p>Accede a los 22 pilares tecnológicos</p>
+            </div>
+
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="login">INICIAR SESIÓN</button>
+                <button class="tab-btn" data-tab="register">CREAR CUENTA</button>
+            </div>
+
+            <!-- Formulario de Login -->
+            <div id="loginForm" class="form-container active">
+                <form id="loginFormElement">
+                    <div class="input-group">
+                        <label>🔐 EMAIL AVI</label>
+                        <input type="email" id="loginEmail" placeholder="tu@avi.connection" required>
+                    </div>
+                    <div class="input-group">
+                        <label>🔑 CONTRASEÑA</label>
+                        <input type="password" id="loginPassword" placeholder="••••••••" required>
+                    </div>
+                    <button type="submit" class="btn-submit">ACCEDER AL ECOSISTEMA</button>
+                </form>
+                <div id="loginMessage" class="message"></div>
+                <div class="help-link">
+                    <a href="#">¿Olvidaste tu contraseña?</a>
+                </div>
+            </div>
+
+            <!-- Formulario de Registro -->
+            <div id="registerForm" class="form-container">
+                <form id="registerFormElement">
+                    <div class="input-group">
+                        <label>👤 NOMBRE COMPLETO</label>
+                        <input type="text" id="regName" placeholder="Juan Gustavo Vargas" required>
+                    </div>
+                    <div class="input-group">
+                        <label>📧 EMAIL AVI</label>
+                        <input type="email" id="regEmail" placeholder="usuario@avi.connection" required>
+                        <small style="color:#4a5568; font-size:0.7rem;">* Debe terminar en @connection</small>
+                    </div>
+                    <div class="input-group">
+                        <label>🔑 CONTRASEÑA</label>
+                        <input type="password" id="regPassword" placeholder="Mínimo 8 caracteres" required>
+                    </div>
+                    <div class="input-group">
+                        <label>✓ CONFIRMAR CONTRASEÑA</label>
+                        <input type="password" id="regConfirmPassword" placeholder="Repite tu contraseña" required>
+                    </div>
+                    <button type="submit" class="btn-submit">CREAR CUENTA AVI</button>
+                </form>
+                <div id="registerMessage" class="message"></div>
+                <div class="help-link">
+                    <a href="#">¿Ya tienes cuenta? Inicia sesión</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Partículas animadas
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                const size = Math.random() * 4 + 1;
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDuration = Math.random() * 10 + 5 + 's';
+                particle.style.animationDelay = Math.random() * 10 + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+        createParticles();
+
+        // Tabs switching
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const loginContainer = document.getElementById('loginForm');
+        const registerContainer = document.getElementById('registerForm');
+
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                tabBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                if (btn.getAttribute('data-tab') === 'login') {
+                    loginContainer.classList.add('active');
+                    registerContainer.classList.remove('active');
+                } else {
+                    loginContainer.classList.remove('active');
+                    registerContainer.classList.add('active');
+                }
+            });
+        });
+
+        // Login Function
+        const loginForm = document.getElementById('loginFormElement');
+        const loginMessage = document.getElementById('loginMessage');
+
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+
+            // Obtener usuarios registrados
+            const users = JSON.parse(localStorage.getItem('avi_users') || '[]');
+            const user = users.find(u => u.email === email && u.password === password);
+
+            if (user) {
+                loginMessage.className = 'message success';
+                loginMessage.textContent = '✅ Acceso concedido. Redirigiendo al ecosistema...';
+                // Guardar sesión
+                localStorage.setItem('avi_session', JSON.stringify({
+                    email: user.email,
+                    name: user.name,
+                    loggedIn: true
+                }));
+                setTimeout(() => {
+                    window.location.href = 'system.html';
+                }, 1500);
+            } else {
+                loginMessage.className = 'message error';
+                loginMessage.textContent = '❌ Credenciales incorrectas. Verifica tu email y contraseña.';
+            }
+        });
+
+        // Register Function
+        const registerFormElement = document.getElementById('registerFormElement');
+        const registerMessage = document.getElementById('registerMessage');
+
+        registerFormElement.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('regName').value;
+            const email = document.getElementById('regEmail').value;
+            const password = document.getElementById('regPassword').value;
+            const confirmPassword = document.getElementById('regConfirmPassword').value;
+
+            // Validaciones
+            if (!email.endsWith('@avi.connection')) {
+                registerMessage.className = 'message error';
+                registerMessage.textContent = '❌ El email debe terminar en @avi.connection';
+                return;
+            }
+
+            if (password.length < 8) {
+                registerMessage.className = 'message error';
+                registerMessage.textContent = '❌ La contraseña debe tener al menos 8 caracteres';
+                return;
+            }
+
+            if (password !== confirmPassword) {
+                registerMessage.className = 'message error';
+                registerMessage.textContent = '❌ Las contraseñas no coinciden';
+                return;
+            }
+
+            // Verificar si el usuario ya existe
+            const users = JSON.parse(localStorage.getItem('avi_users') || '[]');
+            if (users.find(u => u.email === email)) {
+                registerMessage.className = 'message error';
+                registerMessage.textContent = '❌ Este email ya está registrado';
+                return;
+            }
+
+            // Crear usuario
+            const newUser = {
+                name: name,
+                email: email,
+                password: password,
+                createdAt: new Date().toISOString()
+            };
+            users.push(newUser);
+            localStorage.setItem('avi_users', JSON.stringify(users));
+
+            registerMessage.className = 'message success';
+            registerMessage.textContent = '✅ Cuenta creada exitosamente. Ahora puedes iniciar sesión.';
+            
+            // Limpiar formulario
+            registerFormElement.reset();
+            
+            // Cambiar a pestaña de login después de 2 segundos
+            setTimeout(() => {
+                tabBtns[0].click();
+                registerMessage.style.display = 'none';
+                registerMessage.className = 'message';
+            }, 2000);
+        });
+
+        // Helper link
+        document.querySelectorAll('.help-link a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                if (link.textContent.includes('Inicia sesión')) {
+                    tabBtns[0].click();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

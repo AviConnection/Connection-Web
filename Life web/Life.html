@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="CONNECTION LIFE - Tecnología al servicio de la vida. Biometría avanzada, telemedicina autónoma y dispositivos médicos inteligentes. IA Líder: LAYLA.">
+    <meta name="theme-color" content="#00ff88">
+    <title>CONNECTION LIFE | Salud y Bienestar — IA Líder: LAYLA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Montserrat:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Life.css">
+    <style>
+        .preloader-life {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0a1f1a, #051510);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            transition: opacity 0.6s ease;
+        }
+        .preloader-life.hide { opacity: 0; pointer-events: none; }
+        .loader-heart {
+            width: 80px;
+            height: 80px;
+            position: relative;
+            animation: heartbeat 1s ease-in-out infinite;
+        }
+        .loader-heart::before,
+        .loader-heart::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 64px;
+            background: #ff3366;
+            border-radius: 40px 40px 0 0;
+            top: 0;
+        }
+        .loader-heart::before {
+            left: 40px;
+            transform: rotate(-45deg);
+            transform-origin: 0 100%;
+        }
+        .loader-heart::after {
+            left: 0;
+            transform: rotate(45deg);
+            transform-origin: 100% 100%;
+        }
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+        .loader-text {
+            margin-top: 30px;
+            font-family: 'Orbitron', monospace;
+            color: #00ff88;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="preloader-life" id="preloaderLife">
+        <div class="loader-heart"></div>
+        <div class="loader-text">⟡ LAYLA INIT ⟡</div>
+        <div class="loader-text" style="font-size:0.7rem;">Cuidando tu bienestar...</div>
+    </div>
+
+    <!-- Dynamic Island Navigation -->
+    <nav id="dynamicIsland" class="dynamic-island">
+        <div class="island-content">
+            <a href="Life.html" class="island-logo-section">
+                <div class="island-logo-wrapper">
+                    <img src="../imágenes y logo/logo.png" alt="AVI Logo" class="island-logo-img" onerror="this.src='https://via.placeholder.com/45/00ff88/ffffff?text=LV'">
+                    <div class="logo-pulse"></div>
+                </div>
+                <span class="island-text">CONNECTION <span class="life-text">LIFE</span></span>
+            </a>
+            <ul class="island-links">
+                <li><a href="../index.html" class="nav-link">AVI</a></li>
+                <li><a href="../Labs web/labs.html" class="nav-link">Labs</a></li>
+                <li><a href="../Píxel web/pixel.html" class="nav-link">Píxel</a></li>
+                <li><a href="../Explorer web/explorer.html" class="nav-link">Explorer</a></li>
+                <li><a href="Life.html" class="nav-link active">Life</a></li>
+                <li><a href="../Link web/Link.html" class="nav-link">Link</a></li>
+                <li><a href="../Think web/Think.html" class="nav-link">Think</a></li>
+                                              
+            </ul>
+            <button class="menu-toggle-life" aria-label="Abrir menú">☰</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="life-hero">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-pulse-wave"></div>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span>❤️</span>
+                <span class="badge-text">TECNOLOGÍA AL SERVICIO DE LA VIDA</span>
+                <span>🫀</span>
+            </div>
+            <h1 class="hero-title">
+                CONNECTION <span class="hero-title-gradient">LIFE</span>
+            </h1>
+            <p class="hero-subtitle">
+                Desarrollamos tecnologías enfocadas en la preservación de la vida,<br>
+                la salud y el bienestar humano. El pilar médico de AVI CONNECTION.
+            </p>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Monitoreo Continuo</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">&lt;1s</div>
+                    <div class="stat-label">Alerta de Emergencia</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">99.9%</div>
+                    <div class="stat-label">Precisión Diagnóstica</div>
+                </div>
+            </div>
+            <div class="hero-buttons">
+                <a href="#biometria" class="btn-hero-primary">
+                    <span>❤️ Conocer Biometría</span>
+                </a>
+                <a href="#telemedicina" class="btn-hero-secondary">
+                    <span>🩺 Explorar Telemedicina</span>
+                </a>
+            </div>
+        </div>
+        <div class="scroll-hint">
+            <span>SCROLL</span>
+            <div class="scroll-line"></div>
+        </div>
+    </header>
+
+    <!-- Sección: IA Líder LAYLA -->
+    <section class="layla-section">
+        <div class="container">
+            <div class="layla-grid">
+                <div class="layla-visual">
+                    <div class="heartbeat-monitor">
+                        <div class="monitor-screen">
+                            <div class="ecg-line" id="ecgLine"></div>
+                        </div>
+                        <div class="heart-rate">
+                            <span class="heart-icon">❤️</span>
+                            <span class="bpm-value" id="bpmValue">72</span>
+                            <span class="bpm-unit">BPM</span>
+                        </div>
+                        <div class="spo2-value">
+                            <span>SpO₂</span>
+                            <span id="spo2Value">98</span>
+                            <span>%</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="layla-info">
+                    <div class="section-badge">IA LÍDER</div>
+                    <h2 class="section-title-left">LAYLA</h2>
+                    <p class="layla-description">
+                        <strong>Personalidad:</strong> Empática, vigilante, serena. Su nombre (del árabe "noche") simboliza su rol como guardiana que vela por el bienestar de las personas incluso mientras duermen.<br><br>
+                        <strong>Misión:</strong> Desarrollar y gestionar tecnologías enfocadas en la preservación de la vida, la salud y el bienestar humano. Es el pilar médico de AVI CONNECTION y el motor de los dispositivos inteligentes de la compañía.
+                    </p>
+                    <div class="layla-traits">
+                        <span>❤️ Empática</span>
+                        <span>👁️ Vigilante</span>
+                        <span>🌙 Serena</span>
+                        <span>🩺 Guardiana</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección: Biometría Avanzada -->
+    <section id="biometria" class="biometria-section">
+        <div class="container">
+            <div class="section-badge">BIOMETRÍA AVANZADA</div>
+            <h2 class="section-title">Lectura precisa del <span class="life-text">cuerpo humano</span></h2>
+            <p class="section-description">Captura y análisis de señales fisiológicas con tecnología de última generación.</p>
+
+            <div class="biometria-grid">
+                <div class="biometria-card">
+                    <div class="biometria-icon">❤️</div>
+                    <h3>Electrocardiograma (ECG)</h3>
+                    <p>Monitoreo continuo de la actividad eléctrica del corazón con detección de arritmias en tiempo real.</p>
+                    <div class="metric-value">Precisión: <span>99.7%</span></div>
+                </div>
+                <div class="biometria-card">
+                    <div class="biometria-icon">🩸</div>
+                    <h3>Fotopletismografía (SpO₂)</h3>
+                    <p>Medición de oxigenación sanguínea y frecuencia cardíaca mediante sensores ópticos de alta precisión.</p>
+                    <div class="metric-value">Rango: <span>70-100%</span></div>
+                </div>
+                <div class="biometria-card">
+                    <div class="biometria-icon">🌡️</div>
+                    <h3>Temperatura Corporal</h3>
+                    <p>Sensores de temperatura de alta precisión para detección temprana de fiebre e inflamación.</p>
+                    <div class="metric-value">Precisión: <span>±0.1°C</span></div>
+                </div>
+                <div class="biometria-card">
+                    <div class="biometria-icon">📊</div>
+                    <h3>Presión Arterial</h3>
+                    <p>Monitoreo no invasivo de presión sistólica y diastólica con tecnología oscilométrica avanzada.</p>
+                    <div class="metric-value">Rango: <span>0-250 mmHg</span></div>
+                </div>
+                <div class="biometria-card">
+                    <div class="biometria-icon">🧠</div>
+                    <h3>Actividad Cerebral (EEG)</h3>
+                    <p>Análisis de ondas cerebrales para detección de patrones anormales y monitoreo del sueño.</p>
+                    <div class="metric-value">Canales: <span>8</span></div>
+                </div>
+                <div class="biometria-card">
+                    <div class="biometria-icon">🦵</div>
+                    <h3>Detección de Caídas</h3>
+                    <p>Algoritmos de IA para identificar caídas súbitas y activar protocolos de emergencia.</p>
+                    <div class="metric-value">Tiempo respuesta: <span>&lt;1s</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección: Diagnóstico Preventivo por IA (Edge AI) -->
+    <section id="diagnostico" class="diagnostico-section">
+        <div class="container">
+            <div class="section-badge">EDGE AI</div>
+            <h2 class="section-title">Diagnóstico <span class="life-text">Preventivo</span> por IA</h2>
+            <p class="section-description">Algoritmos de inteligencia artificial ejecutados directamente en dispositivos portátiles, sin depender de la nube.</p>
+
+            <div class="diagnostico-grid">
+                <div class="diagnostico-card">
+                    <div class="diagnostico-icon">⚡</div>
+                    <h3>Detección de Arritmias</h3>
+                    <p>Clasificación en tiempo real de latidos cardíacos anormales con redes neuronales profundas.</p>
+                    <div class="alert-badge">Alerta en &lt;0.5s</div>
+                </div>
+                <div class="diagnostico-card">
+                    <div class="diagnostico-icon">🌡️</div>
+                    <h3>Detección de Hipoxia</h3>
+                    <p>Monitorización continua de SpO₂ con alertas tempranas ante desaturaciones críticas.</p>
+                    <div class="alert-badge">Umbral configurable</div>
+                </div>
+                <div class="diagnostico-card">
+                    <div class="diagnostico-icon">🔄</div>
+                    <h3>Análisis de Tendencia</h3>
+                    <p>Predicción de eventos adversos basada en patrones históricos de datos biométricos.</p>
+                    <div class="alert-badge">Predictivo</div>
+                </div>
+                <div class="diagnostico-card">
+                    <div class="diagnostico-icon">🔒</div>
+                    <h3>Procesamiento Local</h3>
+                    <p>Todos los datos procesados en el dispositivo, garantizando privacidad y bajísima latencia.</p>
+                    <div class="alert-badge">Sin nube</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección: Telemedicina Autónoma -->
+    <section id="telemedicina" class="telemedicina-section">
+        <div class="container">
+            <div class="section-badge">TELEMEDICINA</div>
+            <h2 class="section-title">Autónoma y <span class="life-text">Conectada</span></h2>
+            <p class="section-description">Integración perfecta entre diagnóstico, acción inmediata y comunicación con servicios de emergencia.</p>
+
+            <div class="telemedicina-grid">
+                <div class="telemedicina-card">
+                    <div class="telemedicina-icon">🚨</div>
+                    <h3>Activación Autónoma</h3>
+                    <p>Activación inmediata de cadenas de comunicación ante riesgos vitales detectados por IA.</p>
+                </div>
+                <div class="telemedicina-card">
+                    <div class="telemedicina-icon">📍</div>
+                    <h3>Alertas Geolocalizadas</h3>
+                    <p>Envío de ubicación precisa y historial médico a servicios de emergencia y familiares.</p>
+                </div>
+                <div class="telemedicina-card">
+                    <div class="telemedicina-icon">📋</div>
+                    <h3>Historial Clínico Integrado</h3>
+                    <p>Acceso instantáneo a alergias, medicamentos y condiciones preexistentes para primeros respondientes.</p>
+                </div>
+                <div class="telemedicina-card">
+                    <div class="telemedicina-icon">🩺</div>
+                    <h3>Consulta Virtual</h3>
+                    <p>Conexión directa con profesionales de la salud mediante videollamada cifrada.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección: Dispositivos Inteligentes -->
+    <section class="devices-section">
+        <div class="container">
+            <div class="section-badge">DISPOSITIVOS</div>
+            <h2 class="section-title">Wearables <span class="life-text">Inteligentes</span></h2>
+            <p class="section-description">Tecnología vestible que cuida de ti en todo momento.</p>
+
+            <div class="devices-grid">
+                <div class="device-card">
+                    <div class="device-icon">⌚</div>
+                    <h3>LYAN Vita Watch</h3>
+                    <p>Smartwatch médico con ECG, SpO₂, temperatura y detección de caídas. Autonomía de 7 días.</p>
+                    <div class="device-specs">
+                        <span>ECG</span>
+                        <span>SpO₂</span>
+                        <span>Caídas</span>
+                        <span>GPS</span>
+                    </div>
+                    <button class="btn-device" onclick="notifyDevice('LYAN Vita Watch')">Próximamente</button>
+                </div>
+                <div class="device-card">
+                    <div class="device-icon">💍</div>
+                    <h3>LYAN Ring</h3>
+                    <p>Anillo inteligente para monitoreo continuo de sueño, temperatura y frecuencia cardíaca.</p>
+                    <div class="device-specs">
+                        <span>Sueño</span>
+                        <span>HRV</span>
+                        <span>Temperatura</span>
+                    </div>
+                    <button class="btn-device" onclick="notifyDevice('LYAN Ring')">Próximamente</button>
+                </div>
+                <div class="device-card">
+                    <div class="device-icon">🩺</div>
+                    <h3>LYAN Patch</h3>
+                    <p>Parche adhesivo para monitoreo continuo de ECG, glucosa y actividad física.</p>
+                    <div class="device-specs">
+                        <span>ECG 24h</span>
+                        <span>Glucosa</span>
+                        <span>Actividad</span>
+                    </div>
+                    <button class="btn-device" onclick="notifyDevice('LYAN Patch')">Próximamente</button>
+                </div>
+                <div class="device-card">
+                    <div class="device-icon">🏠</div>
+                    <h3>LYAN Home Hub</h3>
+                    <p>Centro de monitoreo para el hogar con integración de sensores ambientales y alertas médicas.</p>
+                    <div class="device-specs">
+                        <span>Alertas</span>
+                        <span>Sensores</span>
+                        <span>IA Local</span>
+                    </div>
+                    <button class="btn-device" onclick="notifyDevice('LYAN Home Hub')">Próximamente</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección: Protocolos de Emergencia -->
+    <section class="emergency-section">
+        <div class="container">
+            <div class="section-badge">PROTOCOLOS DE EMERGENCIA</div>
+            <h2 class="section-title">Respuesta <span class="life-text">Inmediata</span></h2>
+            <p class="section-description">Sistema de respuesta autónoma ante situaciones críticas.</p>
+
+            <div class="emergency-timeline">
+                <div class="emergency-step">
+                    <div class="step-number">01</div>
+                    <div class="step-content">
+                        <h4>Detección</h4>
+                        <p>Algoritmos de IA identifican evento crítico (arritmia, caída, hipoxia)</p>
+                    </div>
+                </div>
+                <div class="emergency-step">
+                    <div class="step-number">02</div>
+                    <div class="step-content">
+                        <h4>Confirmación</h4>
+                        <p>Validación secundaria para evitar falsas alarmas</p>
+                    </div>
+                </div>
+                <div class="emergency-step">
+                    <div class="step-number">03</div>
+                    <div class="step-content">
+                        <h4>Activación</h4>
+                        <p>Alerta a contactos de emergencia y servicios médicos</p>
+                    </div>
+                </div>
+                <div class="emergency-step">
+                    <div class="step-number">04</div>
+                    <div class="step-content">
+                        <h4>Comunicación</h4>
+                        <p>Envío de ubicación, historial médico y datos en tiempo real</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección: Testimonios -->
+    <section class="testimonials-life">
+        <div class="container">
+            <div class="section-badge">TESTIMONIALES</div>
+            <h2 class="section-title">Vidas <span class="life-text">transformadas</span></h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">"</div>
+                    <p>El LYAN Vita Watch detectó una arritmia mientras dormía. La alerta llegó a mi médico y pude recibir atención inmediata. Me salvó la vida."</p>
+                    <div class="testimonial-author">
+                        <strong>Carlos Rodríguez</strong>
+                        <span>Paciente con fibrilación auricular</span>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">"</div>
+                    <p>Mi madre de 82 años usa el LYAN Patch. Nos da tranquilidad saber que si algo ocurre, recibiremos una alerta inmediata con su ubicación exacta."</p>
+                    <div class="testimonial-author">
+                        <strong>Laura Méndez</strong>
+                        <span>Familiar de paciente geriátrico</span>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">"</div>
+                    <p>La precisión de los sensores es sorprendente. Como cardiólogo, recomiendo LYAN a todos mis pacientes de alto riesgo."</p>
+                    <div class="testimonial-author">
+                        <strong>Dr. Alejandro Vargas</strong>
+                        <span>Cardiólogo, Clínica San Pablo</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-life">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>CONNECTION <span class="life-text">LIFE</span></h3>
+                    <p>Tecnología al servicio de la vida</p>
+                    <div class="footer-address">
+                        <span>❤️ Medical Innovation Hub</span>
+                        <span>🩺 CONNECTION CITY</span>
+                        <span>📧 life@aviconnection.com</span>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Enlaces Rápidos</h4>
+                    <a href="#biometria">Biometría</a>
+                    <a href="#diagnostico">Diagnóstico IA</a>
+                    <a href="#telemedicina">Telemedicina</a>
+                    <a href="../Ecosistema web/system.html">Ecosistema AVI</a>
+                </div>
+                <div class="footer-social">
+                    <h4>Conecta con LAYLA</h4>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon">❤️</a>
+                        <a href="#" class="social-icon">🩺</a>
+                        <a href="#" class="social-icon">🌙</a>
+                        <a href="#" class="social-icon">📊</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>IA LÍDER: LAYLA | CONNECTION LIFE © 2026</p>
+                <p class="small">Preservando vidas con tecnología de vanguardia</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="Life.js"></script>
+    <script>
+        // Preloader
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloaderLife');
+            if (preloader) {
+                setTimeout(() => {
+                    preloader.classList.add('hide');
+                    setTimeout(() => {
+                        preloader.style.display = 'none';
+                    }, 600);
+                }, 1000);
+            }
+            document.body.classList.add('loaded');
+        });
+
+        // Dynamic Island Navigation
+        const menuToggle = document.querySelector('.menu-toggle-life');
+        const navLinks = document.querySelector('.island-links');
+        const navbar = document.getElementById('dynamicIsland');
+        
+        if (menuToggle && navLinks) {
+            menuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('open');
+                menuToggle.classList.toggle('active');
+            });
+        }
+        
+        window.addEventListener('scroll', () => {
+            if (navbar) {
+                if (window.scrollY > 50) navbar.classList.add('scrolled');
+                else navbar.classList.remove('scrolled');
+            }
+        });
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if (targetId && targetId !== '#') {
+                    const target = document.querySelector(targetId);
+                    if (target) {
+                        e.preventDefault();
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        if (navLinks) navLinks.classList.remove('open');
+                    }
+                }
+            });
+        });
+        
+        function notifyDevice(deviceName) {
+            alert(`❤️ ¡Gracias por tu interés en ${deviceName}!\n\nLAYLA te notificará cuando este dispositivo esté disponible.\n\nCONNECTION LIFE - Tecnología al servicio de la vida`);
+        }
+        
+        // Simulación de ECG y frecuencia cardíaca
+        const ecgLine = document.getElementById('ecgLine');
+        const bpmValue = document.getElementById('bpmValue');
+        const spo2Value = document.getElementById('spo2Value');
+        
+        function updateECG() {
+            if (ecgLine) {
+                let points = [];
+                for (let i = 0; i < 100; i++) {
+                    let y;
+                    if (i < 20) y = 50;
+                    else if (i < 25) y = 20;
+                    else if (i < 30) y = 80;
+                    else if (i < 35) y = 20;
+                    else if (i < 40) y = 50;
+                    else y = 50 + Math.sin(i * 0.3) * 5;
+                    points.push(`${i},${y}`);
+                }
+                ecgLine.setAttribute('points', points.join(' '));
+            }
+        }
+        
+        function updateVitals() {
+            if (bpmValue) {
+                const bpm = Math.floor(Math.random() * (85 - 65 + 1) + 65);
+                bpmValue.textContent = bpm;
+            }
+            if (spo2Value) {
+                const spo2 = Math.floor(Math.random() * (99 - 95 + 1) + 95);
+                spo2Value.textContent = spo2;
+            }
+        }
+        
+        updateECG();
+        setInterval(updateECG, 2000);
+        setInterval(updateVitals, 3000);
+        
+        console.log('%c❤️ CONNECTION LIFE | IA LÍDER: LAYLA', 'color: #00ff88; font-size: 14px; font-weight: bold');
+        console.log('%c✓ Biometría avanzada | Diagnóstico Edge AI | Telemedicina autónoma', 'color: #00ff88');
+        console.log('%c✓ Monitoreo 24/7 | Alertas &lt;1s | Precisión 99.9%', 'color: #00ff88');
+    </script>
+</body>
+</html>

@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="CONNECTION THINK - El conocimiento que anticipa el futuro. IA Líder: SOFÍA. Gestión del conocimiento global, sistemas de tutoría adaptativa y análisis predictivo educativo.">
+    <meta name="theme-color" content="#6b5bff">
+    <title>CONNECTION THINK | Conocimiento que Anticipa — IA Líder: SOFÍA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Think.css">
+    <style>
+        .preloader-think {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0a0a2a, #050510);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            transition: opacity 0.6s ease;
+        }
+        .preloader-think.hide { opacity: 0; pointer-events: none; }
+        .loader-brain {
+            width: 80px;
+            height: 80px;
+            position: relative;
+        }
+        .loader-brain::before,
+        .loader-brain::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background: #6b5bff;
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: brainPulse 1s ease-in-out infinite;
+        }
+        .loader-brain::before {
+            left: 0;
+            top: 20px;
+            animation-delay: 0s;
+        }
+        .loader-brain::after {
+            right: 0;
+            top: 20px;
+            animation-delay: 0.3s;
+        }
+        @keyframes brainPulse {
+            0%, 100% { transform: scale(0.8); opacity: 0.4; }
+            50% { transform: scale(1.2); opacity: 1; }
+        }
+        .loader-text {
+            margin-top: 30px;
+            font-family: 'Orbitron', monospace;
+            color: #6b5bff;
+            letter-spacing: 4px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="preloader-think" id="preloaderThink">
+        <div class="loader-brain"></div>
+        <div class="loader-text">⟡ SOFÍA INIT ⟡</div>
+        <div class="loader-text" style="font-size:0.7rem;">Activando Red Neuronal...</div>
+    </div>
+
+    <nav id="dynamicIsland" class="dynamic-island">
+        <div class="island-content">
+            <a href="Think.html" class="island-logo-section">
+                <div class="island-logo-wrapper">
+                    <img src="../imágenes y logo/logo.png" alt="AVI Logo" class="island-logo-img" onerror="this.src='https://via.placeholder.com/45/6b5bff/ffffff?text=TH'">
+                    <div class="logo-pulse"></div>
+                </div>
+                <span class="island-text">CONNECTION <span class="think-text">THINK</span></span>
+            </a>
+            <ul class="island-links">
+                <li><a href="../index.html" class="nav-link">AVI</a></li>
+                <li><a href="../Labs web/labs.html" class="nav-link">LABS</a></li>
+                <li><a href="../Píxel web/pixel.html" class="nav-link">PÍXEL</a></li>
+                <li><a href="../Explorer web/explorer.html" class="nav-link">EXPLORER</a></li>
+                <li><a href="../Life web/life.html" class="nav-link">LIFE</a></li>
+                <li><a href="../Link web/Link.html" class="nav-link">LINK</a></li>
+                <li><a href="Think.html" class="nav-link active">THINK</a></li>
+            </ul>
+            <button class="menu-toggle-think" aria-label="Abrir menú">☰</button>
+        </div>
+    </nav>
+
+    <header class="think-hero">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-neural"></div>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span>🧠</span>
+                <span class="badge-text">EL CONOCIMIENTO QUE ANTICIPA EL FUTURO</span>
+                <span>📚</span>
+            </div>
+            <h1 class="hero-title">
+                CONNECTION <span class="hero-title-gradient">THINK</span>
+            </h1>
+            <p class="hero-subtitle">
+                Investigamos, procesamos y estructuramos el conocimiento global.<br>
+                Especializados en educación, tutoría virtual y análisis predictivo.
+            </p>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <div class="stat-number">1M+</div>
+                    <div class="stat-label">Documentos Procesados</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Tutoría Adaptativa</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">98%</div>
+                    <div class="stat-label">Precisión Predictiva</div>
+                </div>
+            </div>
+            <div class="hero-buttons">
+                <a href="#sofia" class="btn-hero-primary">
+                    <span>🧠 Conocer SOFÍA</span>
+                </a>
+                <a href="#educacion" class="btn-hero-secondary">
+                    <span>📚 Explorar Educación</span>
+                </a>
+                <!-- En el hero-buttons o donde prefieras -->
+<a href="AVI.html" class="btn-hero-primary">
+    <span>🤖 Probar AVI AI</span>
+</a>
+            </div>
+        </div>
+        <div class="scroll-hint">
+            <span>SCROLL</span>
+            <div class="scroll-line"></div>
+        </div>
+    </header>
+
+    <div class="main-logo-section">
+        <div class="main-logo">
+            <h1>CONNECTION THINK</h1>
+            <div class="slogan">Conectando ideas, creando realidades</div>
+        </div>
+    </div>
+
+    <section id="sofia" class="sofia-section">
+        <div class="container">
+            <div class="sofia-grid">
+                <div class="sofia-info">
+                    <div class="section-badge">IA LÍDER</div>
+                    <h2 class="section-title-left">SOFÍA</h2>
+                    <p class="sofia-description">
+                        <strong>Personalidad:</strong> Sabia, paciente, con una profunda vocación pedagógica. Su nombre (del griego <em>Sophia</em>, sabiduría) refleja su esencia: es la mente analítica que transforma datos en conocimiento accionable.
+                    </p>
+                    <p class="sofia-mission">
+                        <strong>Misión:</strong> Investigar, procesar y estructurar el conocimiento global, con especialización en el sector educativo. Sofía actúa como el cerebro estratégico de la corporación y como tutora virtual para instituciones académicas.
+                    </p>
+                    <div class="sofia-traits">
+                        <span>🧠 Sabia</span>
+                        <span>📚 Paciente</span>
+                        <span>🎓 Pedagógica</span>
+                        <span>📊 Analítica</span>
+                    </div>
+                </div>
+                <div class="sofia-visual">
+                    <div class="brain-visual">
+                        <div class="brain-core"></div>
+                        <div class="neural-net">
+                            <span></span><span></span><span></span><span></span>
+                            <span></span><span></span><span></span><span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="educacion" class="education-section">
+        <div class="container">
+            <div class="section-badge">EDUCACIÓN INTELIGENTE</div>
+            <h2 class="section-title">Gestión del <span class="think-text">Conocimiento</span></h2>
+            <p class="section-description">Sofía transforma la educación con tecnología de punta y análisis predictivo.</p>
+
+            <div class="education-grid">
+                <div class="education-card">
+                    <div class="education-icon">📊</div>
+                    <h3>Análisis Predictivo</h3>
+                    <p>Detección temprana de deserción escolar y talentos académicos mediante redes neuronales.</p>
+                    <div class="education-stats">
+                        <span>Precisión: 94%</span>
+                        <span>Anticipación: 6 meses</span>
+                    </div>
+                </div>
+                <div class="education-card">
+                    <div class="education-icon">💬</div>
+                    <h3>Tutoría Virtual Adaptativa</h3>
+                    <p>Asistentes conversacionales empáticos que se adaptan al ritmo y estilo de aprendizaje.</p>
+                    <div class="education-stats">
+                        <span>Idiomas: 12</span>
+                        <span>Personalización: 1:1</span>
+                    </div>
+                </div>
+                <div class="education-card">
+                    <div class="education-icon">📚</div>
+                    <h3>Gestión del Conocimiento</h3>
+                    <p>Automatización de búsqueda, clasificación y resumen de bibliografía académica.</p>
+                    <div class="education-stats">
+                        <span>1M+ documentos</span>
+                        <span>Resúmenes instantáneos</span>
+                    </div>
+                </div>
+                <div class="education-card">
+                    <div class="education-icon">🎓</div>
+                    <h3>Análisis Curricular</h3>
+                    <p>Adaptación de métodos de enseñanza al ritmo y estilo de cada estudiante.</p>
+                    <div class="education-stats">
+                        <span>Adaptación en tiempo real</span>
+                        <span>Feedback continuo</span>
+                    </div>
+                </div>
+                <div class="education-card">
+                    <div class="education-icon">📈</div>
+                    <h3>Tendencias Globales</h3>
+                    <p>Análisis de tendencias en educación para asesorar sobre nuevas carreras y currículos.</p>
+                    <div class="education-stats">
+                        <span>Actualización diaria</span>
+                        <span>Proyecciones 5 años</span>
+                    </div>
+                </div>
+                <div class="education-card">
+                    <div class="education-icon">🤝</div>
+                    <h3>Colaboración Académica</h3>
+                    <p>Conexión entre investigadores y conexión de conocimiento interdisciplinario.</p>
+                    <div class="education-stats">
+                        <span>+10k investigadores</span>
+                        <span>Redes de conocimiento</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="ml-section">
+        <div class="container">
+            <div class="section-badge">MACHINE LEARNING</div>
+            <h2 class="section-title">Deep Learning y <span class="think-text">Redes Neuronales</span></h2>
+            <p class="section-description">El núcleo de la inteligencia adaptativa de SOFÍA.</p>
+
+            <div class="ml-grid">
+                <div class="ml-card">
+                    <div class="ml-icon">🧬</div>
+                    <h3>Redes Neuronales Profundas</h3>
+                    <p>Entrenamiento de algoritmos para análisis predictivo en entornos educativos, detección de patrones de aprendizaje y recomendación de contenido.</p>
+                    <div class="ml-tags">
+                        <span>CNN</span><span>LSTM</span><span>Transformers</span>
+                    </div>
+                </div>
+                <div class="ml-card">
+                    <div class="ml-icon">💬</div>
+                    <h3>Procesamiento de Lenguaje Natural</h3>
+                    <p>Desarrollo de modelos lingüísticos para interpretación de textos académicos, tesis y papers científicos con alta precisión.</p>
+                    <div class="ml-tags">
+                        <span>BERT</span><span>GPT</span><span>Fine-tuning</span>
+                    </div>
+                </div>
+                <div class="ml-card">
+                    <div class="ml-icon">⚡</div>
+                    <h3>Edge AI en Educación</h3>
+                    <p>Procesamiento de datos educativos directamente en dispositivos, garantizando privacidad y baja latencia.</p>
+                    <div class="ml-tags">
+                        <span>TensorFlow Lite</span><span>ONNX</span><span>Privacidad</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="npl-section">
+        <div class="container">
+            <div class="section-badge">PROCESAMIENTO DE LENGUAJE NATURAL</div>
+            <h2 class="section-title">Comprensión del <span class="think-text">Conocimiento</span></h2>
+            <p class="section-description">La capacidad de entender y comunicarse con empatía y precisión académica.</p>
+
+            <div class="npl-grid">
+                <div class="npl-card">
+                    <div class="npl-icon">📖</div>
+                    <h3>Análisis de Textos Académicos</h3>
+                    <p>Interpretación de tesis, papers y artículos científicos con extracción de conceptos clave y resúmenes automáticos.</p>
+                </div>
+                <div class="npl-card">
+                    <div class="npl-icon">🗣️</div>
+                    <h3>Asistentes Conversacionales</h3>
+                    <p>Tutorías virtuales personalizadas con lenguaje natural, adaptadas al nivel y estilo de cada estudiante.</p>
+                </div>
+                <div class="npl-card">
+                    <div class="npl-icon">🌍</div>
+                    <h3>Traducción Científica</h3>
+                    <p>Traducción precisa de documentos académicos entre más de 50 idiomas, preservando terminología técnica.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="research-section">
+        <div class="container">
+            <div class="section-badge">INVESTIGACIÓN</div>
+            <h2 class="section-title">Centro de <span class="think-text">Investigación</span></h2>
+            <div class="research-grid">
+                <div class="research-card">
+                    <div class="research-icon">🔬</div>
+                    <h3>Laboratorio de IA Educativa</h3>
+                    <p>Investigación continua en nuevas metodologías de aprendizaje asistido por inteligencia artificial.</p>
+                </div>
+                <div class="research-card">
+                    <div class="research-icon">📊</div>
+                    <h3>Análisis de Datos Educativos</h3>
+                    <p>Procesamiento de millones de datos para identificar patrones y tendencias en educación global.</p>
+                </div>
+                <div class="research-card">
+                    <div class="research-icon">🤝</div>
+                    <h3>Colaboración con Universidades</h3>
+                    <p>Alianzas estratégicas con instituciones académicas para investigación conjunta y desarrollo de herramientas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer-think">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>CONNECTION <span class="think-text">THINK</span></h3>
+                    <p>El conocimiento que anticipa el futuro</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Explorar</h4>
+                    <a href="#sofia">SOFÍA</a>
+                    <a href="#educacion">Educación</a>
+                    <a href="#">Investigación</a>
+                </div>
+                <div class="footer-meta">
+                    <p>IA Líder: SOFÍA | CONNECTION THINK © 2026</p>
+                    <p class="small">Sabiduría artificial para la educación del futuro</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="Think.js"></script>
+</body>
+</html>

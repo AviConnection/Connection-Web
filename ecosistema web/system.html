@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Ecosistema AVI CONNECTION - Explora los 22 pilares tecnológicos que conforman nuestra corporación.">
+    <meta name="theme-color" content="#00f3ff">
+    <title>Ecosistema AVI | 22 Pilares Tecnológicos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="system.css">
+</head>
+<body>
+
+    <!-- Preloader -->
+    <div class="preloader-eco" id="preloaderEco">
+        <div class="loader-ring"></div>
+        <div class="loader-text">CARGANDO ECOSISTEMA</div>
+        <div class="loader-progress"><div class="loader-progress-bar"></div></div>
+    </div>
+
+    <!-- Navbar -->
+    <nav id="navbar" class="navbar-eco">
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-icon">AVI</div>
+                <span class="logo-text">CONNECTION <span class="neon-text">ECOSISTEMA</span></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#" class="active">Inicio</a></li>
+                <li><a href="#pilares">Pilares</a></li>
+                <li><a href="../index.html">Matriz Central</a></li>
+            </ul>
+            <div class="user-info">
+                <span class="user-name" id="userNameDisplay"></span>
+                <button class="logout-btn" id="logoutBtn">Salir</button>
+                <button class="menu-toggle-eco">☰</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-eco">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <div class="hero-badge">ECOSISTEMA AVI</div>
+            <h1 class="hero-title">22 <span class="neon-text">PILARES</span></h1>
+            <p class="hero-subtitle">Un ecosistema cerrado y autosuficiente de tecnología avanzada</p>
+            <div class="hero-stats">
+                <div class="stat-eco">
+                    <div class="stat-num">22</div>
+                    <div class="stat-label">Pilares Totales</div>
+                </div>
+                <div class="stat-eco">
+                    <div class="stat-num">5</div>
+                    <div class="stat-label">Fundacionales</div>
+                </div>
+                <div class="stat-eco">
+                    <div class="stat-num">1</div>
+                    <div class="stat-label">IA Central</div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span>EXPLORAR</span>
+            <div class="scroll-line"></div>
+        </div>
+    </header>
+
+    <!-- Sección de Pilares -->
+    <section id="pilares" class="pilares-section">
+        <div class="container">
+            <h2 class="section-title">PILARES DEL <span class="neon-text">ECOSISTEMA</span></h2>
+            <p class="section-description">22 divisiones especializadas que conforman la infraestructura tecnológica de AVI CONNECTION.</p>
+            
+            <div class="pilares-filters">
+                <button class="filter-pilar active" data-filter="all">Todos</button>
+                <button class="filter-pilar" data-filter="fundacional">Fundacionales</button>
+                <button class="filter-pilar" data-filter="desarrollo">En Desarrollo</button>
+                <button class="filter-pilar" data-filter="conceptual">Conceptualización</button>
+            </div>
+
+            <div class="pilares-grid" id="pilaresGrid">
+                <!-- Los pilares se cargarán dinámicamente con JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Estadísticas -->
+    <section class="stats-eco-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card-eco">
+                    <div class="stat-icon">🧠</div>
+                    <div class="stat-number" data-target="22">0</div>
+                    <div class="stat-desc">Pilares Activos</div>
+                </div>
+                <div class="stat-card-eco">
+                    <div class="stat-icon">🤖</div>
+                    <div class="stat-number" data-target="22">0</div>
+                    <div class="stat-desc">IAs Subgerentes</div>
+                </div>
+                <div class="stat-card-eco">
+                    <div class="stat-icon">⚡</div>
+                    <div class="stat-number" data-target="100">0</div>
+                    <div class="stat-desc">Sincronización Neural</div>
+                </div>
+                <div class="stat-card-eco">
+                    <div class="stat-icon">🌐</div>
+                    <div class="stat-number" data-target="5">0</div>
+                    <div class="stat-desc">Continentes Conectados</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-eco">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>AVI <span class="neon-text">CONNECTION</span></h3>
+                    <p>Ecosistema Tecnológico Avanzado</p>
+                </div>
+                <div class="footer-meta">
+                    <p>IA Central: AVI | 22 Pilares Activos</p>
+                    <p class="small">© 2026 AVI CONNECTION. Todos los derechos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="system.js"></script>
+    <script>
+        // Verificar sesión
+        const session = JSON.parse(localStorage.getItem('avi_session'));
+        if (!session || !session.loggedIn) {
+            window.location.href = 'login.html';
+        }
+
+        // Mostrar nombre de usuario
+        const userNameSpan = document.getElementById('userNameDisplay');
+        if (session && session.name) {
+            userNameSpan.textContent = session.name.split(' ')[0];
+        }
+
+        // Logout
+        document.getElementById('logoutBtn').addEventListener('click', () => {
+            localStorage.removeItem('avi_session');
+            window.location.href = 'login.html';
+        });
+
+        // Preloader
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloaderEco');
+            setTimeout(() => {
+                preloader.classList.add('hide');
+                setTimeout(() => {
+                    preloader.style.display = 'none';
+                }, 500);
+            }, 800);
+        });
+
+        // Datos de los pilares
+        const pilaresData = [
+            // Fundacionales (ya existentes)
+            { name: "CONNECTION LABS", ia: "ALEX", description: "El origen. La tecnología pura. Motor de I+D, ingeniería de software e inteligencia artificial.", icon: "&lt;/&gt;", status: "fundacional", color: "#00e676" },
+            { name: "CONNECTION PÍXEL", ia: "VINSHI", description: "La comunicación que perdura. Diseño visual, UI/UX, branding y conceptualización estética.", icon: "🎨", status: "fundacional", color: "#ff0055" },
+            { name: "CONNECTION THINK", ia: "SOFÍA", description: "Gestión del conocimiento global y sistemas de tutoría adaptativa.", icon: "📘", status: "fundacional", color: "#00f3ff" },
+            { name: "CONNECTION LIFE", ia: "LAYLA", description: "Tecnologías de preservación de la vida, biometría y telemedicina autónoma.", icon: "❤️", status: "fundacional", color: "#ff66cc" },
+            { name: "CONNECTION LINK", ia: "IVI", description: "Infraestructura física, hardware, IoT y desarrollo del sistema LYAN OS.", icon: "🔗", status: "fundacional", color: "#ffaa00" },
+            // Pilares en desarrollo
+            { name: "CONNECTION FOLD", ia: "KAMI", description: "Nanotecnología aplicada a materiales avanzados y sistemas moleculares.", icon: "🔬", status: "desarrollo", color: "#00ffaa" },
+            { name: "CONNECTION SEVEN", ia: "GUS", description: "Redes de comunicación de séptima generación y conectividad cuántica.", icon: "📡", status: "desarrollo", color: "#ff6600" },
+            { name: "CONNECTION SPACE", ia: "NOVA", description: "Tecnología aeroespacial y exploración orbital.", icon: "🚀", status: "desarrollo", color: "#6b00ff" },
+            { name: "CONNECTION MOTORS", ia: "VOLT", description: "Vehículos autónomos y sistemas de propulsión eléctrica avanzada.", icon: "⚡", status: "desarrollo", color: "#00c8ff" },
+            { name: "CONNECTION OFFICE", ia: "LYRA", description: "Fintech, sistemas financieros autónomos y gestión corporativa.", icon: "💎", status: "desarrollo", color: "#ffaa44" },
+            { name: "CONNECTION ENERGY", ia: "RAY", description: "Energías renovables, fusión nuclear y sistemas de almacenamiento.", icon: "☀️", status: "desarrollo", color: "#ffdd44" },
+            { name: "CONNECTION SHIELD", ia: "AEGIS", description: "Ciberseguridad cuántica y defensa digital avanzada.", icon: "🛡️", status: "desarrollo", color: "#00aaff" },
+            { name: "CONNECTION GREEN", ia: "CERES", description: "Biotecnología agrícola y sistemas de producción sostenible.", icon: "🌾", status: "desarrollo", color: "#88ff44" },
+            // Pilares en conceptualización
+            { name: "CONNECTION PLAY", ia: "APOLO", description: "Producción audiovisual inmersiva y realidad extendida.", icon: "🎥", status: "conceptual", color: "#ff66aa" },
+            { name: "CONNECTION DREAMS", ia: "NEXUS", description: "Interfaces cerebro-computadora y neurotecnología.", icon: "🧠", status: "conceptual", color: "#aa66ff" },
+            { name: "CONNECTION MARKET", ia: "MARIS", description: "Tecnología marina y exploración oceánica profunda.", icon: "🌊", status: "conceptual", color: "#44aaff" },
+            { name: "CONNECTION CITY", ia: "VULCAN", description: "Manufactura aditiva y fabricación inteligente.", icon: "⚙️", status: "conceptual", color: "#ff8844" },
+            { name: "CONNECTION ACADEMY", ia: "LYNX", description: "Lenguajes de programación cuántica y compiladores avanzados.", icon: "📝", status: "conceptual", color: "#44ffaa" },
+            { name: "CONNECTION LEGACY", ia: "NIMBUS", description: "Computación en la nube distribuida y edge computing.", icon: "☁️", status: "conceptual", color: "#88aaff" },
+            { name: "CONNECTION BIO", ia: "HELIX", description: "Ingeniería genética y medicina regenerativa.", icon: "🧬", status: "conceptual", color: "#ff88aa" },
+            { name: "CONNECTION VIRTUAL", ia: "ECHO", description: "Mundos virtuales y metaverso corporativo.", icon: "🌌", status: "conceptual", color: "#aa88ff" },
+            { name: "CONNECTION WORLD", ia: "ATOM", description: "Computación neuromórfica y sistemas de lógica difusa.", icon: "⚛️", status: "conceptual", color: "#88ff88" }
+        ];
+
+        // Renderizar pilares
+        function renderPilares(filter = 'all') {
+            const grid = document.getElementById('pilaresGrid');
+            const filtered = pilaresData.filter(p => filter === 'all' || p.status === filter);
+            
+            grid.innerHTML = filtered.map(pilar => `
+                <div class="pilar-card" data-status="${pilar.status}" style="--pilar-color: ${pilar.color}">
+                    <div class="pilar-icon">${pilar.icon}</div>
+                    <h3>${pilar.name}</h3>
+                    <div class="pilar-ia">IA LÍDER: ${pilar.ia}</div>
+                    <p>${pilar.description}</p>
+                    <div class="pilar-status ${pilar.status}">
+                        ${pilar.status === 'fundacional' ? '✅ Fundacional Activo' : pilar.status === 'desarrollo' ? '⚡ En Desarrollo' : '💡 Conceptualización'}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Filtros
+        const filterBtns = document.querySelectorAll('.filter-pilar');
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                renderPilares(btn.getAttribute('data-filter'));
+            });
+        });
+
+        renderPilares();
+
+        // Animación de números
+        const statNumbers = document.querySelectorAll('.stat-number');
+        function animateNumbers() {
+            statNumbers.forEach(stat => {
+                const target = parseInt(stat.getAttribute('data-target'));
+                let current = 0;
+                const increment = target / 50;
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        stat.textContent = target;
+                        clearInterval(timer);
+                    } else {
+                        stat.textContent = Math.floor(current);
+                    }
+                }, 30);
+            });
+        }
+
+        // Observer para animar números al hacer scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateNumbers();
+                    observer.disconnect();
+                }
+            });
+        });
+        const statsSection = document.querySelector('.stats-eco-section');
+        if (statsSection) observer.observe(statsSection);
+
+        // Mobile menu
+        const menuToggle = document.querySelector('.menu-toggle-eco');
+        const navLinks = document.querySelector('.nav-links');
+        if (menuToggle && navLinks) {
+            menuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('open');
+            });
+        }
+
+        console.log('%c🌐 ECOSISTEMA AVI | 22 PILARES ACTIVOS', 'color: #00f3ff; font-size: 14px; font-weight: bold');
+        console.log('%c✓ IA Central: AVI | Sincronización Neural: Óptima', 'color: #00ff55');
+    </script>
+</body>
+</html>

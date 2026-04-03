@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Computación Cuántica - CONNECTION LABS. Algoritmos cuánticos, simulación, y tecnologías emergentes para el futuro del cómputo.">
+    <meta name="theme-color" content="#00e676">
+    <title>Computación Cuántica | CONNECTION LABS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="labs.css">
+    <style>
+        .protocol-hero {
+            position: relative;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(135deg, #010604, #021008);
+            padding: 120px 20px 80px;
+            overflow: hidden;
+        }
+        .protocol-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            background: rgba(0, 230, 118, 0.1);
+            border: 1px solid rgba(0, 230, 118, 0.3);
+            border-radius: 40px;
+            font-size: 0.8rem;
+            color: #00e676;
+            margin-bottom: 20px;
+        }
+        .protocol-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #fff, #00e676);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .protocol-subtitle {
+            font-size: 1.2rem;
+            color: #a3d9b4;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #00e676;
+            text-decoration: none;
+            margin: 30px 0;
+            font-family: 'Orbitron', monospace;
+            transition: gap 0.3s ease;
+        }
+        .quantum-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+        .quantum-stat {
+            text-align: center;
+            background: rgba(0, 230, 118, 0.05);
+            padding: 20px 30px;
+            border-radius: 16px;
+            border: 1px solid rgba(0, 230, 118, 0.2);
+        }
+        .quantum-stat-number {
+            font-family: 'Orbitron', monospace;
+            font-size: 2rem;
+            font-weight: bold;
+            color: #00e676;
+        }
+        .quantum-stat-label {
+            font-size: 0.8rem;
+            color: #a3d9b4;
+        }
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .tech-card {
+            background: rgba(1, 20, 8, 0.6);
+            border: 1px solid rgba(0, 230, 118, 0.2);
+            border-radius: 20px;
+            padding: 30px;
+            transition: all 0.3s ease;
+        }
+        .tech-card:hover {
+            transform: translateY(-5px);
+            border-color: #00e676;
+        }
+        .tech-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        .tech-card h3 {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: #00e676;
+        }
+        .tech-card p {
+            color: #a3d9b4;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        .tech-list {
+            list-style: none;
+        }
+        .tech-list li {
+            color: #fff;
+            margin-bottom: 8px;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .tech-list li::before {
+            content: '→';
+            color: #00e676;
+        }
+        .applications-section {
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #021008, #010604);
+        }
+        .applications-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .application-card {
+            text-align: center;
+            padding: 25px;
+            background: rgba(1, 10, 5, 0.5);
+            border-radius: 16px;
+            border: 1px solid rgba(0, 230, 118, 0.1);
+        }
+        .application-icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+        .application-card h4 {
+            font-family: 'Orbitron', monospace;
+            margin-bottom: 10px;
+            color: #00e676;
+        }
+        .application-card p {
+            color: #a3d9b4;
+            font-size: 0.85rem;
+        }
+        .protocols-menu {
+            position: relative;
+        }
+        .protocols-toggle {
+            background: transparent;
+            border: 1px solid rgba(0, 230, 118, 0.3);
+            color: #a0a0a0;
+            padding: 8px 16px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-family: 'Orbitron', monospace;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+        }
+        .protocols-toggle:hover {
+            border-color: #00e676;
+            color: #00e676;
+        }
+        .protocols-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: rgba(1, 6, 4, 0.95);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 230, 118, 0.3);
+            border-radius: 12px;
+            padding: 10px 0;
+            min-width: 220px;
+            display: none;
+            z-index: 100;
+            list-style: none;
+        }
+        .protocols-menu:hover .protocols-dropdown {
+            display: block;
+        }
+        .protocols-dropdown li a {
+            display: block;
+            padding: 8px 20px;
+            color: #a3d9b4;
+            text-decoration: none;
+            font-size: 0.8rem;
+            transition: all 0.2s ease;
+        }
+        .protocols-dropdown li a:hover,
+        .protocols-dropdown li a.active {
+            background: rgba(0, 230, 118, 0.1);
+            color: #00e676;
+        }
+        @media (max-width: 1024px) {
+            .applications-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 768px) {
+            .protocol-title { font-size: 2rem; }
+            .applications-grid { grid-template-columns: 1fr; }
+            .protocols-menu { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="preloader-labs" id="preloaderLabs">
+        <div class="loader-spinner"></div>
+        <div class="loader-text">⟡ ALEX INIT ⟡</div>
+        <div class="loader-text" style="font-size:0.7rem;">Cargando módulo Cuántico...</div>
+    </div>
+
+    <canvas id="matrixCanvas"></canvas>
+
+    <nav id="dynamic-island" class="dynamic-island">
+        <div class="island-content">
+            <a href="labs.html" class="island-logo-section">
+                <div class="island-logo-wrapper">
+                    <img src="../imágenes y logo/labs logo.png" alt="LABS Logo" class="island-logo-img">
+                </div>
+                <span class="island-text">CONNECTION <span class="labs-text-neon">LABS</span></span>
+            </a>
+            <div class="protocols-menu">
+                <button class="protocols-toggle">PROTOCOLOS ▼</button>
+                <ul class="protocols-dropdown">
+                    <li><a href="Ing_Soft.html">[01] Ingeniería Software</a></li>
+                    <li><a href="IA.html">[02] Inteligencia Artificial</a></li>
+                    <li><a href="Hardware.html">[03] Hardware y Sistemas</a></li>
+                    <li><a href="Ciberseguridad.html">[04] Ciberseguridad</a></li>
+                    <li><a href="Cuantica.html" class="active">[05] Computación Cuántica</a></li>
+                </ul>
+            </div>
+            <button class="menu-toggle-labs" aria-label="Abrir menú">☰</button>
+        </div>
+    </nav>
+
+    <header class="protocol-hero">
+        <div class="container">
+            <span class="protocol-badge">[05] PROTOCOLO ACTIVO</span>
+            <h1 class="protocol-title">Computación Cuántica</h1>
+            <p class="protocol-subtitle">Exploración de nuevos paradigmas de cálculo. Algoritmos cuánticos, simulación de sistemas cuánticos y desarrollo de software para computadoras cuánticas.</p>
+            <a href="labs.html" class="back-link">← Volver a LABS</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="quantum-stats">
+            <div class="quantum-stat"><div class="quantum-stat-number">100+</div><div class="quantum-stat-label">Qubits Simulados</div></div>
+            <div class="quantum-stat"><div class="quantum-stat-number">10x</div><div class="quantum-stat-label">Aceleración Teórica</div></div>
+            <div class="quantum-stat"><div class="quantum-stat-number">Shor/Grover</div><div class="quantum-stat-label">Algoritmos Implementados</div></div>
+            <div class="quantum-stat"><div class="quantum-stat-number">Post-Quantum</div><div class="quantum-stat-label">Criptografía</div></div>
+        </div>
+    </div>
+
+    <section class="tech-stack-section" style="padding-top: 0;">
+        <div class="container">
+            <h2 class="section-title">Tecnologías <span class="labs-text-neon">Cuánticas</span></h2>
+            <div class="tech-grid">
+                <div class="tech-card">
+                    <div class="tech-icon">⚛️</div>
+                    <h3>Algoritmos Cuánticos</h3>
+                    <p>Desarrollo de algoritmos para computadoras cuánticas actuales y futuras.</p>
+                    <ul class="tech-list">
+                        <li>Algoritmo de Shor (Factorización)</li>
+                        <li>Algoritmo de Grover (Búsqueda)</li>
+                        <li>Quantum Fourier Transform</li>
+                        <li>Algoritmos Variacionales (VQE, QAOA)</li>
+                        <li>Quantum Machine Learning</li>
+                    </ul>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-icon">🧬</div>
+                    <h3>Simulación Cuántica</h3>
+                    <p>Simulación de sistemas cuánticos en computadoras clásicas y cuánticas.</p>
+                    <ul class="tech-list">
+                        <li>Simuladores de Qubits (Qiskit Aer)</li>
+                        <li>Tensor Networks (MPS, PEPS)</li>
+                        <li>Simulación de Materiales</li>
+                        <li>Química Cuántica Computacional</li>
+                        <li>Dynamical Simulation</li>
+                    </ul>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-icon">🔑</div>
+                    <h3>Criptografía Post-Cuántica</h3>
+                    <p>Algoritmos resistentes a ataques con computadoras cuánticas.</p>
+                    <ul class="tech-list">
+                        <li>CRYSTALS-Kyber (KEM)</li>
+                        <li>CRYSTALS-Dilithium (Firma)</li>
+                        <li>FALCON / SPHINCS+</li>
+                        <li>Lattice-based Cryptography</li>
+                        <li>Code-based Cryptography</li>
+                    </ul>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-icon">🖥️</div>
+                    <h3>Frameworks de Desarrollo</h3>
+                    <p>Librerías y herramientas para programación cuántica.</p>
+                    <ul class="tech-list">
+                        <li>Qiskit (IBM Quantum)</li>
+                        <li>Cirq (Google Quantum AI)</li>
+                        <li>Pennylane (Xanadu)</li>
+                        <li>Forest (Rigetti)</li>
+                        <li>Q# (Microsoft)</li>
+                    </ul>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-icon">🎯</div>
+                    <h3>Optimización Cuántica</h3>
+                    <p>Resolución de problemas complejos con enfoques cuánticos.</p>
+                    <ul class="tech-list">
+                        <li>Quantum Annealing (D-Wave)</li>
+                        <li>QAOA (Quantum Approximate Optimization)</li>
+                        <li>Problemas de Optimización Combinatoria</li>
+                        <li>Machine Learning Cuántico</li>
+                        <li>Portfolio Optimization</li>
+                    </ul>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-icon">🔬</div>
+                    <h3>Hardware Cuántico</h3>
+                    <p>Arquitecturas físicas de computación cuántica.</p>
+                    <ul class="tech-list">
+                        <li>Superconducting Qubits</li>
+                        <li>Ion Traps (Iones Atrapados)</li>
+                        <li>Photonic Quantum Computing</li>
+                        <li>Topological Qubits</li>
+                        <li>Quantum Error Correction</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="applications-section">
+        <div class="container">
+            <h2 class="section-title">Aplicaciones <span class="labs-text-neon">Futuristas</span></h2>
+            <div class="applications-grid">
+                <div class="application-card">
+                    <div class="application-icon">💊</div>
+                    <h4>Descubrimiento de Fármacos</h4>
+                    <p>Simulación de interacciones moleculares para nuevos medicamentos</p>
+                </div>
+                <div class="application-card">
+                    <div class="application-icon">🌍</div>
+                    <h4>Modelado Climático</h4>
+                    <p>Simulaciones precisas de sistemas climáticos complejos</p>
+                </div>
+                <div class="application-card">
+                    <div class="application-icon">🔒</div>
+                    <h4>Seguridad Cuántica</h4>
+                    <p>Distribución cuántica de claves (QKD) para comunicaciones inviolables</p>
+                </div>
+                <div class="application-card">
+                    <div class="application-icon">⚡</div>
+                    <h4>Materiales Avanzados</h4>
+                    <p>Diseño de nuevos materiales con propiedades específicas</p>
+                </div>
+                <div class="application-card">
+                    <div class="application-icon">🚗</div>
+                    <h4>Optimización Logística</h4>
+                    <p>Rutas óptimas, planificación de producción y logística</p>
+                </div>
+                <div class="application-card">
+                    <div class="application-icon">🧬</div>
+                    <h4>Genómica</h4>
+                    <p>Análisis de secuencias genéticas a velocidad exponencial</p>
+                </div>
+                <div class="application-card">
+                    <div class="application-icon">📈</div>
+                    <h4>Finanzas Cuánticas</h4>
+                    <p>Optimización de carteras, pricing de opciones y riesgo</p>
+                </div>
+                <div class="application-card">
+                    <div class="application-icon">🛰️</div>
+                    <h4>Comunicaciones Satelitales</h4>
+                    <p>Enlaces cuánticos para comunicaciones seguras desde el espacio</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="labs-footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>CONNECTION <span class="labs-text-neon">LABS</span></h3>
+                <p>Computación Cuántica | El Futuro del Cómputo</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-links-column">
+                    <h4>PROTOCOLOS</h4>
+                    <a href="Ing_Soft.html">Ingeniería Software</a>
+                    <a href="IA.html">Inteligencia Artificial</a>
+                    <a href="Hardware.html">Hardware y Sistemas</a>
+                    <a href="Ciberseguridad.html">Ciberseguridad</a>
+                    <a href="Cuantica.html">Computación Cuántica</a>
+                </div>
+            </div>
+            <div class="footer-social">
+                <h4>CONECTA</h4>
+                <div class="social-icons">
+                    <a href="#" class="social-icon">⚛️</a>
+                    <a href="#" class="social-icon">🔬</a>
+                    <a href="#" class="social-icon">🧬</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>CONNECTION LABS | Computación Cuántica © 2026</p>
+        </div>
+    </footer>
+
+    <script>
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloaderLabs');
+            if (preloader) {
+                setTimeout(() => { preloader.classList.add('hide'); setTimeout(() => { preloader.style.display = 'none'; }, 600); }, 800);
+            }
+        });
+        const canvas = document.getElementById('matrixCanvas');
+        if (canvas) {
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            const chars = '01';
+            const fontSize = 14;
+            let drops = [];
+            function init() { const cols = canvas.width / fontSize; drops = []; for (let i = 0; i < cols; i++) drops[i] = Math.random() * -100; }
+            function draw() {
+                ctx.fillStyle = 'rgba(1, 6, 4, 0.05)'; ctx.fillRect(0, 0, canvas.width, canvas.height);
+                ctx.fillStyle = '#00e676'; ctx.font = fontSize + 'px monospace';
+                for (let i = 0; i < drops.length; i++) {
+                    const text = chars.charAt(Math.floor(Math.random() * chars.length));
+                    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                    if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+                    drops[i]++;
+                }
+                requestAnimationFrame(draw);
+            }
+            init(); draw();
+            window.addEventListener('resize', () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; init(); });
+        }
+        const navbar = document.getElementById('dynamic-island');
+        window.addEventListener('scroll', () => { if (window.scrollY > 50) navbar.classList.add('scrolled'); else navbar.classList.remove('scrolled'); });
+        const menuToggle = document.querySelector('.menu-toggle-labs');
+        const navLinks = document.querySelector('.island-links');
+        if (menuToggle && navLinks) menuToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+        console.log('%c⚛️ COMPUTACIÓN CUÁNTICA | Módulo cargado', 'color: #00e676');
+    </script>
+</body>
+</html>

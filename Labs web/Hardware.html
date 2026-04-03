@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Hardware y Sistemas Embebidos - CONNECTION LABS. Diseño de arquitecturas, IoT, microcontroladores y sistemas críticos.">
+    <meta name="theme-color" content="#00e676">
+    <title>Hardware y Sistemas | CONNECTION LABS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="labs.css">
+    <style>
+        .protocol-hero {
+            position: relative;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(135deg, #010604, #021008);
+            padding: 120px 20px 80px;
+            overflow: hidden;
+        }
+        .protocol-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            background: rgba(0, 230, 118, 0.1);
+            border: 1px solid rgba(0, 230, 118, 0.3);
+            border-radius: 40px;
+            font-size: 0.8rem;
+            color: #00e676;
+            margin-bottom: 20px;
+        }
+        .protocol-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #fff, #00e676);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .protocol-subtitle {
+            font-size: 1.2rem;
+            color: #a3d9b4;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #00e676;
+            text-decoration: none;
+            margin: 30px 0;
+            font-family: 'Orbitron', monospace;
+            transition: gap 0.3s ease;
+        }
+        .hardware-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+        .hardware-stat {
+            text-align: center;
+            background: rgba(0, 230, 118, 0.05);
+            padding: 20px 30px;
+            border-radius: 16px;
+            border: 1px solid rgba(0, 230, 118, 0.2);
+        }
+        .hardware-stat-number {
+            font-family: 'Orbitron', monospace;
+            font-size: 2rem;
+            font-weight: bold;
+            color: #00e676;
+        }
+        .hardware-stat-label {
+            font-size: 0.8rem;
+            color: #a3d9b4;
+        }
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .tech-card {
+            background: rgba(1, 20, 8, 0.6);
+            border: 1px solid rgba(0, 230, 118, 0.2);
+            border-radius: 20px;
+            padding: 30px;
+            transition: all 0.3s ease;
+        }
+        .tech-card:hover {
+            transform: translateY(-5px);
+            border-color: #00e676;
+        }
+        .tech-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        .tech-card h3 {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: #00e676;
+        }
+        .tech-card p {
+            color: #a3d9b4;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        .tech-list {
+            list-style: none;
+        }
+        .tech-list li {
+            color: #fff;
+            margin-bottom: 8px;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .tech-list li::before {
+            content: '→';
+            color: #00e676;
+        }
+        .specs-section {
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #021008, #010604);
+        }
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .spec-card {
+            background: rgba(1, 10, 5, 0.5);
+            border: 1px solid rgba(0, 230, 118, 0.1);
+            border-radius: 16px;
+            padding: 25px;
+            text-align: center;
+        }
+        .spec-icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+        .spec-card h4 {
+            font-family: 'Orbitron', monospace;
+            margin-bottom: 10px;
+            color: #00e676;
+        }
+        .spec-card p {
+            color: #a3d9b4;
+            font-size: 0.85rem;
+        }
+        .protocols-menu {
+            position: relative;
+        }
+        .protocols-toggle {
+            background: transparent;
+            border: 1px solid rgba(0, 230, 118, 0.3);
+            color: #a0a0a0;
+            padding: 8px 16px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-family: 'Orbitron', monospace;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+        }
+        .protocols-toggle:hover {
+            border-color: #00e676;
+            color: #00e676;
+        }
+        .protocols-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: rgba(1, 6, 4, 0.95);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 230, 118, 0.3);
+            border-radius: 12px;
+            padding: 10px 0;
+            min-width: 220px;
+            display: none;
+            z-index: 100;
+            list-style: none;
+        }
+        .protocols-menu:hover .protocols-dropdown {
+            display: block;
+        }
+        .protocols-dropdown li a {
+            display: block;
+            padding: 8px 20px;
+            color: #a3d9b4;
+            text-decoration: none;
+            font-size: 0.8rem;
+            transition: all 0.2s ease;
+        }
+        .protocols-dropdown li a:hover,
+        .protocols-dropdown li a.active {
+            background: rgba(0, 230, 118, 0.1);
+            color: #00e676;
+        }
+        @media (max-width: 768px) {
+            .protocol-title { font-size: 2rem; }
+            .specs-grid { grid-template-columns: 1fr; }
+            .protocols-menu { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="preloader-labs" id="preloaderLabs">
+        <div class="loader-spinner"></div>
+        <div class="loader-text">⟡ ALEX INIT ⟡</div>
+        <div class="loader-text" style="font-size:0.7rem;">Cargando módulo Hardware...</div>
+    </div>
+
+    <canvas id="matrixCanvas"></canvas>
+
+    <nav id="dynamic-island" class="dynamic-island">
+        <div class="island-content">
+            <a href="labs.html" class="island-logo-section">
+                <div class="island-logo-wrapper">
+                    <img src="../imágenes y logo/labs logo.png" alt="LABS Logo" class="island-logo-img">
+                </div>
+                <span class="island-text">CONNECTION <span class="labs-text-neon">LABS</span></span>
+            </a>
+            <div class="protocols-menu">
+                <button class="protocols-toggle">PROTOCOLOS ▼</button>
+                <ul class="protocols-dropdown">
+                    <li><a href="Ing_Soft.html">[01] Ingeniería Software</a></li>
+                    <li><a href="IA.html">[02] Inteligencia Artificial</a></li>
+                    <li><a href="Hardware.html" class="active">[03] Hardware y Sistemas</a></li>
+                    <li><a href="Ciberseguridad.html">[04] Ciberseguridad</a></li>
+                    <li><a href="Cuantica.html">[05] Computación Cuántica</a></li>
+                </ul>
+            </div>
+            <button class="menu-toggle-labs" aria-label="Abrir menú">☰</button>
+        </div>
+    </nav>
+
+    <header class="protocol-hero">
+        <div class="container">
+            <span class="protocol-badge">[03] PROTOCOLO ACTIVO</span>
+            <h1 class="protocol-title">Hardware y Sistemas Embebidos</h1>
+            <p class="protocol-subtitle">Diseño de arquitecturas de hardware, IoT, sistemas embebidos y desarrollo de firmware de alto rendimiento.</p>
+            <a href="labs.html" class="back-link">← Volver a LABS</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="hardware-stats">
+            <div class="hardware-stat"><div class="hardware-stat-number">50+</div><div class="hardware-stat-label">Dispositivos IoT</div></div>
+            <div class="hardware-stat"><div class="hardware-stat-number">ARM/RISC-V</div><div class="hardware-stat-label">Arquitecturas</div></div>
+            <div class="hardware-stat"><div class="hardware-stat-number">&lt;50mW</div><div class="hardware-stat-label">Consumo Ultra Bajo</div></div>
+            <div class="hardware-stat"><div class="hardware-stat-number">99.99%</div><div class="hardware-stat-label">Uptime Crítico</div></div>
+        </div>
+    </div>
+
+    <section class="tech-stack-section" style="padding-top: 0;">
+        <div class="container">
+            <h2 class="section-title">Plataformas <span class="labs-text-neon">y Tecnologías</span></h2>
+            <div class="tech-grid">
+                <div class="tech-card">
+                    <div class="tech-icon">🎛️</div>
+                    <h3>Microcontroladores</h3>
+                    <p>Integración de MCU de alto rendimiento para aplicaciones críticas.</p>
+                    <ul class="tech-list">
+                        <li>ARM Cortex-M (M0, M3, M4, M7)</li>
+                        <li>ESP32 / ESP8266</li>
+                        <li>RP2040 / Raspberry Pi Pico</li>
+                        <li>STM32 Family</li>
+                        <li>Arduino / PlatformIO</li>
+                    </ul>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-icon">🔋</div>
+                    <h3>Optimización Energética</h3>
+                    <p>Sistemas de máxima autonomía con modos de ultra bajo consumo.</p>
+                    <ul class="tech-list">
+                        <li>Energy Harvesting</li>
+                        <li>Deep Sleep Modes</li>
+                        <li>Power Management IC</li>
+                        <li>Baterías de Estado Sólido</li>
+                        <li>Optimización de Consumo</li>
+                    </ul>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-icon">📡</div>
+                    <h3>Conectividad Avanzada</h3>
+                    <p>Tecnologías de red de área amplia y baja potencia.</p>
+                    <ul class="tech-list">
+                        <li>LoRaWAN / LoRa Mesh</li>
+                        <li>LTE-M / NB-IoT</li>
+                        <li>Bluetooth 5.3 / BLE</li>
+                        <li>Wi-Fi 6 / 802.11ah</li>
+                        <li>Zigbee / Thread / Matter</li>
+                    </ul>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-icon">🔐</div>
+                    <h3>Seguridad en Hardware</h3>
+                    <p>Elementos seguros, enclaves confiables y cifrado a nivel de silicio.</p>
+                    <ul class="tech-list">
+                        <li>TPM 2.0 / Secure Enclave</li>
+                        <li>Hardware Security Module</li>
+                        <li>eSIM Integrada</li>
+                        <li>Secure Boot / TrustZone</li>
+                        <li>Cifrado AES-256 en hardware</li>
+                    </ul>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-icon">🖥️</div>
+                    <h3>FPGA y Circuitos Digitales</h3>
+                    <p>Diseño de lógica programable para aplicaciones de alta velocidad.</p>
+                    <ul class="tech-list">
+                        <li>Xilinx / Altera FPGAs</li>
+                        <li>Verilog / VHDL / SystemVerilog</li>
+                        <li>Procesamiento en Paralelo</li>
+                        <li>Acoplamiento con microcontroladores</li>
+                        <li>Simulación con ModelSim</li>
+                    </ul>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-icon">🤖</div>
+                    <h3>Robótica</h3>
+                    <p>Automatización de tareas físicas mediante sistemas programados.</p>
+                    <ul class="tech-list">
+                        <li>ROS / ROS2</li>
+                        <li>Control de Motores (PID)</li>
+                        <li>Sensores LiDAR / Ultrasonido</li>
+                        <li>Brazo Robótico / Manipuladores</li>
+                        <li>Visión Embebida (OpenMV)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="specs-section">
+        <div class="container">
+            <h2 class="section-title">Especificaciones <span class="labs-text-neon">Técnicas</span></h2>
+            <div class="specs-grid">
+                <div class="spec-card">
+                    <div class="spec-icon">⚡</div>
+                    <h4>Procesamiento</h4>
+                    <p>Hasta 600MHz | Dual-Core | DSP Extensions</p>
+                </div>
+                <div class="spec-card">
+                    <div class="spec-icon">💾</div>
+                    <h4>Memoria</h4>
+                    <p>Desde 64KB RAM hasta 32GB Flash</p>
+                </div>
+                <div class="spec-card">
+                    <div class="spec-icon">🌡️</div>
+                    <h4>Rango Temperatura</h4>
+                    <p>-40°C a +105°C (Grado Industrial)</p>
+                </div>
+                <div class="spec-card">
+                    <div class="spec-icon">🔌</div>
+                    <h4>Interfaces</h4>
+                    <p>I2C, SPI, UART, CAN, USB, Ethernet</p>
+                </div>
+                <div class="spec-card">
+                    <div class="spec-icon">📦</div>
+                    <h4>Form Factor</h4>
+                    <p>Desde 5x5mm (QFN) hasta módulos integrados</p>
+                </div>
+                <div class="spec-card">
+                    <div class="spec-icon">🔋</div>
+                    <h4>Autonomía</h4>
+                    <p>Hasta 6 meses con batería CR2032</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="labs-footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>CONNECTION <span class="labs-text-neon">LABS</span></h3>
+                <p>Hardware y Sistemas Embebidos</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-links-column">
+                    <h4>PROTOCOLOS</h4>
+                    <a href="Ing_Soft.html">Ingeniería Software</a>
+                    <a href="IA.html">Inteligencia Artificial</a>
+                    <a href="Hardware.html">Hardware y Sistemas</a>
+                    <a href="Ciberseguridad.html">Ciberseguridad</a>
+                    <a href="Cuantica.html">Computación Cuántica</a>
+                </div>
+            </div>
+            <div class="footer-social">
+                <h4>CONECTA</h4>
+                <div class="social-icons">
+                    <a href="#" class="social-icon">🔌</a>
+                    <a href="#" class="social-icon">⚡</a>
+                    <a href="#" class="social-icon">📡</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>CONNECTION LABS | Hardware y Sistemas © 2026</p>
+        </div>
+    </footer>
+
+    <script>
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloaderLabs');
+            if (preloader) {
+                setTimeout(() => { preloader.classList.add('hide'); setTimeout(() => { preloader.style.display = 'none'; }, 600); }, 800);
+            }
+        });
+        const canvas = document.getElementById('matrixCanvas');
+        if (canvas) {
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            const chars = '01';
+            const fontSize = 14;
+            let drops = [];
+            function init() { const cols = canvas.width / fontSize; drops = []; for (let i = 0; i < cols; i++) drops[i] = Math.random() * -100; }
+            function draw() {
+                ctx.fillStyle = 'rgba(1, 6, 4, 0.05)'; ctx.fillRect(0, 0, canvas.width, canvas.height);
+                ctx.fillStyle = '#00e676'; ctx.font = fontSize + 'px monospace';
+                for (let i = 0; i < drops.length; i++) {
+                    const text = chars.charAt(Math.floor(Math.random() * chars.length));
+                    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                    if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+                    drops[i]++;
+                }
+                requestAnimationFrame(draw);
+            }
+            init(); draw();
+            window.addEventListener('resize', () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; init(); });
+        }
+        const navbar = document.getElementById('dynamic-island');
+        window.addEventListener('scroll', () => { if (window.scrollY > 50) navbar.classList.add('scrolled'); else navbar.classList.remove('scrolled'); });
+        const menuToggle = document.querySelector('.menu-toggle-labs');
+        const navLinks = document.querySelector('.island-links');
+        if (menuToggle && navLinks) menuToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+        console.log('%c🔌 HARDWARE Y SISTEMAS | Módulo cargado', 'color: #00e676');
+    </script>
+</body>
+</html>

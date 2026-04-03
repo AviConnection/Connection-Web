@@ -1,0 +1,950 @@
+/* ============================================
+   CONNECTION THINK - SISTEMA DE CONOCIMIENTO
+   IA Líder: SOFÍA | Educación y Gestión del Conocimiento
+   ============================================ */
+
+/* --------------------------------------------
+   1. VARIABLES GLOBALES
+   -------------------------------------------- */
+:root {
+    --think-purple: #6b5bff;
+    --think-lavender: #9b8bff;
+    --think-indigo: #4a3bcc;
+    --think-glow: rgba(107, 91, 255, 0.4);
+    
+    --bg-primary: #050510;
+    --bg-secondary: #0a0a2a;
+    --bg-card: rgba(10, 10, 30, 0.85);
+    
+    --text-primary: #ffffff;
+    --text-secondary: #b0b0d0;
+    --text-tertiary: #6c6c8a;
+    
+    --font-heading: 'Orbitron', monospace;
+    --font-body: 'Inter', sans-serif;
+    --font-accent: 'Space Grotesk', monospace;
+    
+    --transition-base: 0.3s ease;
+    --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* --------------------------------------------
+   2. RESET Y ESTILOS BASE
+   -------------------------------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
+}
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+::selection {
+    background: var(--think-purple);
+    color: white;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--think-purple);
+    border-radius: 4px;
+}
+
+/* --------------------------------------------
+   3. DYNAMIC ISLAND NAVIGATION
+   -------------------------------------------- */
+.dynamic-island {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 40px);
+    max-width: 1200px;
+    background: rgba(5, 5, 20, 0.85);
+    backdrop-filter: blur(12px);
+    border-radius: 60px;
+    padding: 8px 24px;
+    z-index: 1000;
+    transition: all var(--transition-base);
+    border: 1px solid rgba(107, 91, 255, 0.2);
+}
+
+.dynamic-island.scrolled {
+    top: 10px;
+    background: rgba(5, 5, 20, 0.95);
+    border-color: rgba(107, 91, 255, 0.4);
+}
+
+.island-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.island-logo-section {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+}
+
+.island-logo-wrapper {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: rgba(107, 91, 255, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.island-logo-img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.logo-pulse {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: var(--think-purple);
+    opacity: 0.3;
+    animation: pulseRing 2s ease-out infinite;
+}
+
+@keyframes pulseRing {
+    0% { transform: scale(1); opacity: 0.5; }
+    100% { transform: scale(1.5); opacity: 0; }
+}
+
+.island-text {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.think-text {
+    color: var(--think-purple);
+    text-shadow: 0 0 10px var(--think-purple);
+}
+
+.island-links {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+}
+
+.nav-link {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-family: var(--font-heading);
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: all var(--transition-base);
+    padding: 8px 0;
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--think-purple);
+    transition: width var(--transition-base);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--think-purple);
+}
+
+.menu-toggle-think {
+    display: none;
+    background: none;
+    border: 1px solid rgba(107, 91, 255, 0.3);
+    color: var(--think-purple);
+    font-size: 1.5rem;
+    padding: 8px 12px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+/* --------------------------------------------
+   4. HERO SECTION
+   -------------------------------------------- */
+.think-hero {
+    position: relative;
+    height: 100vh;
+    min-height: 700px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=2000&auto=format');
+    background-size: cover;
+    background-position: center;
+    animation: slowZoom 20s ease-in-out infinite alternate;
+}
+
+@keyframes slowZoom {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.1); }
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(5, 5, 20, 0.85), rgba(10, 10, 42, 0.75));
+    z-index: 1;
+}
+
+.hero-neural {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(circle at 20% 40%, rgba(107, 91, 255, 0.1) 2px, transparent 2px);
+    background-size: 30px 30px;
+    z-index: 2;
+    animation: neuralMove 20s linear infinite;
+}
+
+@keyframes neuralMove {
+    0% { background-position: 0 0; }
+    100% { background-position: 100px 100px; }
+}
+
+.hero-content {
+    position: relative;
+    z-index: 10;
+    max-width: 900px;
+    padding: 0 20px;
+}
+
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(107, 91, 255, 0.1);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(107, 91, 255, 0.3);
+    padding: 8px 24px;
+    border-radius: 60px;
+    margin-bottom: 30px;
+}
+
+.hero-badge .badge-text {
+    font-family: var(--font-accent);
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    color: var(--think-purple);
+}
+
+.hero-title {
+    font-family: var(--font-heading);
+    font-size: 4.5rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+}
+
+.hero-title-gradient {
+    background: linear-gradient(135deg, #6b5bff, #9b8bff, #b3a6ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    margin-bottom: 30px;
+}
+
+.hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin: 40px 0;
+    flex-wrap: wrap;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-number {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--think-purple);
+}
+
+.stat-label {
+    font-size: 0.8rem;
+    color: var(--text-tertiary);
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-hero-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 38px;
+    background: linear-gradient(135deg, var(--think-purple), var(--think-indigo));
+    border: none;
+    border-radius: 50px;
+    color: white;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    text-decoration: none;
+    transition: all var(--transition-base);
+    cursor: pointer;
+}
+
+.btn-hero-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(107, 91, 255, 0.4);
+}
+
+.btn-hero-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 38px;
+    background: transparent;
+    border: 2px solid var(--think-purple);
+    border-radius: 50px;
+    color: var(--think-purple);
+    font-family: var(--font-heading);
+    font-weight: 600;
+    text-decoration: none;
+    transition: all var(--transition-base);
+    cursor: pointer;
+}
+
+.btn-hero-secondary:hover {
+    background: rgba(107, 91, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+.scroll-hint {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    z-index: 20;
+    opacity: 0.6;
+}
+
+.scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--think-purple), transparent);
+}
+
+/* --------------------------------------------
+   5. MAIN LOGO SECTION
+   -------------------------------------------- */
+.main-logo-section {
+    text-align: center;
+    padding: 60px 20px;
+    background: linear-gradient(135deg, #050510, #0a0a2a);
+}
+
+.main-logo h1 {
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #ffffff, var(--think-purple));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 15px;
+}
+
+.main-logo .slogan {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    letter-spacing: 2px;
+    position: relative;
+    display: inline-block;
+}
+
+.main-logo .slogan::before,
+.main-logo .slogan::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 40px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--think-purple), transparent);
+}
+
+.main-logo .slogan::before {
+    right: 100%;
+    margin-right: 15px;
+}
+
+.main-logo .slogan::after {
+    left: 100%;
+    margin-left: 15px;
+}
+
+/* --------------------------------------------
+   6. SECCIONES GENERALES
+   -------------------------------------------- */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section-badge {
+    display: inline-block;
+    padding: 6px 16px;
+    background: rgba(107, 91, 255, 0.1);
+    border: 1px solid rgba(107, 91, 255, 0.3);
+    border-radius: 40px;
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    color: var(--think-purple);
+    margin-bottom: 20px;
+}
+
+.section-title {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.section-title-left {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.section-description {
+    text-align: center;
+    color: var(--text-tertiary);
+    max-width: 700px;
+    margin: 0 auto 50px auto;
+    line-height: 1.6;
+}
+
+/* --------------------------------------------
+   7. SOFÍA SECTION
+   -------------------------------------------- */
+.sofia-section {
+    padding: 80px 20px;
+    background: linear-gradient(135deg, #050510, #0a0a2a);
+}
+
+.sofia-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.sofia-info p {
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin: 20px 0;
+}
+
+.sofia-traits {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 30px;
+}
+
+.sofia-traits span {
+    padding: 8px 18px;
+    background: rgba(107, 91, 255, 0.1);
+    border: 1px solid rgba(107, 91, 255, 0.2);
+    border-radius: 4px;
+    font-size: 0.85rem;
+    color: var(--think-purple);
+}
+
+.brain-visual {
+    position: relative;
+    width: 250px;
+    height: 250px;
+    margin: 0 auto;
+}
+
+.brain-core {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle, var(--think-purple), var(--think-indigo));
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: brainPulse 2s ease-in-out infinite;
+    box-shadow: 0 0 30px var(--think-purple);
+}
+
+@keyframes brainPulse {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
+    50% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
+}
+
+.neural-net {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.neural-net span {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: var(--think-purple);
+    border-radius: 50%;
+    animation: neuralConnect 3s ease-in-out infinite;
+}
+
+.neural-net span:nth-child(1) { top: 20%; left: 20%; animation-delay: 0s; }
+.neural-net span:nth-child(2) { top: 30%; right: 25%; animation-delay: 0.3s; }
+.neural-net span:nth-child(3) { bottom: 30%; left: 30%; animation-delay: 0.6s; }
+.neural-net span:nth-child(4) { bottom: 20%; right: 20%; animation-delay: 0.9s; }
+.neural-net span:nth-child(5) { top: 50%; left: 10%; animation-delay: 0.2s; }
+.neural-net span:nth-child(6) { top: 60%; right: 15%; animation-delay: 0.5s; }
+.neural-net span:nth-child(7) { bottom: 45%; left: 45%; animation-delay: 0.8s; }
+.neural-net span:nth-child(8) { top: 15%; right: 40%; animation-delay: 0.1s; }
+
+@keyframes neuralConnect {
+    0%, 100% { opacity: 0.3; transform: scale(0.8); }
+    50% { opacity: 1; transform: scale(1.2); }
+}
+
+/* --------------------------------------------
+   8. EDUCATION SECTION
+   -------------------------------------------- */
+.education-section {
+    padding: 80px 20px;
+    background: #0a0a2a;
+}
+
+.education-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+.education-card {
+    background: var(--bg-card);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(107, 91, 255, 0.1);
+    border-radius: 20px;
+    padding: 30px;
+    transition: all var(--transition-base);
+}
+
+.education-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(107, 91, 255, 0.3);
+    box-shadow: var(--shadow-card);
+}
+
+.education-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.education-card h3 {
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    color: var(--think-purple);
+}
+
+.education-card p {
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.education-stats {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.education-stats span {
+    font-size: 0.7rem;
+    color: var(--think-purple);
+    font-family: var(--font-accent);
+}
+
+/* --------------------------------------------
+   9. ML SECTION
+   -------------------------------------------- */
+.ml-section {
+    padding: 80px 20px;
+    background: linear-gradient(135deg, #0a0a2a, #050510);
+}
+
+.ml-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.ml-card {
+    background: var(--bg-card);
+    border: 1px solid rgba(107, 91, 255, 0.1);
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    transition: all var(--transition-base);
+}
+
+.ml-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(107, 91, 255, 0.3);
+}
+
+.ml-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.ml-card h3 {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: var(--think-purple);
+}
+
+.ml-card p {
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+    line-height: 1.6;
+    font-size: 0.9rem;
+}
+
+.ml-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+}
+
+.ml-tags span {
+    padding: 4px 12px;
+    background: rgba(107, 91, 255, 0.1);
+    border-radius: 20px;
+    font-size: 0.7rem;
+    color: var(--think-purple);
+}
+
+/* --------------------------------------------
+   10. NLP SECTION
+   -------------------------------------------- */
+.npl-section {
+    padding: 80px 20px;
+    background: #050510;
+}
+
+.npl-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.npl-card {
+    background: var(--bg-card);
+    border: 1px solid rgba(107, 91, 255, 0.1);
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    transition: all var(--transition-base);
+}
+
+.npl-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(107, 91, 255, 0.3);
+}
+
+.npl-icon {
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.npl-card h3 {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: var(--think-purple);
+}
+
+.npl-card p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+/* --------------------------------------------
+   11. RESEARCH SECTION
+   -------------------------------------------- */
+.research-section {
+    padding: 80px 20px;
+    background: linear-gradient(135deg, #050510, #0a0a2a);
+}
+
+.research-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.research-card {
+    background: var(--bg-card);
+    border: 1px solid rgba(107, 91, 255, 0.1);
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    transition: all var(--transition-base);
+}
+
+.research-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(107, 91, 255, 0.3);
+}
+
+.research-icon {
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.research-card h3 {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: var(--think-purple);
+}
+
+.research-card p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+/* --------------------------------------------
+   12. FOOTER
+   -------------------------------------------- */
+.footer-think {
+    background: #03030f;
+    border-top: 1px solid rgba(107, 91, 255, 0.1);
+    padding: 50px 20px 30px;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+    text-align: center;
+}
+
+.footer-brand h3 {
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+}
+
+.footer-brand p {
+    color: var(--text-tertiary);
+    font-size: 0.85rem;
+}
+
+.footer-links h4 {
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    margin-bottom: 15px;
+    color: var(--think-purple);
+}
+
+.footer-links a {
+    display: block;
+    color: var(--text-tertiary);
+    text-decoration: none;
+    font-size: 0.8rem;
+    margin-bottom: 8px;
+    transition: color var(--transition-base);
+}
+
+.footer-links a:hover {
+    color: var(--think-purple);
+}
+
+.footer-meta p {
+    color: var(--text-tertiary);
+    font-size: 0.75rem;
+}
+
+.small {
+    font-size: 0.7rem;
+    margin-top: 5px;
+}
+
+/* --------------------------------------------
+   13. RESPONSIVE
+   -------------------------------------------- */
+@media (max-width: 1024px) {
+    .hero-title { font-size: 3rem; }
+    .section-title { font-size: 2rem; }
+    .sofia-grid { grid-template-columns: 1fr; text-align: center; }
+    .ml-grid, .npl-grid, .research-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+    .dynamic-island {
+        width: calc(100% - 20px);
+        padding: 8px 16px;
+    }
+    
+    .island-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(5, 5, 20, 0.98);
+        flex-direction: column;
+        padding: 20px;
+        gap: 15px;
+        border-radius: 20px;
+        margin-top: 10px;
+    }
+    
+    .island-links.open {
+        display: flex;
+    }
+    
+    .menu-toggle-think {
+        display: block;
+    }
+    
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+    
+    .hero-stats {
+        gap: 20px;
+    }
+    
+    .stat-number {
+        font-size: 1.5rem;
+    }
+    
+    .main-logo h1 {
+        font-size: 2rem;
+    }
+    
+    .main-logo .slogan {
+        font-size: 0.8rem;
+    }
+    
+    .education-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .island-text {
+        font-size: 0.85rem;
+    }
+    
+    .island-logo-wrapper {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .hero-title {
+        font-size: 1.5rem;
+    }
+    
+    .section-title {
+        font-size: 1.5rem;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .btn-hero-primary,
+    .btn-hero-secondary {
+        width: 100%;
+        justify-content: center;
+    }
+}

@@ -1,0 +1,687 @@
+/* ============================================
+   CONNECTION PÍXEL - CANVAS STUDIO
+   Herramienta profesional de diseño gráfico
+   ============================================ */
+
+/* --------------------------------------------
+   1. VARIABLES GLOBALES
+   -------------------------------------------- */
+:root {
+    --pixel-magenta: #ff0055;
+    --pixel-purple: #b300ff;
+    --pixel-cyan: #00f3ff;
+    --pixel-blue: #0088ff;
+    --pixel-green: #00ff55;
+    
+    --bg-dark: #050510;
+    --bg-card: rgba(10, 10, 30, 0.85);
+    --bg-glass: rgba(5, 5, 20, 0.6);
+    
+    --text-primary: #ffffff;
+    --text-secondary: #b0b0d0;
+    --text-muted: #6c6c8a;
+    
+    --border-glow: 0 0 20px rgba(255, 0, 85, 0.3);
+    --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.3);
+    
+    --font-heading: 'Orbitron', monospace;
+    --font-body: 'Montserrat', sans-serif;
+    --font-accent: 'Space Grotesk', monospace;
+    
+    --transition-fast: 0.2s ease;
+    --transition-base: 0.3s ease;
+    --transition-slow: 0.6s cubic-bezier(0.215, 0.61, 0.355, 1);
+    
+    --border-radius-sm: 8px;
+    --border-radius-md: 12px;
+    --border-radius-lg: 20px;
+    --border-radius-xl: 40px;
+}
+
+/* --------------------------------------------
+   2. CANVAS CONTAINER
+   -------------------------------------------- */
+.canvas-container {
+    padding-top: 100px;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #050510, #0a0a2a);
+}
+
+/* --------------------------------------------
+   3. TOOLBAR PRINCIPAL
+   -------------------------------------------- */
+.canvas-toolbar {
+    position: fixed;
+    top: 80px;
+    left: 0;
+    right: 0;
+    background: rgba(10, 10, 30, 0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 0, 85, 0.3);
+    padding: 12px 20px;
+    z-index: 900;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+@media (max-width: 768px) {
+    .canvas-toolbar {
+        position: relative;
+        top: 0;
+        margin-top: 70px;
+    }
+}
+
+.toolbar-group {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.tool-btn {
+    background: rgba(255, 0, 85, 0.1);
+    border: 1px solid rgba(255, 0, 85, 0.3);
+    color: #ff0055;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    transition: all var(--transition-base);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.tool-btn:hover {
+    background: #ff0055;
+    color: white;
+    border-color: #ff0055;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 0, 85, 0.3);
+}
+
+.tool-btn.active {
+    background: #ff0055;
+    color: white;
+    border-color: #ff0055;
+}
+
+.color-picker {
+    width: 40px;
+    height: 40px;
+    border: 2px solid rgba(255, 0, 85, 0.5);
+    border-radius: 8px;
+    cursor: pointer;
+    background: #ff0055;
+    transition: all var(--transition-base);
+}
+
+.color-picker:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(255, 0, 85, 0.5);
+}
+
+.size-slider {
+    width: 120px;
+    accent-color: #ff0055;
+    cursor: pointer;
+}
+
+#sizeValue {
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    font-family: var(--font-accent);
+}
+
+/* --------------------------------------------
+   4. EDITOR PRINCIPAL
+   -------------------------------------------- */
+.canvas-editor {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    margin-top: 60px;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (max-width: 992px) {
+    .canvas-editor {
+        flex-direction: column;
+        margin-top: 20px;
+    }
+}
+
+/* Área de Canvas */
+.canvas-area {
+    flex: 3;
+    background: rgba(26, 26, 42, 0.6);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    padding: 20px;
+    border: 1px solid rgba(255, 0, 85, 0.2);
+    box-shadow: var(--shadow-card);
+    text-align: center;
+}
+
+#mainCanvas {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    cursor: crosshair;
+    max-width: 100%;
+    height: auto;
+}
+
+.canvas-info {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-muted);
+    font-size: 0.7rem;
+    font-family: var(--font-accent);
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/* Barra Lateral */
+.canvas-sidebar {
+    flex: 1;
+    background: rgba(10, 10, 30, 0.8);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    padding: 20px;
+    border: 1px solid rgba(255, 0, 85, 0.2);
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.canvas-sidebar::-webkit-scrollbar {
+    width: 4px;
+}
+
+.canvas-sidebar::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.canvas-sidebar::-webkit-scrollbar-thumb {
+    background: #ff0055;
+    border-radius: 4px;
+}
+
+/* Secciones de la barra lateral */
+.sidebar-section {
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.sidebar-section h3 {
+    font-family: var(--font-heading);
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+    color: #ff0055;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Área de subida de archivos */
+.upload-area {
+    border: 2px dashed rgba(255, 0, 85, 0.3);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: all var(--transition-base);
+}
+
+.upload-area:hover {
+    border-color: #ff0055;
+    background: rgba(255, 0, 85, 0.05);
+    transform: translateY(-2px);
+}
+
+.upload-area span {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.upload-area p {
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    margin: 5px 0;
+}
+
+.upload-area input {
+    display: none;
+}
+
+/* Formas predefinidas */
+.preset-shapes {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.shape-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    width: 45px;
+    height: 45px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 1.5rem;
+    transition: all var(--transition-base);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.shape-btn:hover {
+    background: #ff0055;
+    transform: scale(1.05);
+    border-color: #ff0055;
+}
+
+/* Capas */
+.layers-control {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.tool-btn-small {
+    background: rgba(255, 0, 85, 0.1);
+    border: 1px solid rgba(255, 0, 85, 0.3);
+    color: #ff0055;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: var(--font-heading);
+    font-size: 0.7rem;
+    transition: all var(--transition-base);
+    flex: 1;
+}
+
+.tool-btn-small:hover {
+    background: #ff0055;
+    color: white;
+}
+
+.layers-list {
+    max-height: 200px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.layer-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    border-left: 3px solid transparent;
+}
+
+.layer-item:hover {
+    background: rgba(255, 0, 85, 0.15);
+}
+
+.layer-item.active {
+    background: rgba(255, 0, 85, 0.25);
+    border-left-color: #ff0055;
+}
+
+.layer-preview {
+    width: 35px;
+    height: 35px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+}
+
+.layer-info {
+    flex: 1;
+    margin-left: 10px;
+}
+
+.layer-name {
+    font-size: 0.8rem;
+    color: white;
+}
+
+.layer-controls {
+    display: flex;
+    gap: 5px;
+}
+
+.layer-controls button {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: color var(--transition-base);
+    padding: 4px;
+}
+
+.layer-controls button:hover {
+    color: #ff0055;
+}
+
+/* Texto personalizado */
+.text-input {
+    width: 100%;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 0, 85, 0.3);
+    border-radius: 8px;
+    color: white;
+    font-family: var(--font-body);
+    margin-bottom: 10px;
+}
+
+.text-input:focus {
+    outline: none;
+    border-color: #ff0055;
+    box-shadow: 0 0 10px rgba(255, 0, 85, 0.3);
+}
+
+.tool-btn-full {
+    width: 100%;
+    background: rgba(255, 0, 85, 0.1);
+    border: 1px solid rgba(255, 0, 85, 0.3);
+    color: #ff0055;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    transition: all var(--transition-base);
+    margin-bottom: 10px;
+}
+
+.tool-btn-full:hover {
+    background: #ff0055;
+    color: white;
+}
+
+.text-styles {
+    display: flex;
+    gap: 10px;
+}
+
+.font-select {
+    flex: 2;
+    padding: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 0, 85, 0.3);
+    border-radius: 6px;
+    color: white;
+    font-family: var(--font-body);
+}
+
+.font-size {
+    flex: 1;
+    padding: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 0, 85, 0.3);
+    border-radius: 6px;
+    color: white;
+}
+
+/* Exportar */
+.export-options {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.export-btn {
+    flex: 1;
+    background: linear-gradient(135deg, #ff0055, #b300ff);
+    border: none;
+    padding: 10px;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    font-family: var(--font-heading);
+    font-size: 0.7rem;
+    transition: all var(--transition-base);
+}
+
+.export-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 0, 85, 0.4);
+}
+
+.history-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.tool-btn-half {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 0, 85, 0.3);
+    color: #ff0055;
+    padding: 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: var(--font-heading);
+    font-size: 0.7rem;
+    transition: all var(--transition-base);
+}
+
+.tool-btn-half:hover {
+    background: #ff0055;
+    color: white;
+}
+
+/* Asistente IA */
+.ai-suggestion {
+    background: rgba(255, 0, 85, 0.05);
+    border-radius: 12px;
+    padding: 15px;
+    text-align: center;
+}
+
+.ai-suggestion p {
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    line-height: 1.5;
+    margin-bottom: 12px;
+    font-style: italic;
+}
+
+/* --------------------------------------------
+   5. FOOTER
+   -------------------------------------------- */
+.footer-pixel {
+    background: var(--bg-dark);
+    border-top: 1px solid rgba(255, 0, 85, 0.1);
+    padding: 40px 20px;
+    margin-top: 40px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    text-align: center;
+}
+
+.footer-brand h3 {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.footer-brand p {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+}
+
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer-links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: color var(--transition-fast);
+}
+
+.footer-links a:hover {
+    color: #ff0055;
+}
+
+.footer-meta p {
+    color: var(--text-muted);
+    font-size: 0.75rem;
+}
+
+.small {
+    font-size: 0.7rem;
+    margin-top: 5px;
+}
+
+/* --------------------------------------------
+   6. ANIMACIONES
+   -------------------------------------------- */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.canvas-area, .canvas-sidebar {
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* --------------------------------------------
+   7. RESPONSIVE DESIGN
+   -------------------------------------------- */
+@media (max-width: 768px) {
+    .canvas-toolbar {
+        position: relative;
+        top: 0;
+        margin-top: 70px;
+    }
+    
+    .toolbar-group {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .canvas-editor {
+        margin-top: 20px;
+        padding: 15px;
+    }
+    
+    .preset-shapes {
+        justify-content: center;
+    }
+    
+    .export-options {
+        flex-direction: column;
+    }
+    
+    .history-buttons {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    .tool-btn {
+        padding: 6px 12px;
+        font-size: 0.65rem;
+    }
+    
+    .tool-btn span {
+        font-size: 0.8rem;
+    }
+    
+    .color-picker {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .size-slider {
+        width: 100px;
+    }
+    
+    .sidebar-section h3 {
+        font-size: 0.8rem;
+    }
+    
+    .shape-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+}
+
+/* Estilos para la capa activa en el canvas */
+.canvas-drawing {
+    cursor: crosshair;
+}
+
+/* Tooltips */
+[title] {
+    position: relative;
+}
+
+/* Mejora de scrollbar para capas */
+.layers-list::-webkit-scrollbar {
+    width: 4px;
+}
+
+.layers-list::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+}
+
+.layers-list::-webkit-scrollbar-thumb {
+    background: #ff0055;
+    border-radius: 4px;
+}

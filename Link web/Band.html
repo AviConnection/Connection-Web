@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="AVI BAND - Baliza táctica de alta seguridad y supervivencia. Identidad Unificada, Protocolo Fénix, Edge Computing y LYAN OS. Hardware de infraestructura crítica.">
+    <meta name="theme-color" content="#ffaa00">
+    <title>AVI BAND | Identidad Unificada - CONNECTION LINK</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Link.css">
+    <link rel="stylesheet" href="Band.css">
+</head>
+<body>
+
+    <!-- ANIMACIÓN DE CARGA FUTURISTA -->
+    <div class="aviband-loader" id="avibandLoader">
+        <div class="loader-container">
+            <div class="loader-ring"></div>
+            <div class="loader-pulse"></div>
+            <div class="loader-circuit"></div>
+        </div>
+        <div class="loader-text-container">
+            <div class="loader-title">AVI BAND</div>
+            <div class="loader-subtitle">INICIANDO PROTOCOLO FÉNIX</div>
+            <div class="loader-progress">
+                <div class="loader-progress-bar" id="loaderProgressBar"></div>
+            </div>
+            <div class="loader-status" id="loaderStatus">Sincronizando hardware...</div>
+            <div class="loader-dots">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="band-page" id="bandPage" style="display: none;">
+        <div class="band-container">
+            <!-- Link de regreso a Link.html -->
+            <a href="Link.html" class="back-link-band">
+                <span>←</span> Volver a CONNECTION LINK
+            </a>
+            
+            <div class="band-title">
+                <h1>AVI BAND</h1>
+                <p>IDENTIDAD UNIFICADA | ALTA SEGURIDAD</p>
+                <div class="title-badge">PROTOTIPO MVP | HARDWARE DE INFRAESTRUCTURA CRÍTICA</div>
+            </div>
+
+            <div class="prototype-container">
+                <div class="band-image-container" id="bandImageContainer">
+                    <img src="imagenes/Band.png" alt="AVI BAND" class="band-main-image" id="bandMainImage" onerror="this.src='https://via.placeholder.com/500x400/ffaa00/000000?text=AVI+BAND'">
+                    <div class="image-glow-effect"></div>
+                    <div class="scan-line-effect"></div>
+                    
+                    <div class="component-floating" id="compChasis">
+                        <div class="floating-card">
+                            <div class="floating-icon">🔧</div>
+                            <div class="floating-title">Chasis Táctico Ciego</div>
+                            <div class="floating-desc">Acero 316L | IP68 | MIL-STD-810G</div>
+                        </div>
+                    </div>
+                    <div class="component-floating" id="compNfc">
+                        <div class="floating-card">
+                            <div class="floating-icon">📡</div>
+                            <div class="floating-title">Módulo NFC/RFID</div>
+                            <div class="floating-desc">13.56 MHz | AES-256 | <5cm</div>
+                        </div>
+                    </div>
+                    <div class="component-floating" id="compLora">
+                        <div class="floating-card">
+                            <div class="floating-icon">📶</div>
+                            <div class="floating-title">Antena LoRa</div>
+                            <div class="floating-desc">868/915 MHz | 15km | Protocolo Fénix</div>
+                        </div>
+                    </div>
+                    <div class="component-floating" id="compSensor">
+                        <div class="floating-card">
+                            <div class="floating-icon">❤️</div>
+                            <div class="floating-title">Sensores Biométricos</div>
+                            <div class="floating-desc">PPG | Acelerómetro | Detección caídas</div>
+                        </div>
+                    </div>
+                    <div class="component-floating" id="compBateria">
+                        <div class="floating-card">
+                            <div class="floating-icon">🔋</div>
+                            <div class="floating-title">Batería Li-Po</div>
+                            <div class="floating-desc">300 mAh | 6 meses autonomía</div>
+                        </div>
+                    </div>
+                    <div class="component-floating" id="compLyanos">
+                        <div class="floating-card">
+                            <div class="floating-icon">🧠</div>
+                            <div class="floating-title">LYAN OS</div>
+                            <div class="floating-desc">Microkernel | Edge AI | Rust/C++</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="prototype-controls">
+                    <button class="prototype-btn active" data-component="all">⟡ VISTA COMPLETA</button>
+                    <button class="prototype-btn" data-component="chasis">🔧 CHASIS</button>
+                    <button class="prototype-btn" data-component="nfc">📡 NFC/RFID</button>
+                    <button class="prototype-btn" data-component="lora">📶 LORA</button>
+                    <button class="prototype-btn" data-component="sensor">❤️ SENSORES</button>
+                    <button class="prototype-btn" data-component="bateria">🔋 BATERÍA</button>
+                    <button class="prototype-btn" data-component="lyanos">🧠 LYAN OS</button>
+                </div>
+
+                <div class="prototype-info" id="prototypeInfo">
+                    <!-- Contenido dinámico con JS -->
+                </div>
+            </div>
+
+            <!-- Sección: Especificaciones Técnicas Detalladas -->
+            <div class="specs-detailed">
+                <h2 class="section-title-band">Especificaciones <span class="band-text">Técnicas</span></h2>
+                <div class="specs-detailed-grid">
+                    <div class="spec-detailed-card">
+                        <div class="spec-icon">🔧</div>
+                        <h3>Chasis</h3>
+                        <ul>
+                            <li><strong>Material:</strong> Acero 316L cepillado</li>
+                            <li><strong>Protección:</strong> IP68 / 10 ATM</li>
+                            <li><strong>Resistencia:</strong> MIL-STD-810G</li>
+                            <li><strong>Peso:</strong> 45g</li>
+                        </ul>
+                    </div>
+                    <div class="spec-detailed-card">
+                        <div class="spec-icon">⚡</div>
+                        <h3>Batería</h3>
+                        <ul>
+                            <li><strong>Capacidad:</strong> 300 mAh Li-Po</li>
+                            <li><strong>Autonomía:</strong> 3-6 meses</li>
+                            <li><strong>Carga:</strong> Rápida 30 min</li>
+                            <li><strong>Modos:</strong> Ultra bajo consumo</li>
+                        </ul>
+                    </div>
+                    <div class="spec-detailed-card">
+                        <div class="spec-icon">📡</div>
+                        <h3>Conectividad</h3>
+                        <ul>
+                            <li><strong>LoRa:</strong> 868/915 MHz, 15km</li>
+                            <li><strong>NFC:</strong> 13.56 MHz, AES-256</li>
+                            <li><strong>Bluetooth:</strong> 5.3 BLE</li>
+                            <li><strong>eSIM:</strong> Integrada</li>
+                        </ul>
+                    </div>
+                    <div class="spec-detailed-card">
+                        <div class="spec-icon">🧠</div>
+                        <h3>LYAN OS</h3>
+                        <ul>
+                            <li><strong>Kernel:</strong> Microkernel v3.2</li>
+                            <li><strong>Boot:</strong> &lt;200ms</li>
+                            <li><strong>Edge AI:</strong> Integrado</li>
+                            <li><strong>Seguridad:</strong> Secure Enclave</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sección: Funciones Innovadoras (PDF) -->
+            <div class="innovative-features-band">
+                <h2 class="section-title-band">Funciones <span class="band-text">Innovadoras</span></h2>
+                <div class="innovative-grid">
+                    <div class="innovative-card">
+                        <div class="innovative-icon">🦅</div>
+                        <h3>Protocolo Fénix</h3>
+                        <p>Señal de auxilio encriptada de largo alcance. Operación independiente de redes celulares.</p>
+                        <div class="innovative-tag">Alcance: 15km | Activación: 3 segundos</div>
+                    </div>
+                    <div class="innovative-card">
+                        <div class="innovative-icon">🐝</div>
+                        <h3>Modo Enjambre</h3>
+                        <p>Red de telecomunicaciones descentralizada. Comunicación P2P entre pulseras.</p>
+                        <div class="innovative-tag">LoRa Mesh | Sin infraestructura</div>
+                    </div>
+                    <div class="innovative-card">
+                        <div class="innovative-icon">⚠️</div>
+                        <h3>Protocolo "Hombre Caído"</h3>
+                        <p>Detección de caídas bruscas con activación automática del Protocolo Fénix.</p>
+                        <div class="innovative-tag">Detección &lt;1s | Activación autónoma</div>
+                    </div>
+                    <div class="innovative-card">
+                        <div class="innovative-icon">📳</div>
+                        <h3>Interfaz Háptica Criptográfica</h3>
+                        <p>Micro vibraciones silenciosas para confirmaciones y alertas.</p>
+                        <div class="innovative-tag">Patrones personalizables</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sección: Integración en el Holding -->
+            <div class="holding-integration-band">
+                <h2 class="section-title-band">Integración en el <span class="band-text">Holding AVI</span></h2>
+                <div class="integration-band-grid">
+                    <div class="integration-band-card">
+                        <h3>🔒 Núcleo de Seguridad</h3>
+                        <p><strong>SHIELD (AEGIS):</strong> Terminal de validación física para protocolos de encriptación</p>
+                        <p><strong>LABS (ALEX):</strong> Desarrollo de firmware LYAN OS</p>
+                        <p><strong>LINK (IVI):</strong> Gestión de conectividad LoRa</p>
+                    </div>
+                    <div class="integration-band-card">
+                        <h3>🌍 Exploración y Movilidad</h3>
+                        <p><strong>EXPLORER (VIA):</strong> Protocolo Fénix para turistas y expedicionarios</p>
+                        <p><strong>SPACE (NOVA):</strong> Autenticación en infraestructura aeroespacial</p>
+                        <p><strong>MOTORS (VOLT):</strong> Autenticación de operadores en vehículos eléctricos</p>
+                    </div>
+                    <div class="integration-band-card">
+                        <h3>🏙️ Infraestructura</h3>
+                        <p><strong>CITY (AVI):</strong> Pasaporte digital de la ciudadela inteligente</p>
+                        <p><strong>HOME (HESTIA):</strong> Gestión de servicios domésticos</p>
+                        <p><strong>ENERGY (RAY):</strong> Acceso a plantas de energía renovable</p>
+                    </div>
+                    <div class="integration-band-card">
+                        <h3>💼 Desarrollo Humano</h3>
+                        <p><strong>OFFICE (LYRA):</strong> Control de acceso de grado militar</p>
+                        <p><strong>STORE (IVI):</strong> Pagos sin contacto en marketplace</p>
+                        <p><strong>LIFE (LAYLA):</strong> Monitoreo proactivo de salud</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="Band.js"></script>
+</body>
+</html>

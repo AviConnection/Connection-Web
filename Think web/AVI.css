@@ -1,0 +1,953 @@
+/* ============================================
+   AVI AI - ASISTENTE INTELIGENTE v2.0
+   Interfaz dinámica con animaciones y efectos neón
+   ============================================ */
+
+/* --------------------------------------------
+   1. VARIABLES GLOBALES
+   -------------------------------------------- */
+:root {
+    --avi-cyan: #00f3ff;
+    --avi-blue: #0066ff;
+    --avi-purple: #b300ff;
+    --avi-green: #00ff88;
+    --avi-gold: #ffaa00;
+    --avi-lite: #00cc88;
+    --avi-pro: #00f3ff;
+    --avi-ultra: #ff00ff;
+    --avi-business: #ffaa00;
+    
+    --bg-dark: #0a0a0f;
+    --bg-darker: #03050b;
+    --bg-card: rgba(10, 10, 20, 0.8);
+    --bg-glass: rgba(5, 5, 20, 0.6);
+    
+    --text-primary: #ffffff;
+    --text-secondary: #b0b0b0;
+    --text-tertiary: #6c6c7a;
+    --text-muted: #4a4a5a;
+    
+    --shadow-glow: 0 0 20px rgba(0, 243, 255, 0.3);
+    --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.3);
+    --transition-base: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--bg-dark);
+    font-family: 'Inter', sans-serif;
+    color: var(--text-primary);
+    overflow-x: hidden;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 20% 30%, rgba(0, 243, 255, 0.03), transparent 70%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* --------------------------------------------
+   2. DYNAMIC ISLAND NAVIGATION MEJORADA
+   -------------------------------------------- */
+.dynamic-island {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 40px);
+    max-width: 1200px;
+    background: rgba(10, 10, 20, 0.85);
+    backdrop-filter: blur(12px);
+    border-radius: 60px;
+    padding: 6px 20px;
+    z-index: 1000;
+    transition: var(--transition-base);
+    border: 1px solid rgba(0, 243, 255, 0.2);
+}
+
+.dynamic-island.scrolled {
+    top: 10px;
+    background: rgba(10, 10, 20, 0.95);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.island-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.island-logo-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+}
+
+.island-logo {
+    width: 38px;
+    height: 38px;
+    background: linear-gradient(135deg, #00f3ff, #0066ff);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Orbitron', monospace;
+    font-weight: bold;
+    color: #0a0a0f;
+    transition: transform 0.3s ease;
+}
+
+.island-logo:hover {
+    transform: scale(1.05);
+}
+
+.island-text {
+    font-family: 'Orbitron', monospace;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: white;
+}
+
+.avi-text {
+    color: var(--avi-cyan);
+}
+
+.version-buttons {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.version-btn {
+    background: transparent;
+    border: 1px solid rgba(0, 243, 255, 0.3);
+    color: #888;
+    padding: 8px 18px;
+    border-radius: 40px;
+    cursor: pointer;
+    font-family: 'Orbitron', monospace;
+    font-size: 0.75rem;
+    transition: var(--transition-base);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.version-btn .version-icon {
+    font-size: 0.9rem;
+}
+
+.version-btn:hover {
+    border-color: rgba(0, 243, 255, 0.6);
+    color: #00f3ff;
+    transform: translateY(-2px);
+}
+
+.version-btn.active {
+    background: linear-gradient(135deg, #00f3ff, #0066ff);
+    border-color: transparent;
+    color: #0a0a0f;
+    font-weight: bold;
+    box-shadow: 0 0 15px rgba(0, 243, 255, 0.4);
+}
+
+.version-btn.lite.active { background: linear-gradient(135deg, #00cc88, #00aa66); }
+.version-btn.pro.active { background: linear-gradient(135deg, #00f3ff, #0066ff); }
+.version-btn.ultra.active { background: linear-gradient(135deg, #ff00ff, #aa00aa); }
+.version-btn.business.active { background: linear-gradient(135deg, #ffaa00, #ff6600); }
+
+.user-menu {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.user-avatar {
+    width: 38px;
+    height: 38px;
+    background: rgba(0, 243, 255, 0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: var(--transition-base);
+}
+
+.user-avatar:hover {
+    background: rgba(0, 243, 255, 0.25);
+    transform: scale(1.05);
+}
+
+.login-btn {
+    background: transparent;
+    border: 1px solid rgba(0, 243, 255, 0.5);
+    color: #00f3ff;
+    padding: 8px 20px;
+    border-radius: 40px;
+    cursor: pointer;
+    font-family: 'Orbitron', monospace;
+    font-size: 0.75rem;
+    transition: var(--transition-base);
+}
+
+.login-btn:hover {
+    background: rgba(0, 243, 255, 0.1);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 243, 255, 0.2);
+}
+
+.menu-toggle-avi {
+    display: none;
+    background: none;
+    border: 1px solid rgba(0, 243, 255, 0.3);
+    color: #00f3ff;
+    font-size: 1.2rem;
+    padding: 6px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+/* --------------------------------------------
+   3. SIDEBAR MEJORADA
+   -------------------------------------------- */
+.avi-container {
+    display: flex;
+    height: 100vh;
+    padding-top: 80px;
+}
+
+.sidebar {
+    width: 300px;
+    background: rgba(10, 10, 20, 0.6);
+    backdrop-filter: blur(10px);
+    border-right: 1px solid rgba(0, 243, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+    transition: var(--transition-base);
+}
+
+.sidebar-header {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(0, 243, 255, 0.1);
+}
+
+.sidebar-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.sidebar-logo-icon {
+    width: 45px;
+    height: 45px;
+    background: linear-gradient(135deg, #00f3ff, #0066ff);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Orbitron', monospace;
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #0a0a0f;
+}
+
+.sidebar-logo h2 {
+    font-family: 'Orbitron', monospace;
+    font-size: 1.2rem;
+}
+
+.version-info {
+    background: rgba(0, 243, 255, 0.05);
+    border-radius: 16px;
+    padding: 15px;
+    text-align: center;
+}
+
+.version-status {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 10px;
+    font-size: 0.7rem;
+    color: #00ff88;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    background: #00ff88;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #00ff88;
+    animation: pulseDot 1s ease-in-out infinite;
+}
+
+@keyframes pulseDot {
+    0%, 100% { opacity: 0.5; transform: scale(0.8); }
+    50% { opacity: 1; transform: scale(1.2); }
+}
+
+.version-name-display {
+    font-family: 'Orbitron', monospace;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.version-limit-display {
+    font-size: 0.7rem;
+    color: #888;
+}
+
+.sidebar-menu {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.sidebar-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 16px;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: var(--transition-base);
+    position: relative;
+}
+
+.sidebar-item:hover {
+    background: rgba(0, 243, 255, 0.1);
+    transform: translateX(5px);
+}
+
+.sidebar-item.active {
+    background: rgba(0, 243, 255, 0.15);
+    border-left: 3px solid #00f3ff;
+}
+
+.sidebar-icon {
+    font-size: 1.2rem;
+}
+
+.sidebar-text {
+    flex: 1;
+    font-size: 0.9rem;
+}
+
+.sidebar-badge {
+    font-size: 0.6rem;
+    padding: 2px 8px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #888;
+}
+
+.pro-badge {
+    background: rgba(0, 243, 255, 0.2);
+    color: #00f3ff;
+}
+
+.ultra-badge {
+    background: rgba(255, 0, 255, 0.2);
+    color: #ff00ff;
+}
+
+.sidebar-footer {
+    padding-top: 20px;
+    border-top: 1px solid rgba(0, 243, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.message-stats {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    background: rgba(0, 243, 255, 0.05);
+    border-radius: 12px;
+}
+
+.stats-icon {
+    font-size: 1.2rem;
+}
+
+.stats-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.stats-label {
+    font-size: 0.7rem;
+    color: #888;
+}
+
+.stats-value {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #00f3ff;
+}
+
+.progress-bar-container {
+    width: 100%;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #00f3ff, #0066ff);
+    border-radius: 2px;
+    transition: width 0.3s ease;
+}
+
+.upgrade-btn {
+    width: 100%;
+    background: linear-gradient(135deg, #ffaa00, #ff6600);
+    border: none;
+    border-radius: 40px;
+    padding: 12px;
+    color: #0a0a0f;
+    font-family: 'Orbitron', monospace;
+    font-weight: bold;
+    cursor: pointer;
+    transition: var(--transition-base);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.upgrade-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 170, 0, 0.3);
+}
+
+/* --------------------------------------------
+   4. CHAT AREA MEJORADA
+   -------------------------------------------- */
+.chat-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(135deg, #050510, #0a0a1a);
+}
+
+.chat-header {
+    padding: 20px 25px;
+    border-bottom: 1px solid rgba(0, 243, 255, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chat-header-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.chat-header-icon {
+    width: 45px;
+    height: 45px;
+    background: linear-gradient(135deg, #00f3ff, #0066ff);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    animation: pulseIcon 2s ease-in-out infinite;
+}
+
+@keyframes pulseIcon {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.chat-header-text h3 {
+    font-family: 'Orbitron', monospace;
+    font-size: 1.1rem;
+    margin-bottom: 4px;
+}
+
+.chat-header-text p {
+    font-size: 0.7rem;
+    color: #888;
+}
+
+.clear-chat-btn {
+    background: transparent;
+    border: 1px solid rgba(0, 243, 255, 0.2);
+    padding: 8px 12px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: var(--transition-base);
+}
+
+.clear-chat-btn:hover {
+    background: rgba(0, 243, 255, 0.1);
+    border-color: #00f3ff;
+}
+
+.chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 25px;
+}
+
+.message {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+    animation: fadeInUp 0.4s ease;
+}
+
+.message.user {
+    flex-direction: row-reverse;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.message-avatar {
+    position: relative;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+.message.user .message-avatar {
+    background: rgba(0, 243, 255, 0.15);
+}
+
+.message.avi .message-avatar {
+    background: linear-gradient(135deg, #00f3ff, #0066ff);
+}
+
+.avatar-glow {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: rgba(0, 243, 255, 0.3);
+    animation: avatarPulse 2s ease-in-out infinite;
+}
+
+@keyframes avatarPulse {
+    0%, 100% { transform: scale(1); opacity: 0.3; }
+    50% { transform: scale(1.1); opacity: 0.6; }
+}
+
+.message-content {
+    max-width: 70%;
+    padding: 15px 20px;
+    border-radius: 20px;
+}
+
+.message.user .message-content {
+    background: rgba(0, 243, 255, 0.1);
+    border-radius: 20px 20px 0 20px;
+}
+
+.message.avi .message-content {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px 20px 20px 0;
+}
+
+.message-name {
+    font-size: 0.7rem;
+    color: #888;
+    margin-bottom: 6px;
+}
+
+.message-text {
+    line-height: 1.6;
+}
+
+.message-text strong {
+    color: #00f3ff;
+}
+
+.highlight-text {
+    color: #00f3ff;
+    font-weight: bold;
+}
+
+/* --------------------------------------------
+   5. INPUT AREA MEJORADA
+   -------------------------------------------- */
+.chat-input-container {
+    padding: 20px 25px;
+    border-top: 1px solid rgba(0, 243, 255, 0.1);
+}
+
+.input-wrapper {
+    display: flex;
+    gap: 12px;
+    background: rgba(10, 10, 20, 0.8);
+    border-radius: 20px;
+    padding: 8px;
+    border: 1px solid rgba(0, 243, 255, 0.2);
+    transition: var(--transition-base);
+}
+
+.input-wrapper:focus-within {
+    border-color: #00f3ff;
+    box-shadow: 0 0 15px rgba(0, 243, 255, 0.2);
+}
+
+.input-wrapper textarea {
+    flex: 1;
+    background: transparent;
+    border: none;
+    padding: 12px;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    resize: none;
+    outline: none;
+    max-height: 120px;
+}
+
+.input-wrapper textarea::placeholder {
+    color: #4a4a6a;
+}
+
+.send-btn {
+    background: linear-gradient(135deg, #00f3ff, #0066ff);
+    border: none;
+    border-radius: 16px;
+    padding: 0 24px;
+    color: #0a0a0f;
+    font-weight: bold;
+    cursor: pointer;
+    transition: var(--transition-base);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.send-btn:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 15px rgba(0, 243, 255, 0.4);
+}
+
+.input-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 12px;
+    font-size: 0.7rem;
+    color: #6c6c7a;
+}
+
+.footer-left, .footer-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.tool-indicator {
+    padding: 4px 12px;
+    background: rgba(0, 243, 255, 0.1);
+    border-radius: 20px;
+    color: #00f3ff;
+}
+
+.separator {
+    color: #4a4a6a;
+}
+
+/* --------------------------------------------
+   6. MODAL MEJORADO
+   -------------------------------------------- */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(12px);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.modal-content {
+    background: linear-gradient(135deg, #0a0a2a, #050510);
+    border: 1px solid rgba(0, 243, 255, 0.3);
+    border-radius: 28px;
+    padding: 35px;
+    max-width: 480px;
+    width: 90%;
+    position: relative;
+}
+
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    font-size: 28px;
+    cursor: pointer;
+    color: #888;
+    transition: color 0.3s ease;
+}
+
+.modal-close:hover {
+    color: #00f3ff;
+}
+
+.modal-header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.modal-logo {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #00f3ff, #0066ff);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Orbitron', monospace;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #0a0a0f;
+    margin: 0 auto 15px;
+}
+
+.modal-header h2 {
+    font-family: 'Orbitron', monospace;
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+}
+
+.modal-header p {
+    font-size: 0.8rem;
+    color: #888;
+}
+
+.modal-tabs {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+.modal-tab {
+    flex: 1;
+    background: transparent;
+    border: 1px solid rgba(0, 243, 255, 0.3);
+    padding: 12px;
+    border-radius: 40px;
+    cursor: pointer;
+    color: #888;
+    transition: var(--transition-base);
+}
+
+.modal-tab.active {
+    background: rgba(0, 243, 255, 0.2);
+    color: #00f3ff;
+    border-color: #00f3ff;
+}
+
+.modal-form {
+    display: none;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.modal-form.active {
+    display: flex;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.input-group label {
+    font-size: 0.75rem;
+    color: #888;
+}
+
+.modal-form input {
+    padding: 14px;
+    background: rgba(10, 10, 30, 0.8);
+    border: 1px solid rgba(0, 243, 255, 0.2);
+    border-radius: 12px;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    transition: var(--transition-base);
+}
+
+.modal-form input:focus {
+    outline: none;
+    border-color: #00f3ff;
+    box-shadow: 0 0 10px rgba(0, 243, 255, 0.2);
+}
+
+.modal-btn {
+    background: linear-gradient(135deg, #00f3ff, #0066ff);
+    border: none;
+    border-radius: 40px;
+    padding: 14px;
+    color: #0a0a0f;
+    font-weight: bold;
+    cursor: pointer;
+    transition: var(--transition-base);
+    margin-top: 10px;
+}
+
+.modal-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(0, 243, 255, 0.3);
+}
+
+.modal-note {
+    font-size: 0.7rem;
+    color: #888;
+    text-align: center;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(0, 243, 255, 0.1);
+}
+
+/* --------------------------------------------
+   7. RESPONSIVE
+   -------------------------------------------- */
+@media (max-width: 768px) {
+    .dynamic-island {
+        width: calc(100% - 20px);
+        padding: 8px 16px;
+    }
+    
+    .version-buttons {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(10, 10, 20, 0.98);
+        flex-direction: column;
+        padding: 15px;
+        gap: 10px;
+        border-radius: 20px;
+        margin-top: 10px;
+    }
+    
+    .version-buttons.open {
+        display: flex;
+    }
+    
+    .menu-toggle-avi {
+        display: block;
+    }
+    
+    .sidebar {
+        position: fixed;
+        left: -300px;
+        top: 70px;
+        height: calc(100vh - 70px);
+        z-index: 999;
+        transition: left 0.3s ease;
+    }
+    
+    .sidebar.open {
+        left: 0;
+    }
+    
+    .message-content {
+        max-width: 85%;
+    }
+    
+    .chat-header {
+        padding: 15px 20px;
+    }
+    
+    .chat-messages {
+        padding: 15px;
+    }
+    
+    .chat-input-container {
+        padding: 15px;
+    }
+    
+    .send-btn span:last-child {
+        display: none;
+    }
+    
+    .send-btn {
+        padding: 0 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .island-text {
+        font-size: 0.9rem;
+    }
+    
+    .version-btn {
+        padding: 6px 12px;
+        font-size: 0.65rem;
+    }
+    
+    .login-btn {
+        padding: 6px 12px;
+        font-size: 0.65rem;
+    }
+    
+    .message-content {
+        max-width: 90%;
+    }
+    
+    .footer-right {
+        display: none;
+    }
+}

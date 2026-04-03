@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="CONNECTION PÍXEL Canvas - Herramienta profesional de diseño gráfico. Crea, edita, sube archivos y exporta tus diseños con la IA VINSHI.">
+    <meta name="theme-color" content="#ff0055">
+    <title>CONNECTION PÍXEL Canvas | Diseño Profesional</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Montserrat:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="pixel.css">
+    <link rel="stylesheet" href="canvas.css">
+    <style>
+        .preloader-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, #0a0a2a, #030310);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            transition: opacity 0.6s ease;
+        }
+        .preloader-canvas.hide { opacity: 0; pointer-events: none; }
+        .loader-canvas {
+            width: 80px;
+            height: 80px;
+            border: 3px solid rgba(255, 0, 85, 0.2);
+            border-top-color: #ff0055;
+            border-radius: 50%;
+            animation: spinCanvas 1s linear infinite;
+        }
+        @keyframes spinCanvas {
+            to { transform: rotate(360deg); }
+        }
+        .loader-text {
+            margin-top: 20px;
+            font-family: 'Orbitron', monospace;
+            color: #ff0055;
+            letter-spacing: 4px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="preloader-canvas" id="preloaderCanvas">
+        <div class="loader-canvas"></div>
+        <div class="loader-text">⟡ VINSHI CANVAS ⟡</div>
+        <div class="loader-text" style="font-size:0.7rem;">Iniciando espacio creativo...</div>
+    </div>
+
+    <!-- Dynamic Island Navigation -->
+    <nav id="dynamicIsland" class="dynamic-island">
+        <div class="island-content">
+            <a href="pixel.html" class="island-logo-section">
+                <div class="island-logo-wrapper">
+                    <img src="imagenes pixel/pixel logo.png" alt="Píxel Logo" class="island-logo-img" onerror="this.src='https://via.placeholder.com/45/ff0055/ffffff?text=PX'">
+                    <div class="logo-pulse"></div>
+                </div>
+                <span class="island-text">CONNECTION <span class="rainbow-text">PÍXEL</span></span>
+            </a>
+            <ul class="island-links">
+                <li><a href="pixel.html" class="nav-link">Inicio</a></li>
+                <li><a href="canvas.html" class="nav-link active-rainbow">Canvas Studio</a></li>
+                <li><a href="Branding_Identidad.html" class="nav-link">Branding</a></li>
+                <li><a href="UX_Design.html" class="nav-link">UX/UI</a></li>
+                <li><a href="Motion_Graphics.html" class="nav-link">Graphics</a></li>
+            </ul>
+            <button class="menu-toggle-pixel" aria-label="Abrir menú">☰</button>
+        </div>
+    </nav>
+
+    <!-- Toolbar Principal -->
+    <div class="canvas-toolbar">
+        <div class="toolbar-group">
+            <button class="tool-btn" id="btnUndo" title="Deshacer">↶ Deshacer</button>
+            <button class="tool-btn" id="btnRedo" title="Rehacer">↷ Rehacer</button>
+            <button class="tool-btn" id="btnClear" title="Limpiar Canvas">🗑️ Limpiar</button>
+        </div>
+        
+        <div class="toolbar-group">
+            <button class="tool-btn" id="btnDraw" data-mode="draw">✏️ Dibujar</button>
+            <button class="tool-btn" id="btnEraser" data-mode="eraser">🧽 Borrador</button>
+            <button class="tool-btn" id="btnText" data-mode="text">📝 Texto</button>
+            <input type="color" id="colorPicker" class="color-picker" value="#ff0055">
+            <input type="range" id="brushSize" class="size-slider" min="1" max="50" value="5">
+            <span id="sizeValue" style="color: white; font-size: 0.8rem;">5px</span>
+        </div>
+        
+        <div class="toolbar-group">
+            <button class="tool-btn" id="btnNewProject">✨ Nuevo</button>
+            <button class="tool-btn" id="btnSaveProject">💾 Guardar</button>
+            <button class="tool-btn" id="btnLoadProject">📂 Cargar</button>
+        </div>
+    </div>
+
+    <!-- Editor Principal -->
+    <div class="canvas-editor">
+        <!-- Área de Canvas -->
+        <div class="canvas-area">
+            <canvas id="mainCanvas" width="800" height="600" style="width:100%; height:auto; max-width:800px; background:white;"></canvas>
+            <div class="canvas-info">
+                <span>📐 Dimensiones: 800 x 600 px</span>
+                <span>🎨 Modo: <span id="currentMode">Dibujar</span></span>
+                <span>🖌️ Tamaño: <span id="currentSize">5</span>px</span>
+            </div>
+        </div>
+        
+        <!-- Barra Lateral -->
+        <div class="canvas-sidebar">
+            <!-- Subir Archivos -->
+            <div class="sidebar-section">
+                <h3>📁 SUBIR ARCHIVO</h3>
+                <div class="upload-area" id="uploadArea">
+                    <span>📤</span>
+                    <p>Arrastra o haz clic para subir imagen</p>
+                    <p style="font-size:0.7rem; color:#888;">PNG, JPG, SVG, WEBP</p>
+                    <input type="file" id="fileUpload" accept="image/*">
+                </div>
+            </div>
+            
+            <!-- Formas Predefinidas -->
+            <div class="sidebar-section">
+                <h3>⭐ FORMAS PREDEFINIDAS</h3>
+                <div class="preset-shapes">
+                    <button class="shape-btn" data-shape="circle">⚪</button>
+                    <button class="shape-btn" data-shape="square">⬛</button>
+                    <button class="shape-btn" data-shape="triangle">▲</button>
+                    <button class="shape-btn" data-shape="line">➖</button>
+                    <button class="shape-btn" data-shape="star">⭐</button>
+                    <button class="shape-btn" data-shape="heart">❤️</button>
+                </div>
+            </div>
+            
+            <!-- Texto Personalizado -->
+            <div class="sidebar-section">
+                <h3>📝 TEXTO PERSONALIZADO</h3>
+                <input type="text" id="textInput" placeholder="Escribe tu texto..." class="text-input">
+                <button class="tool-btn-full" id="addTextBtn">Agregar Texto</button>
+                <div class="text-styles">
+                    <select id="fontSelect" class="font-select">
+                        <option value="Arial">Arial</option>
+                        <option value="Orbitron">Orbitron</option>
+                        <option value="Montserrat">Montserrat</option>
+                        <option value="Times New Roman">Times New Roman</option>
+                        <option value="Courier New">Courier New</option>
+                    </select>
+                    <input type="number" id="fontSize" value="24" min="8" max="72" class="font-size">
+                </div>
+            </div>
+            
+            <!-- Exportar -->
+            <div class="sidebar-section">
+                <h3>💾 EXPORTAR</h3>
+                <div class="export-options">
+                    <button class="export-btn" id="exportPNG">📸 PNG</button>
+                    <button class="export-btn" id="exportJPG">🖼️ JPG</button>
+                    <button class="export-btn" id="exportSVG">📐 SVG</button>
+                </div>
+                <div class="history-buttons">
+                    <button class="tool-btn-half" id="copyToClipboard">📋 Copiar</button>
+                    <button class="tool-btn-half" id="downloadProject">💾 Descargar Proyecto</button>
+                </div>
+            </div>
+            
+            <!-- Asistente IA VINSHI -->
+            <div class="sidebar-section">
+                <h3>🤖 VINSHI AI ASSISTANT</h3>
+                <div class="ai-suggestion">
+                    <p>✨ "Prueba a agregar formas geométricas para un diseño moderno"</p>
+                    <button class="tool-btn-small" id="aiSuggestion">Generar Sugerencia</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="footer-pixel">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>CONNECTION <span class="rainbow-text">PÍXEL</span></h3>
+                    <p>Canvas Studio | Diseño profesional con IA</p>
+                </div>
+                <div class="footer-links">
+                    <a href="pixel.html">Inicio</a>
+                    <a href="canvas.html">Canvas Studio</a>
+                    <a href="#contacto">Ayuda</a>
+                </div>
+                <div class="footer-meta">
+                    <p>IA Líder: VINSHI | CONNECTION PÍXEL © 2026</p>
+                    <p class="small">Crea, edita, exporta - Tu estudio de diseño personal</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="transition.js"></script>
+    <script src="canvas.js"></script>
+</body>
+</html>

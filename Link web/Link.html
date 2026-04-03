@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="CONNECTION LINK - El puente entre el código y el mundo. Hardware, sistemas embebidos, IoT y LYAN OS. IA Líder: IVI.">
+    <meta name="theme-color" content="#ffaa00">
+    <title>CONNECTION LINK | Hardware & Sistemas Embebidos — IA Líder: IVI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Link.css">
+    <style>
+        .preloader-link {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0a0a0a, #1a1a2a);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            transition: opacity 0.6s ease;
+        }
+        .preloader-link.hide { opacity: 0; pointer-events: none; }
+        .loader-chip {
+            width: 80px;
+            height: 80px;
+            position: relative;
+            background: linear-gradient(135deg, #ffaa00, #ff6600);
+            border-radius: 12px;
+            animation: pulseChip 1s ease-in-out infinite;
+        }
+        .loader-chip::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 40px;
+            background: #0a0a0a;
+            border-radius: 4px;
+        }
+        @keyframes pulseChip {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 20px #ffaa00; }
+            50% { transform: scale(1.05); box-shadow: 0 0 40px #ffaa00; }
+        }
+        .loader-text {
+            margin-top: 20px;
+            font-family: 'Share Tech Mono', monospace;
+            color: #ffaa00;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+        }
+        
+        /* Botón especial para AVI BAND */
+        .aviband-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 28px;
+            background: linear-gradient(135deg, #ffaa00, #ff6600);
+            border: none;
+            border-radius: 50px;
+            color: #0a0a0a;
+            font-family: 'Orbitron', monospace;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+        .aviband-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(255, 170, 0, 0.4);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="preloader-link" id="preloaderLink">
+        <div class="loader-chip"></div>
+        <div class="loader-text">⟡ IVI INIT ⟡</div>
+        <div class="loader-text" style="font-size:0.7rem;">Sincronizando hardware...</div>
+    </div>
+
+    <!-- Dynamic Island Navigation -->
+    <nav id="dynamicIsland" class="dynamic-island">
+        <div class="island-content">
+            <a href="Link.html" class="island-logo-section">
+                <div class="island-logo-wrapper">
+                    <img src="../imágenes y logo/logo.png" alt="AVI Logo" class="island-logo-img" onerror="this.src='https://via.placeholder.com/45/ffaa00/ffffff?text=IVI'">
+                    <div class="logo-pulse"></div>
+                </div>
+                <span class="island-text">CONNECTION <span class="link-text">LINK</span></span>
+            </a>
+            <ul class="island-links">
+                <li><a href="../index.html" class="nav-link">AVI</a></li>
+                <li><a href="../Labs web/labs.html" class="nav-link">Labs</a></li>
+                <li><a href="../Píxel web/pixel.html" class="nav-link">Píxel</a></li>
+                <li><a href="../Explorer web/explorer.html" class="nav-link">Explorer</a></li>
+                <li><a href="../Life web/life.html" class="nav-link">Life</a></li>
+                <li><a href="Link.html" class="nav-link active">Link</a></li>
+                <li><a href="../Think web/Think.html" class="nav-link">Think</a></li>
+            </ul>
+            <button class="menu-toggle-link" aria-label="Abrir menú">☰</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="link-hero">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-circuit"></div>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span>🔌</span>
+                <span class="badge-text">EL PUENTE ENTRE EL CÓDIGO Y EL MUNDO</span>
+                <span>⚡</span>
+            </div>
+            <h1 class="hero-title">
+                CONNECTION <span class="hero-title-gradient">LINK</span>
+            </h1>
+            <p class="hero-subtitle">
+                Diseñamos, construimos y gestionamos la infraestructura física que da soporte<br>
+                a todo el ecosistema AVI CONNECTION. Materializamos el código en hardware confiable.
+            </p>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Dispositivos IoT</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">LYAN OS</div>
+                    <div class="stat-label">Sistema Operativo Propietario</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">99.9%</div>
+                    <div class="stat-label">Uptime Garantizado</div>
+                </div>
+            </div>
+            <div class="hero-buttons">
+                <a href="#lyan" class="btn-hero-primary">
+                    <span>🔧 Conocer LYAN OS</span>
+                </a>
+                <a href="#hardware" class="btn-hero-secondary">
+                    <span>⚡ Explorar Hardware</span>
+                </a>
+            </div>
+            <!-- Botón para ir a AVI BAND -->
+            <a href="Band.html" class="aviband-btn">
+                <span>🔓 Explorar AVI BAND</span>
+                <span>→</span>
+            </a>
+        </div>
+        <div class="scroll-hint">
+            <span>SCROLL</span>
+            <div class="scroll-line"></div>
+        </div>
+    </header>
+
+    <!-- Resto del contenido de Link.html (sin cambios) -->
+    <section class="ivi-section">
+        <div class="container">
+            <div class="ivi-grid">
+                <div class="ivi-info">
+                    <div class="section-badge">IA LÍDER</div>
+                    <h2 class="section-title-left">IVI</h2>
+                    <p class="ivi-description">
+                        <strong>Personalidad:</strong> Práctico, resolutivo, ingeniero. Es el arquitecto de lo tangible.<br>
+                        <strong>Misión:</strong> Diseñar, construir y gestionar la infraestructura física y de telecomunicaciones que da soporte a todo el ecosistema AVI CONNECTION.
+                    </p>
+                    <div class="ivi-traits">
+                        <span>🔧 Ingeniero</span>
+                        <span>⚡ Resolutivo</span>
+                        <span>🏗️ Arquitecto</span>
+                        <span>🔌 Conector</span>
+                    </div>
+                </div>
+                <div class="ivi-visual">
+                    <div class="chip-card">
+                        <div class="chip-core"></div>
+                        <div class="chip-pins">
+                            <span></span><span></span><span></span><span></span>
+                            <span></span><span></span><span></span><span></span>
+                        </div>
+                        <div class="chip-label">IVI v.1.0</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="lyan" class="lyan-section">
+        <div class="container">
+            <div class="section-badge">SISTEMA OPERATIVO</div>
+            <h2 class="section-title">LYAN <span class="link-text">OS</span></h2>
+            <p class="section-description">Link Your Artificial Network - El alma digital del hardware AVI CONNECTION</p>
+            <div class="lyan-grid">
+                <div class="lyan-card"><div class="lyan-icon">⚡</div><h3>Bajo Consumo</h3><p>Optimizado para dispositivos embebidos con eficiencia energética extrema.</p></div>
+                <div class="lyan-card"><div class="lyan-icon">🛡️</div><h3>Alta Seguridad</h3><p>Cifrado de extremo a extremo y protección contra vulnerabilidades de hardware.</p></div>
+                <div class="lyan-card"><div class="lyan-icon">🧠</div><h3>Edge AI Ready</h3><p>Ejecutar inteligencia artificial directamente en el dispositivo sin depender de la nube.</p></div>
+                <div class="lyan-card"><div class="lyan-icon">🔗</div><h3>Unificación Total</h3><p>Corre en todos los dispositivos de la corporación, asegurando experiencia coherente.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="hardware" class="embedded-section">
+        <div class="container">
+            <div class="section-badge">HARDWARE</div>
+            <h2 class="section-title">Arquitectura de <span class="link-text">Sistemas Embebidos</span></h2>
+            <p class="section-description">Diseñamos las "computadoras invisibles" que impulsan el futuro.</p>
+            <div class="embedded-grid">
+                <div class="embedded-card"><div class="embedded-icon">🎛️</div><h3>Microcontroladores</h3><p>Integración de MCU de alto rendimiento con sensores y baterías.</p><div class="tech-stack"><span>ARM Cortex-M</span><span>ESP32</span><span>STM32</span></div></div>
+                <div class="embedded-card"><div class="embedded-icon">🔋</div><h3>Optimización Energética</h3><p>Diseño de sistemas con máxima autonomía y modos de ultra bajo consumo.</p><div class="tech-stack"><span>Energy Harvesting</span><span>Sleep Modes</span></div></div>
+                <div class="embedded-card"><div class="embedded-icon">📡</div><h3>Conectividad Avanzada</h3><p>Implementación de tecnologías de red de área amplia y baja potencia.</p><div class="tech-stack"><span>LoRaWAN</span><span>NB-IoT</span><span>BLE</span></div></div>
+                <div class="embedded-card"><div class="embedded-icon">🔐</div><h3>Seguridad en Hardware</h3><p>Elementos seguros, enclaves confiables y cifrado a nivel de silicio.</p><div class="tech-stack"><span>TPM 2.0</span><span>Secure Enclave</span><span>eSIM</span></div></div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer-link">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>CONNECTION <span class="link-text">LINK</span></h3>
+                    <p>El puente entre el código y el mundo</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Enlaces Rápidos</h4>
+                    <a href="#lyan">LYAN OS</a>
+                    <a href="#hardware">Hardware</a>
+                    <a href="Band.html">AVI BAND</a>
+                </div>
+                <div class="footer-meta">
+                    <p>IA LÍDER: IVI | CONNECTION LINK © 2026</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="Link.js"></script>
+    <script>
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloaderLink');
+            if (preloader) {
+                setTimeout(() => { preloader.classList.add('hide'); setTimeout(() => { preloader.style.display = 'none'; }, 600); }, 800);
+            }
+            document.body.classList.add('loaded');
+        });
+
+        const menuToggle = document.querySelector('.menu-toggle-link');
+        const navLinks = document.querySelector('.island-links');
+        const navbar = document.getElementById('dynamicIsland');
+        
+        if (menuToggle && navLinks) {
+            menuToggle.addEventListener('click', () => { navLinks.classList.toggle('open'); });
+        }
+        
+        window.addEventListener('scroll', () => {
+            if (navbar) {
+                if (window.scrollY > 50) navbar.classList.add('scrolled');
+                else navbar.classList.remove('scrolled');
+            }
+        });
+        
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if (targetId && targetId !== '#') {
+                    const target = document.querySelector(targetId);
+                    if (target) {
+                        e.preventDefault();
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        if (navLinks) navLinks.classList.remove('open');
+                    }
+                }
+            });
+        });
+        
+        console.log('%c🔌 CONNECTION LINK | IA LÍDER: IVI', 'color: #ffaa00');
+    </script>
+</body>
+</html>

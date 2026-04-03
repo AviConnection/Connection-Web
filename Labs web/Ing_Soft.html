@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Ingeniería de Software - CONNECTION LABS. Desarrollo de arquitecturas robustas, front-end, back-end, mobile y DevOps.">
+    <meta name="theme-color" content="#00e676">
+    <title>Ingeniería de Software | CONNECTION LABS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="labs.css">
+    <style>
+        .protocol-hero {
+            position: relative;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(135deg, #010604, #021008);
+            padding: 120px 20px 80px;
+            overflow: hidden;
+        }
+        
+        .protocol-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 50%, rgba(0, 230, 118, 0.1), transparent 70%);
+            pointer-events: none;
+        }
+        
+        .protocol-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            background: rgba(0, 230, 118, 0.1);
+            border: 1px solid rgba(0, 230, 118, 0.3);
+            border-radius: 40px;
+            font-size: 0.8rem;
+            color: #00e676;
+            margin-bottom: 20px;
+        }
+        
+        .protocol-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #fff, #00e676);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .protocol-subtitle {
+            font-size: 1.2rem;
+            color: #a3d9b4;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #00e676;
+            text-decoration: none;
+            margin: 30px 0;
+            font-family: 'Orbitron', monospace;
+            font-size: 0.85rem;
+            transition: gap 0.3s ease;
+        }
+        
+        .back-link:hover {
+            gap: 12px;
+        }
+        
+        .tech-stack-section {
+            padding: 60px 20px;
+            background: #010604;
+        }
+        
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .tech-card {
+            background: rgba(1, 20, 8, 0.6);
+            border: 1px solid rgba(0, 230, 118, 0.2);
+            border-radius: 20px;
+            padding: 30px;
+            transition: all 0.3s ease;
+        }
+        
+        .tech-card:hover {
+            transform: translateY(-5px);
+            border-color: #00e676;
+            box-shadow: 0 10px 30px rgba(0, 230, 118, 0.1);
+        }
+        
+        .tech-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .tech-card h3 {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: #00e676;
+        }
+        
+        .tech-card p {
+            color: #a3d9b4;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .tech-list {
+            list-style: none;
+        }
+        
+        .tech-list li {
+            color: #fff;
+            margin-bottom: 8px;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .tech-list li::before {
+            content: '→';
+            color: #00e676;
+        }
+        
+        .methodology-section {
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #021008, #010604);
+        }
+        
+        .methodology-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .methodology-card {
+            text-align: center;
+            padding: 30px;
+            background: rgba(1, 10, 5, 0.5);
+            border-radius: 16px;
+            border: 1px solid rgba(0, 230, 118, 0.1);
+        }
+        
+        .methodology-number {
+            width: 50px;
+            height: 50px;
+            background: rgba(0, 230, 118, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-family: 'Orbitron', monospace;
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #00e676;
+        }
+        
+        .methodology-card h4 {
+            font-family: 'Orbitron', monospace;
+            margin-bottom: 10px;
+        }
+        
+        .methodology-card p {
+            color: #a3d9b4;
+            font-size: 0.85rem;
+        }
+        
+        /* Estilos para el menú desplegable de protocolos */
+        .protocols-menu {
+            position: relative;
+        }
+        
+        .protocols-toggle {
+            background: transparent;
+            border: 1px solid rgba(0, 230, 118, 0.3);
+            color: #a0a0a0;
+            padding: 8px 16px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-family: 'Orbitron', monospace;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+        }
+        
+        .protocols-toggle:hover {
+            border-color: #00e676;
+            color: #00e676;
+        }
+        
+        .protocols-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: rgba(1, 6, 4, 0.95);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 230, 118, 0.3);
+            border-radius: 12px;
+            padding: 10px 0;
+            min-width: 220px;
+            display: none;
+            z-index: 100;
+            list-style: none;
+        }
+        
+        .protocols-menu:hover .protocols-dropdown {
+            display: block;
+        }
+        
+        .protocols-dropdown li a {
+            display: block;
+            padding: 8px 20px;
+            color: #a3d9b4;
+            text-decoration: none;
+            font-size: 0.8rem;
+            transition: all 0.2s ease;
+        }
+        
+        .protocols-dropdown li a:hover,
+        .protocols-dropdown li a.active {
+            background: rgba(0, 230, 118, 0.1);
+            color: #00e676;
+        }
+        
+        @media (max-width: 1024px) {
+            .methodology-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .protocol-title {
+                font-size: 2rem;
+            }
+            .methodology-grid {
+                grid-template-columns: 1fr;
+            }
+            .protocols-menu {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="preloader-labs" id="preloaderLabs">
+        <div class="loader-spinner"></div>
+        <div class="loader-text">⟡ ALEX INIT ⟡</div>
+        <div class="loader-text" style="font-size:0.7rem;">Cargando módulo...</div>
+    </div>
+
+    <canvas id="matrixCanvas"></canvas>
+
+    <!-- Dynamic Island Navigation con menú de protocolos -->
+    <nav id="dynamic-island" class="dynamic-island">
+        <div class="island-content">
+            <a href="labs.html" class="island-logo-section">
+                <div class="island-logo-wrapper">
+                    <img src="../imágenes y logo/labs logo.png" alt="LABS Logo" class="island-logo-img" onerror="this.src='https://via.placeholder.com/45/00e676/000000?text=L'">
+                </div>
+                <span class="island-text">CONNECTION <span class="labs-text-neon">LABS</span></span>
+            </a>
+            <div class="protocols-menu">
+                <button class="protocols-toggle">PROTOCOLOS ▼</button>
+                <ul class="protocols-dropdown">
+                    <li><a href="Ing_Soft.html" class="active">[01] Ingeniería Software</a></li>
+                    <li><a href="IA.html">[02] Inteligencia Artificial</a></li>
+                    <li><a href="Hardware.html">[03] Hardware y Sistemas</a></li>
+                    <li><a href="Ciberseguridad.html">[04] Ciberseguridad</a></li>
+                    <li><a href="Cuantica.html">[05] Computación Cuántica</a></li>
+                </ul>
+            </div>
+            <button class="menu-toggle-labs" aria-label="Abrir menú">☰</button>
+        </div>
+    </nav>
+
+    <header class="protocol-hero">
+        <div class="container">
+            <span class="protocol-badge">[01] PROTOCOLO ACTIVO</span>
+            <h1 class="protocol-title">Ingeniería de Software</h1>
+            <p class="protocol-subtitle">Arquitecturas robustas y escalables. Cubrimos el ciclo de vida completo del desarrollo con metodologías ágiles y entrega continua.</p>
+            <a href="labs.html" class="back-link">← Volver a LABS</a>
+        </div>
+    </header>
+
+    <section class="tech-stack-section">
+        <div class="container">
+            <h2 class="section-title">Tecnologías <span class="labs-text-neon">Especializadas</span></h2>
+            <div class="tech-grid">
+                <div class="tech-card">
+                    <div class="tech-icon">💻</div>
+                    <h3>Front-end</h3>
+                    <p>Desarrollo de interfaces visuales y experiencias de usuario con las tecnologías más modernas.</p>
+                    <ul class="tech-list">
+                        <li>React / Next.js</li>
+                        <li>Vue.js / Nuxt</li>
+                        <li>Angular</li>
+                        <li>TypeScript / JavaScript</li>
+                        <li>Tailwind CSS / Styled Components</li>
+                    </ul>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-icon">⚙️</div>
+                    <h3>Back-end</h3>
+                    <p>Lógica de servidores, bases de datos y arquitecturas internas escalables.</p>
+                    <ul class="tech-list">
+                        <li>Node.js / Express</li>
+                        <li>Python / Django / FastAPI</li>
+                        <li>Java / Spring Boot</li>
+                        <li>Go / Rust</li>
+                        <li>GraphQL / REST APIs</li>
+                    </ul>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-icon">📱</div>
+                    <h3>Mobile Apps</h3>
+                    <p>Aplicaciones nativas e híbridas para iOS y Android con rendimiento óptimo.</p>
+                    <ul class="tech-list">
+                        <li>Kotlin / Android Studio</li>
+                        <li>Swift / SwiftUI</li>
+                        <li>Flutter / Dart</li>
+                        <li>React Native</li>
+                        <li>Ionic / Capacitor</li>
+                    </ul>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-icon">🎮</div>
+                    <h3>Videojuegos</h3>
+                    <p>Creación de experiencias interactivas con los motores más potentes del mercado.</p>
+                    <ul class="tech-list">
+                        <li>Unity / C#</li>
+                        <li>Unreal Engine / C++</li>
+                        <li>Godot / GDScript</li>
+                        <li>WebGL / Three.js</li>
+                        <li>Blender / 3D Modeling</li>
+                    </ul>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-icon">☁️</div>
+                    <h3>DevOps & Cloud</h3>
+                    <p>Automatización, infraestructura como código y despliegue continuo.</p>
+                    <ul class="tech-list">
+                        <li>AWS / Azure / GCP</li>
+                        <li>Docker / Kubernetes</li>
+                        <li>CI/CD (GitHub Actions, GitLab)</li>
+                        <li>Terraform / Ansible</li>
+                        <li>Monitoring (Prometheus, Grafana)</li>
+                    </ul>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-icon">🗄️</div>
+                    <h3>Bases de Datos</h3>
+                    <p>Gestión de datos con las mejores soluciones del mercado.</p>
+                    <ul class="tech-list">
+                        <li>PostgreSQL / MySQL</li>
+                        <li>MongoDB / NoSQL</li>
+                        <li>Redis / Caching</li>
+                        <li>Elasticsearch</li>
+                        <li>TimescaleDB / InfluxDB</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="methodology-section">
+        <div class="container">
+            <h2 class="section-title">Metodologías <span class="labs-text-neon">Ágiles</span></h2>
+            <div class="methodology-grid">
+                <div class="methodology-card">
+                    <div class="methodology-number">01</div>
+                    <h4>Scrum</h4>
+                    <p>Framework ágil para gestión de proyectos con sprints iterativos y entregas continuas.</p>
+                </div>
+                <div class="methodology-card">
+                    <div class="methodology-number">02</div>
+                    <h4>Kanban</h4>
+                    <p>Visualización del flujo de trabajo y optimización continua del proceso.</p>
+                </div>
+                <div class="methodology-card">
+                    <div class="methodology-number">03</div>
+                    <h4>Extreme Programming (XP)</h4>
+                    <p>Prácticas de ingeniería de software para código de alta calidad.</p>
+                </div>
+                <div class="methodology-card">
+                    <div class="methodology-number">04</div>
+                    <h4>DevOps</h4>
+                    <p>Integración de desarrollo y operaciones para entregas rápidas y confiables.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="labs-footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>CONNECTION <span class="labs-text-neon">LABS</span></h3>
+                <p>Ingeniería de Software</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-links-column">
+                    <h4>PROTOCOLOS</h4>
+                    <a href="Ing_Soft.html">[01] Ingeniería Software</a>
+                    <a href="IA.html">[02] Inteligencia Artificial</a>
+                    <a href="Hardware.html">[03] Hardware y Sistemas</a>
+                    <a href="Ciberseguridad.html">[04] Ciberseguridad</a>
+                    <a href="Cuantica.html">[05] Computación Cuántica</a>
+                </div>
+            </div>
+            <div class="footer-social">
+                <h4>CONECTA</h4>
+                <div class="social-icons">
+                    <a href="#" class="social-icon">💻</a>
+                    <a href="#" class="social-icon">🐙</a>
+                    <a href="#" class="social-icon">📘</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>CONNECTION LABS | Ingeniería de Software © 2026</p>
+        </div>
+    </footer>
+
+    <script>
+        // Preloader
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloaderLabs');
+            if (preloader) {
+                setTimeout(() => {
+                    preloader.classList.add('hide');
+                    setTimeout(() => {
+                        preloader.style.display = 'none';
+                    }, 600);
+                }, 800);
+            }
+        });
+
+        // Matrix Canvas
+        const canvas = document.getElementById('matrixCanvas');
+        if (canvas) {
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            const chars = '01';
+            const fontSize = 14;
+            let drops = [];
+            function init() {
+                const cols = canvas.width / fontSize;
+                drops = [];
+                for (let i = 0; i < cols; i++) drops[i] = Math.random() * -100;
+            }
+            function draw() {
+                ctx.fillStyle = 'rgba(1, 6, 4, 0.05)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                ctx.fillStyle = '#00e676';
+                ctx.font = fontSize + 'px monospace';
+                for (let i = 0; i < drops.length; i++) {
+                    const text = chars.charAt(Math.floor(Math.random() * chars.length));
+                    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                    if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+                    drops[i]++;
+                }
+                requestAnimationFrame(draw);
+            }
+            init();
+            draw();
+            window.addEventListener('resize', () => {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+                init();
+            });
+        }
+
+        // Navbar scroll
+        const navbar = document.getElementById('dynamic-island');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) navbar.classList.add('scrolled');
+            else navbar.classList.remove('scrolled');
+        });
+
+        // Mobile menu
+        const menuToggle = document.querySelector('.menu-toggle-labs');
+        const navLinks = document.querySelector('.island-links');
+        if (menuToggle && navLinks) {
+            menuToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+        }
+
+        console.log('%c💻 INGENIERÍA DE SOFTWARE | Módulo cargado', 'color: #00e676');
+    </script>
+</body>
+</html>

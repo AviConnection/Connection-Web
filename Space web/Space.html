@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="CONNECTION SPACE - Tecnología aeroespacial y exploración orbital. IA Líder: NOVA. Misiones espaciales, satélites, y tecnología de vanguardia.">
+    <meta name="theme-color" content="#6b00ff">
+    <title>CONNECTION SPACE | Exploración Espacial — IA Líder: NOVA</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta property="og:title" content="CONNECTION SPACE | Exploración Espacial">
+    <meta property="og:description" content="Tecnología aeroespacial y exploración orbital con IA Líder NOVA.">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Space.css">
+    <style>
+        .preloader-space {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, #0a0a2a, #030510);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            transition: opacity 0.6s ease;
+        }
+        .preloader-space.hide { opacity: 0; pointer-events: none; }
+        .loader-rocket {
+            width: 80px;
+            height: 80px;
+            position: relative;
+            animation: rocketFloat 1s ease-in-out infinite;
+        }
+        .loader-rocket::before {
+            content: '🚀';
+            font-size: 3rem;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: rocketShake 0.3s ease-in-out infinite;
+        }
+        @keyframes rocketFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        @keyframes rocketShake {
+            0%, 100% { transform: translateX(-50%) rotate(0deg); }
+            50% { transform: translateX(-50%) rotate(5deg); }
+        }
+        .loader-text {
+            margin-top: 30px;
+            font-family: 'Orbitron', monospace;
+            color: #6b00ff;
+            letter-spacing: 4px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="preloader-space" id="preloaderSpace">
+        <div class="loader-rocket"></div>
+        <div class="loader-text">⟡ NOVA INIT ⟡</div>
+        <div class="loader-text" style="font-size:0.7rem;">Calibrando trayectoria orbital...</div>
+    </div>
+
+    <!-- Dynamic Island Navigation -->
+    <nav id="dynamicIsland" class="dynamic-island">
+        <div class="island-content">
+            <a href="Space.html" class="island-logo-section">
+                <div class="island-logo-wrapper">
+                    <img src="../imágenes y logo/logo.png" alt="AVI Logo" class="island-logo-img" onerror="this.src='https://via.placeholder.com/45/6b00ff/ffffff?text=SP'">
+                    <div class="logo-pulse"></div>
+                </div>
+                <span class="island-text">CONNECTION <span class="space-text">SPACE</span></span>
+            </a>
+            <ul class="island-links">
+                <li><a href="../index.html" class="nav-link">AVI</a></li>
+                <li><a href="../Labs web/labs.html" class="nav-link">LABS</a></li>
+                <li><a href="../Píxel web/pixel.html" class="nav-link">PÍXEL</a></li>
+                <li><a href="../Explorer web/explorer.html" class="nav-link">EXPLORER</a></li>
+                <li><a href="../Life web/life.html" class="nav-link">LIFE</a></li>
+                <li><a href="../Link web/Link.html" class="nav-link">LINK</a></li>
+                <li><a href="../Think web/Think.html" class="nav-link">THINK</a></li>
+            </ul>
+            <button class="menu-toggle-space" aria-label="Abrir menú">☰</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="space-hero">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-stars"></div>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span>🚀</span>
+                <span class="badge-text">TECNOLOGÍA AEROESPACIAL</span>
+                <span>🌌</span>
+            </div>
+            <h1 class="hero-title">
+                CONNECTION <span class="hero-title-gradient">SPACE</span>
+            </h1>
+            <p class="hero-subtitle">
+                Exploración orbital, tecnología satelital y misiones espaciales.<br>
+                IA Líder: NOVA - El futuro de la exploración comienza aquí.
+            </p>
+            <div class="hero-stats">
+                <div class="stat-item"><div class="stat-number">12+</div><div class="stat-label">Misiones Exitosas</div></div>
+                <div class="stat-item"><div class="stat-number">3</div><div class="stat-label">Satélites en Órbita</div></div>
+                <div class="stat-item"><div class="stat-number">2026</div><div class="stat-label">Primer Lanzamiento</div></div>
+            </div>
+            <div class="hero-buttons">
+                <a href="#misiones" class="btn-hero-primary"><span>🚀 Explorar Misiones</span></a>
+                <a href="#tecnologia" class="btn-hero-secondary"><span>🛰️ Tecnología</span></a>
+            </div>
+        </div>
+        <div class="scroll-hint">
+            <span>SCROLL</span>
+            <div class="scroll-line"></div>
+        </div>
+    </header>
+
+    <!-- Logo Principal con Slogan -->
+    <div class="main-logo-section">
+        <div class="main-logo">
+            <h1>CONNECTION SPACE</h1>
+            <div class="slogan">Explorando nuevos horizontes, conectando el futuro</div>
+        </div>
+    </div>
+
+    <!-- Sección: IA Líder NOVA -->
+    <section id="nova" class="nova-section">
+        <div class="container">
+            <div class="nova-grid">
+                <div class="nova-info">
+                    <div class="section-badge">IA LÍDER</div>
+                    <h2 class="section-title-left">NOVA</h2>
+                    <p class="nova-description">
+                        <strong>Personalidad:</strong> Visionaria, audaz, con una pasión infinita por la exploración. Su nombre evoca el brillo de una estrella en explosión, simbolizando el nacimiento de nuevas fronteras.
+                    </p>
+                    <p class="nova-mission">
+                        <strong>Misión:</strong> Desarrollar y gestionar tecnologías aeroespaciales para la exploración orbital y más allá. NOVA es la arquitecta de las misiones espaciales de AVI CONNECTION.
+                    </p>
+                    <div class="nova-traits">
+                        <span>🚀 Visionaria</span>
+                        <span>🌌 Audaz</span>
+                        <span>🛰️ Exploradora</span>
+                        <span>⭐ Innovadora</span>
+                    </div>
+                </div>
+                <div class="nova-visual">
+                    <div class="planet-animation">
+                        <div class="planet-core"></div>
+                        <div class="planet-ring"></div>
+                        <div class="planet-orbit"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección: Misiones Espaciales -->
+    <section id="misiones" class="misiones-section">
+        <div class="container">
+            <div class="section-badge">MISIONES ACTIVAS</div>
+            <h2 class="section-title">Exploración <span class="space-text">Orbital</span></h2>
+            <p class="section-description">Proyectos y misiones que definen nuestro camino hacia las estrellas.</p>
+
+            <div class="misiones-grid">
+                <div class="mision-card">
+                    <div class="mision-icon">🛰️</div>
+                    <h3>AVI-SAT 1</h3>
+                    <p>Satélite de observación terrestre para monitoreo climático y comunicaciones.</p>
+                    <div class="mision-stats"><span>Lanzamiento: Q3 2026</span><span>Órbita: LEO</span></div>
+                    <div class="mision-progress"><div class="progress-bar" style="width: 75%"></div><span>75%</span></div>
+                </div>
+                <div class="mision-card">
+                    <div class="mision-icon">🚀</div>
+                    <h3>Misión AETHER</h3>
+                    <p>Estudio de la atmósfera superior y radiación espacial.</p>
+                    <div class="mision-stats"><span>Lanzamiento: Q1 2027</span><span>Duración: 18 meses</span></div>
+                    <div class="mision-progress"><div class="progress-bar" style="width: 45%"></div><span>45%</span></div>
+                </div>
+                <div class="mision-card">
+                    <div class="mision-icon">🌙</div>
+                    <h3>Programa LUNAR</h3>
+                    <p>Misión de exploración lunar con rover autónomo.</p>
+                    <div class="mision-stats"><span>Lanzamiento: 2028</span><span>Objetivo: Polo Sur Lunar</span></div>
+                    <div class="mision-progress"><div class="progress-bar" style="width: 25%"></div><span>25%</span></div>
+                </div>
+                <div class="mision-card">
+                    <div class="mision-icon">📡</div>
+                    <h3>Deep Space Network</h3>
+                    <p>Red de comunicaciones para misiones de largo alcance.</p>
+                    <div class="mision-stats"><span>Estaciones: 3</span><span>Alcance: Sistema Solar</span></div>
+                    <div class="mision-progress"><div class="progress-bar" style="width: 60%"></div><span>60%</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección: Tecnología Espacial -->
+    <section id="tecnologia" class="tecnologia-section">
+        <div class="container">
+            <div class="section-badge">TECNOLOGÍA DE PUNTA</div>
+            <h2 class="section-title">Innovación <span class="space-text">Aeroespacial</span></h2>
+            <p class="section-description">Las tecnologías que hacen posible nuestra exploración.</p>
+
+            <div class="tecnologia-grid">
+                <div class="tecnologia-card">
+                    <div class="tecnologia-icon">🛰️</div>
+                    <h3>Satélites de Observación</h3>
+                    <p>Imágenes de alta resolución para monitoreo ambiental, agrícola y de infraestructura.</p>
+                    <div class="tecnologia-tags"><span>Resolución 0.5m</span><span>SWIR</span><span>Multi-espectral</span></div>
+                </div>
+                <div class="tecnologia-card">
+                    <div class="tecnologia-icon">📡</div>
+                    <h3>Comunicaciones Láser</h3>
+                    <p>Transmisión de datos a velocidades de hasta 100 Gbps entre satélites y tierra.</p>
+                    <div class="tecnologia-tags"><span>100 Gbps</span><span>Láser óptico</span><span>Baja latencia</span></div>
+                </div>
+                <div class="tecnologia-card">
+                    <div class="tecnologia-icon">🧠</div>
+                    <h3>Edge AI en Órbita</h3>
+                    <p>Procesamiento de datos a bordo con inteligencia artificial para decisiones autónomas.</p>
+                    <div class="tecnologia-tags"><span>IA embebida</span><span>Procesamiento local</span><span>Latencia &lt;1s</span></div>
+                </div>
+                <div class="tecnologia-card">
+                    <div class="tecnologia-icon">🚀</div>
+                    <h3>Propulsión Híbrida</h3>
+                    <p>Sistemas de propulsión eficientes para maniobras orbitales y transferencia.</p>
+                    <div class="tecnologia-tags"><span>Isp 320s</span><span>Verde</span><span>Reutilizable</span></div>
+                </div>
+                <div class="tecnologia-card">
+                    <div class="tecnologia-icon">🛸</div>
+                    <h3>Navegación Autónoma</h3>
+                    <p>Sistemas de guiado y control para maniobras de precisión y acoplamiento.</p>
+                    <div class="tecnologia-tags"><span>Precisión cm</span><span>Autónomo</span><span>IA</span></div>
+                </div>
+                <div class="tecnologia-card">
+                    <div class="tecnologia-icon">🔒</div>
+                    <h3>Ciberseguridad Espacial</h3>
+                    <p>Protección de comunicaciones y datos contra amenazas cibernéticas.</p>
+                    <div class="tecnologia-tags"><span>AES-256</span><span>Quantum-ready</span><span>Anti-jamming</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección: Lanzamientos Próximos -->
+    <section class="lanzamientos-section">
+        <div class="container">
+            <div class="section-badge">PRÓXIMOS LANZAMIENTOS</div>
+            <h2 class="section-title">Calendario <span class="space-text">Espacial</span></h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">15/05/2026</div>
+                    <div class="timeline-content">
+                        <h4>AVI-SAT 1</h4>
+                        <p>Lanzamiento desde el Centro Espacial de la CONNECTION CITY</p>
+                        <span class="timeline-status">Confirmado</span>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">20/10/2026</div>
+                    <div class="timeline-content">
+                        <h4>Misión AETHER</h4>
+                        <p>Estudio de la termosfera y la ionosfera terrestre</p>
+                        <span class="timeline-status">En desarrollo</span>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">15/03/2027</div>
+                    <div class="timeline-content">
+                        <h4>Lunar Pathfinder</h4>
+                        <p>Misión de reconocimiento para futura colonización</p>
+                        <span class="timeline-status">Planificado</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección: Alianzas Estratégicas -->
+    <section class="alianzas-section">
+        <div class="container">
+            <div class="section-badge">ALIANZAS ESTRATÉGICAS</div>
+            <h2 class="section-title">Socios <span class="space-text">Globales</span></h2>
+            <div class="alianzas-grid">
+                <div class="alianza-card">
+                    <div class="alianza-icon">🚀</div>
+                    <h3>Agencia Espacial Latina</h3>
+                    <p>Colaboración en lanzamientos y desarrollo tecnológico</p>
+                </div>
+                <div class="alianza-card">
+                    <div class="alianza-icon">🛰️</div>
+                    <h3>Satellite Hub International</h3>
+                    <p>Red de comunicaciones y seguimiento orbital</p>
+                </div>
+                <div class="alianza-card">
+                    <div class="alianza-icon">🔬</div>
+                    <h3>Space Research Institute</h3>
+                    <p>Investigación conjunta en ciencia espacial</p>
+                </div>
+                <div class="alianza-card">
+                    <div class="alianza-icon">🌍</div>
+                    <h3>Global Earth Monitor</h3>
+                    <p>Monitoreo climático desde el espacio</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-space">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>CONNECTION <span class="space-text">SPACE</span></h3>
+                    <p>Explorando nuevos horizontes, conectando el futuro</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Explorar</h4>
+                    <a href="#misiones">Misiones</a>
+                    <a href="#tecnologia">Tecnología</a>
+                    <a href="#nova">NOVA</a>
+                </div>
+                <div class="footer-meta">
+                    <p>IA Líder: NOVA | CONNECTION SPACE © 2026</p>
+                    <p class="small">Tecnología aeroespacial para un futuro sin límites</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="Space.js"></script>
+</body>
+</html>

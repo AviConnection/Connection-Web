@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="CONNECTION LABS - El origen. La tecnología pura. Motor de Investigación y Desarrollo con IA líder ALEX. Ingeniería de software, inteligencia artificial y sistemas avanzados.">
+    <meta name="theme-color" content="#00e676">
+    <title>CONNECTION LABS | Investigación y Código — IA Líder: ALEX</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="labs.css">
+</head>
+<body>
+
+    <!-- Preloader -->
+    <div class="preloader-labs" id="preloaderLabs">
+        <div class="loader-spinner"></div>
+        <div class="loader-text">⟡ ALEX INIT ⟡</div>
+        <div class="loader-text" style="font-size:0.7rem;">Iniciando Kernel Principal</div>
+    </div>
+
+    <canvas id="matrixCanvas"></canvas>
+
+    <!-- Dynamic Island Navigation (sin animación en logo) -->
+    <nav id="dynamic-island" class="dynamic-island">
+        <div class="island-content">
+            <a href="#" class="island-logo-section">
+                <div class="island-logo-wrapper">
+                    <img src="../imágenes y logo/labs logo.png" alt="LABS Logo" class="island-logo-img" onerror="this.src='https://via.placeholder.com/45/00e676/000000?text=L'">
+                </div>
+                <span class="island-text">CONNECTION <span class="labs-text-neon">LABS</span></span>
+            </a>
+            <ul class="island-links">
+                <li><a href="../index.html" class="nav-link">AVI</a></li>
+                <li><a href="#" class="nav-link active-labs">LABS</a></li>
+                <li><a href="../Píxel web/pixel.html" class="nav-link">PÍXEL</a></li>
+                <li><a href="../Explorer web/explorer.html" class="nav-link">EXPLORER</a></li>
+                <li><a href="../Life web/life.html" class="nav-link">LIFE</a></li>
+                <li><a href="../Link web/Link.html" class="nav-link">LINK</a></li>
+                <li><a href="../Think web/Think.html" class="nav-link">THINK</a></li>   
+            </ul>
+            <button class="menu-toggle-labs" aria-label="Abrir menú">☰</button>
+        </div>
+    </nav>
+
+    <!-- Header Command Center -->
+    <header class="labs-command-center">
+        <aside class="hud-panel hud-left">
+            <div class="raw-logo-wrapper">
+                <img src="../imágenes y logo/logo.png" alt="Labs Logo" class="labs-logo-raw" onerror="this.src='https://via.placeholder.com/120/00e676/000000?text=LABS'">
+                <div class="tech-underline"></div>
+                <div class="tech-underline-small"></div>
+            </div>
+            <div class="hud-data-group">
+                <p class="data-title">// SYS.DIAGNOSTICS</p>
+                <div class="data-row"><span>IA LÍDER:</span> <span class="neon-text-labs">ALEX</span></div>
+                <div class="data-row"><span>CORE_TEMP:</span> <span id="core-temp">34</span>°C</div>
+                <div class="data-row"><span>UPLINK:</span> <span>100 Gbps</span></div>
+                <div class="data-row"><span>STATUS:</span> <span class="status-badge-labs">ONLINE</span></div>
+            </div>
+        </aside>
+
+        <main class="hud-panel hud-center">
+            <div class="center-top-bar">
+                <span class="status-pulse-square"></span>
+                <span>MAINFRAME_v2.0 // ACCESO AUTORIZADO</span>
+                <span class="grid-lines">||||||||||||</span>
+            </div>
+            <div class="center-content">
+                <h1 class="labs-main-title">CONNECTION <span class="neon-text-labs">LABS</span></h1>
+                <h3 class="labs-sub-title">EL ORIGEN. LA TECNOLOGÍA PURA.</h3>
+                <div class="terminal-feed-raw">
+                    <p><span class="prompt">C:\AVI\LABS></span> Inicializando entorno de I+D...</p>
+                    <p><span class="prompt">C:\AVI\LABS></span> <span id="typewriter_v3"></span><span class="cursor">_</span></p>
+                </div>
+                <div class="alex-status">
+                    <div class="alex-avatar">
+                        <span class="alex-icon">🧠</span>
+                        <span class="alex-name">IA LÍDER: ALEX</span>
+                    </div>
+                    <div class="alex-metrics">
+                        <span>NEURAL NET: ACTIVE</span>
+                        <span>LEARNING RATE: 0.98</span>
+                    </div>
+                </div>
+            </div>
+            <div class="center-bottom-bar">
+                <span>[ PROTOCOLOS DE INVESTIGACIÓN ACTIVOS ]</span>
+                <span class="timestamp" id="liveTimestamp">00:00:00</span>
+            </div>
+        </main>
+
+        <aside class="hud-panel hud-right">
+            <div class="hud-data-group">
+                <p class="data-title">// VECTORES_ACTIVOS</p>
+                <ul class="vector-list">
+                    <li><span class="bracket">[</span> <span class="vector-name">SOFTWARE_ENG</span> <span class="bracket">]</span></li>
+                    <li><span class="bracket">[</span> <span class="vector-name">DATA_&_AI</span> <span class="bracket">]</span></li>
+                    <li><span class="bracket">[</span> <span class="vector-name">HARDWARE_SYS</span> <span class="bracket">]</span></li>
+                    <li><span class="bracket">[</span> <span class="vector-name">CYBERSECURITY</span> <span class="bracket">]</span></li>
+                </ul>
+            </div>
+            <div class="mini-chart">
+                <div class="bar" style="height: 60%"></div>
+                <div class="bar" style="height: 90%"></div>
+                <div class="bar" style="height: 40%"></div>
+                <div class="bar" style="height: 100%"></div>
+                <div class="bar" style="height: 70%"></div>
+            </div>
+            <div class="network-stats">
+                <p class="data-title">// NETWORK_STATS</p>
+                <div class="data-row"><span>PACKETS:</span> <span id="packet-count">12.4K</span></div>
+                <div class="data-row"><span>ERRORS:</span> <span class="success">0</span></div>
+            </div>
+        </aside>
+    </header>
+
+    <!-- Logo Principal con Slogan -->
+    <div class="main-logo-section">
+        <div class="main-logo">
+            <h1>CONNECTION LABS</h1>
+            <div class="slogan">Conectando ideas, creando realidades</div>
+        </div>
+    </div>
+
+    <!-- SECCIÓN: LYANOS - SISTEMA OPERATIVO PROPIO -->
+    <section class="lyanos-section">
+        <div class="container">
+            <div class="section-badge">SISTEMA OPERATIVO</div>
+            <h2 class="section-title"><span class="lyanos-text">LYAN</span> OS</h2>
+            <p class="section-description">Link Your Artificial Network - El alma digital del hardware AVI CONNECTION</p>
+
+            <div class="lyanos-grid">
+                <div class="lyanos-card">
+                    <div class="lyanos-icon">⚡</div>
+                    <h3>Bajo Consumo</h3>
+                    <p>Optimizado para microcontroladores con eficiencia energética extrema, ideal para dispositivos vestibles y sensores IoT. Autonomía extendida de hasta 6 meses por carga.</p>
+                </div>
+                <div class="lyanos-card">
+                    <div class="lyanos-icon">🛡️</div>
+                    <h3>Alta Seguridad</h3>
+                    <p>Cifrado de extremo a extremo, almacenamiento de llaves criptográficas en hardware y protección contra vulnerabilidades físicas. Ideal para infraestructura crítica.</p>
+                </div>
+                <div class="lyanos-card">
+                    <div class="lyanos-icon">🧠</div>
+                    <h3>Edge AI Ready</h3>
+                    <p>Capacidad de ejecutar inteligencia artificial directamente en el dispositivo sin depender de la nube. Procesamiento de datos en tiempo real con latencia cero.</p>
+                </div>
+                <div class="lyanos-card">
+                    <div class="lyanos-icon">🔗</div>
+                    <h3>Zero Trust Architecture</h3>
+                    <p>Autenticación de grado militar, identidad unificada inexpugnable y comunicación en malla (LoRa Mesh Network) para entornos aislados o sin cobertura celular.</p>
+                </div>
+            </div>
+
+            <div class="lyanos-features">
+                <h3>Especificaciones Técnicas</h3>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <span class="feature-name">Kernel</span>
+                        <span class="feature-value">LYAN Microkernel v3.2</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-name">Lenguaje Base</span>
+                        <span class="feature-value">Rust / C++17 / Assembly</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-name">Arquitecturas</span>
+                        <span class="feature-value">ARM Cortex-M, RISC-V, ESP32</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-name">Memoria RAM</span>
+                        <span class="feature-value">Desde 64KB hasta 16GB</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-name">Tiempo de Boot</span>
+                        <span class="feature-value">&lt; 200ms</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-name">Consumo Energía</span>
+                        <span class="feature-value">0.5mW - 5W</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lyanos-highlight">
+                <div class="highlight-icon">🔐</div>
+                <div class="highlight-content">
+                    <h4>Protocolo Fénix - Supervivencia LoRa</h4>
+                    <p>Capacidad de emitir señales de auxilio encriptadas de largo alcance, operando de forma totalmente independiente a redes celulares tradicionales. Creación de redes de telecomunicaciones descentralizadas en zonas remotas mediante Modo Enjambre (LoRa Mesh Network).</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Telemetry Section -->
+    <section class="telemetry-section">
+        <div class="container">
+            <div class="dashboard-grid">
+                <div class="dash-panel">
+                    <div class="dash-header">SYS.CORE.USAGE</div>
+                    <div class="dash-body">
+                        <div class="progress-ring">
+                            <svg class="circle-svg" viewBox="0 0 100 100">
+                                <circle class="circle-bg" cx="50" cy="50" r="40"></circle>
+                                <circle class="circle-progress" cx="50" cy="50" r="40" id="cpu-ring"></circle>
+                            </svg>
+                            <div class="ring-text"><span id="cpu-val">42</span>%</div>
+                        </div>
+                    </div>
+                    <div class="dash-footer">Servidores Cloud: ONLINE</div>
+                </div>
+                <div class="dash-panel">
+                    <div class="dash-header">NEURAL.NET.ALEX</div>
+                    <div class="dash-body text-data">
+                        <p>Modelos activos: <span class="neon-text-labs">1,024</span></p>
+                        <p>Latencia: <span class="neon-text-labs" id="ping-val">12</span> ms</p>
+                        <p>Aprendizaje Profundo: <span class="neon-text-labs">EJECUTANDO</span></p>
+                        <p>Versión: <span class="neon-text-labs">v.3.2.7</span></p>
+                    </div>
+                    <div class="dash-footer">Estado: ÓPTIMO</div>
+                </div>
+                <div class="dash-panel">
+                    <div class="dash-header">LIVE.SERVER.LOGS</div>
+                    <div class="dash-body live-logs" id="server-logs">
+                        <p>> Conexión cifrada establecida...</p>
+                        <p>> Analizando paquetes de datos...</p>
+                        <p>> Handshake completado</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Interface -->
+    <section class="services-interface">
+        <div class="container">
+            <h2 class="glitch-title" data-text="PROTOCOLOS DE DESARROLLO">PROTOCOLOS DE DESARROLLO</h2>
+            <div class="interface-grid">
+                <div class="command-list">
+                    <button class="cmd-btn active" data-protocol="software">[01] INGENIERÍA_SOFTWARE</button>
+                    <button class="cmd-btn" data-protocol="ai">[02] INTELIGENCIA_ARTIFICIAL</button>
+                    <button class="cmd-btn" data-protocol="hardware">[03] HARDWARE_Y_SISTEMAS</button>
+                    <button class="cmd-btn" data-protocol="cyber">[04] REDES_Y_CIBERSEGURIDAD</button>
+                    <button class="cmd-btn" data-protocol="quantum">[05] COMP_CUÁNTICA_Y_AR</button>
+                </div>
+                <div class="output-screen">
+                    <div class="output-header">
+                        <span class="status-dot-labs"></span> 
+                        <span id="output-title">/PROTOCOLOS/SOFTWARE.EXE</span>
+                        <span class="output-cursor">_</span>
+                    </div>
+                    <div class="output-content" id="output-data">
+                        <h3>Ingeniería y Desarrollo de Software</h3>
+                        <p>Arquitecturas robustas y escalables. Cubrimos el ciclo de vida completo del desarrollo con metodologías ágiles y entrega continua.</p>
+                        <ul class="tech-list">
+                            <li>> Front-end (React, Next.js, Vue, Angular)</li>
+                            <li>> Back-end (Node.js, Python, Java, Go)</li>
+                            <li>> Mobile Apps (Kotlin, Swift, Flutter)</li>
+                            <li>> Motores de Videojuegos (Unity, Unreal Engine)</li>
+                            <li>> DevOps & Cloud (AWS, Azure, GCP)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Mejorado -->
+    <footer class="labs-footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>CONNECTION <span class="labs-text-neon">LABS</span></h3>
+                <p>El origen. La tecnología pura.</p>
+                <div class="footer-contact">
+                    <p>📍 CONNECTION CITY, Lab Labs</p>
+                    <p>📧 labs@aviconnection.com</p>
+                    <p>📱 +51 987 654 321</p>
+                </div>
+            </div>
+            <div class="footer-links">
+                <div class="footer-links-column">
+                    <h4>EXPLORAR</h4>
+                    <a href="#">Protocolos</a>
+                    <a href="#lyanos">LYAN OS</a>
+                    <a href="#">Telemetría</a>
+                </div>
+                <div class="footer-links-column">
+                    <h4>PILARES</h4>
+                    <a href="../Píxel web/pixel.html">Connection PÍXEL</a>
+                    <a href="../Explorer web/explorer.html">Connection EXPLORER</a>
+                    <a href="../Life web/life.html">Connection LIFE</a>
+                    <a href="../Link web/Link.html">Connection LINK</a>
+                </div>
+            </div>
+            <div class="footer-social">
+                <h4>CONECTA</h4>
+                <div class="social-icons">
+                    <a href="#" class="social-icon">💻</a>
+                    <a href="#" class="social-icon">🐙</a>
+                    <a href="#" class="social-icon">📘</a>
+                    <a href="#" class="social-icon">🔧</a>
+                </div>
+                <div class="footer-newsletter">
+                    <h4>NEWSLETTER</h4>
+                    <input type="email" placeholder="Tu email">
+                    <button>Suscribirse</button>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>CONEXIÓN SEGURA [AES-256-GCM] | AVI CONNECTION LABS © 2026</p>
+            <p class="footer-small">IA Central: AVI | Subgerente: ALEX | Protocolo de Investigación Activo</p>
+        </div>
+    </footer>
+
+    <script src="labs.js"></script>
+</body>
+</html>

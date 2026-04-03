@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="CONNECTION PÍXEL - Dirección de arte y diseño visual de alto impacto. IA Líder: VINSHI. Branding, UI/UX, Motion Graphics, Ilustración Digital y Estética Avanzada.">
+    <meta name="theme-color" content="#ff0055">
+    <title>CONNECTION PÍXEL | Arte y Diseño Visual — IA Líder: VINSHI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Montserrat:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="pixel.css">
+</head>
+<body>
+
+    <!-- Preloader -->
+    <div class="preloader-pixel" id="preloaderPixel">
+        <div class="loader-spinner"></div>
+        <div class="loader-text">⟡ VINSHI INIT ⟡</div>
+        <div class="loader-text" style="font-size:0.7rem;">Cargando Matriz Visual</div>
+    </div>
+
+    <!-- Dynamic Island Navigation -->
+    <nav id="dynamicIsland" class="dynamic-island">
+        <div class="island-content">
+            <a href="pixel.html" class="island-logo-section">
+                <div class="island-logo-wrapper">
+                    <img src="../imágenes y logo/pixel logo.png" alt="Píxel Logo" class="island-logo-img" onerror="this.src='https://via.placeholder.com/45/ff0055/ffffff?text=PX'">
+                </div>
+                <span class="island-text">CONNECTION <span class="rainbow-text">PÍXEL</span></span>
+            </a>
+            <ul class="island-links">
+                <li><a href="../index.html" class="nav-link">AVI</a></li>
+                <li><a href="../Labs web/labs.html" class="nav-link">Labs</a></li>
+                <li><a href="#" class="nav-link active-rainbow">Píxel</a></li>
+                <li><a href="../Explorer web/explorer.html" class="nav-link">Explorer</a></li>
+                <li><a href="../Life web/life.html" class="nav-link">Life</a></li>
+                <li><a href="../Link web/Link.html" class="nav-link">Link</a></li>
+                <li><a href="../Think web/Think.html" class="nav-link">Think</a></li>
+            </ul>
+            <button class="menu-toggle-pixel" aria-label="Abrir menú">☰</button>
+        </div>
+    </nav>
+
+    <!-- Header Carrusel -->
+    <header class="pixel-carousel-hero">
+        <div class="carousel-overlay"></div>
+        <div class="particle-canvas" id="particleCanvas"></div>
+        <div class="carousel-stage" id="carouselStage">
+            <div class="carousel-slide active" data-slide="0" data-color="#ff0055">
+                <div class="slide-bg-art" style="background-image: url('https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=2000&auto=format&fit=crop');"></div>
+                <div class="slide-gradient-overlay"></div>
+                <div class="slide-content">
+                    <div class="vinshi-badge">
+                        <span class="vinshi-icon">🎨</span>
+                        <span class="vinshi-comm hologram-text">SYS.COMM // VINSHI v.3.1</span>
+                        <span class="status-dot-pixel"></span>
+                    </div>
+                    <h1 class="slide-title"><span class="title-line">BRANDING &</span><span class="title-line rainbow-text">IDENTIDAD</span></h1>
+                    <p class="slide-desc">Esculpiendo universos visuales que definen la esencia corporativa con inteligencia estética.</p>
+                    <div class="cta-group">
+                        <a href="Branding_Identidad.html" class="btn-rainbow btn-primary"><span>Descubrir Manifiesto</span><svg class="btn-icon" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                        <a href="Branding_Identidad.html#portfolio" class="btn-outline-pixel"><span>Ver Portafolio</span></a>
+                    </div>
+                    <div class="slide-meta">
+                        <div class="meta-item"><span class="meta-label">IA LÍDER</span><span class="meta-value neon-magenta">VINSHI</span></div>
+                        <div class="meta-item"><span class="meta-label">ESPECIALIDAD</span><span class="meta-value">Branding Estratégico</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-slide" data-slide="1" data-color="#0088ff">
+                <div class="slide-bg-art" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2000&auto=format&fit=crop');"></div>
+                <div class="slide-gradient-overlay"></div>
+                <div class="slide-content">
+                    <div class="vinshi-badge"><span class="vinshi-icon">💻</span><span class="vinshi-comm hologram-text">SYS.COMM // VINSHI v.3.1</span><span class="status-dot-pixel"></span></div>
+                    <h1 class="slide-title"><span class="title-line">INTERFACES &</span><span class="title-line rainbow-text">UI/UX</span></h1>
+                    <p class="slide-desc">Diseñando flujos conceptuales para LYAN OS y la suite de CONNECTION LABS con precisión molecular.</p>
+                    <div class="cta-group"><a href="UX_Design.html" class="btn-rainbow btn-primary"><span>Prototipar Futuro</span><svg class="btn-icon" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a><a href="UX_Design.html#portfolio" class="btn-outline-pixel"><span>Explorar Cases</span></a></div>
+                    <div class="slide-meta"><div class="meta-item"><span class="meta-label">IA LÍDER</span><span class="meta-value neon-blue">VINSHI</span></div><div class="meta-item"><span class="meta-label">ESPECIALIDAD</span><span class="meta-value">UI/UX + Interacción</span></div></div>
+                </div>
+            </div>
+            <div class="carousel-slide" data-slide="2" data-color="#00ff55">
+                <div class="slide-bg-art" style="background-image: url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=2000&auto=format&fit=crop');"></div>
+                <div class="slide-gradient-overlay"></div>
+                <div class="slide-content">
+                    <div class="vinshi-badge"><span class="vinshi-icon">✨</span><span class="vinshi-comm hologram-text">SYS.COMM // VINSHI v.3.1</span><span class="status-dot-pixel"></span></div>
+                    <h1 class="slide-title"><span class="title-line">ESTÉTICA EN</span><span class="title-line rainbow-text">MOVIMIENTO</span></h1>
+                    <p class="slide-desc">Conceptualización y ejecución multimedia de alto impacto visual con narrativa inmersiva.</p>
+                    <div class="cta-group"><a href="Motion_Graphics.html" class="btn-rainbow btn-primary"><span>Renderizar Arte</span><svg class="btn-icon" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a><a href="Motion_Graphics.html#showcase" class="btn-outline-pixel"><span>Ver Gallery</span></a></div>
+                    <div class="slide-meta"><div class="meta-item"><span class="meta-label">IA LÍDER</span><span class="meta-value neon-green">VINSHI</span></div><div class="meta-item"><span class="meta-label">ESPECIALIDAD</span><span class="meta-value">Motion + 3D</span></div></div>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-nav"><button class="nav-btn prev" id="prevSlide"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" fill="currentColor"/></svg></button><div class="nav-indicator"><span class="current-slide-num">01</span><span class="slide-separator">/</span><span class="total-slides">03</span></div><button class="nav-btn next" id="nextSlide"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" fill="currentColor"/></svg></button></div>
+        <div class="carousel-progress-wrapper"><div class="carousel-progress-bar" id="carousel-progress"></div></div>
+        <div class="carousel-dots"><button class="dot-btn active" data-dot="0"><span class="dot-label">Branding</span><span class="dot-indicator"></span></button><button class="dot-btn" data-dot="1"><span class="dot-label">UI/UX</span><span class="dot-indicator"></span></button><button class="dot-btn" data-dot="2"><span class="dot-label">Motion</span><span class="dot-indicator"></span></button></div>
+        <div class="scroll-hint"><span class="scroll-text">SCROLL</span><div class="scroll-line"></div></div>
+    </header>
+
+    <!-- Logo Principal -->
+    <div class="main-logo-section">
+        <div class="main-logo">
+            <h1>CONNECTION PÍXEL</h1>
+            <div class="slogan">Conectando ideas, creando realidades</div>
+        </div>
+    </div>
+
+    <!-- MISIÓN Y VISIÓN -->
+    <section class="mv-section-pixel">
+        <div class="mv-grid-pixel">
+            <div class="mv-card-pixel">
+                <div class="mv-icon-pixel">🎯</div>
+                <h3>MISIÓN</h3>
+                <p>Crear <span class="mv-highlight-pixel">comunicaciones visuales de alto impacto</span> que trasciendan el tiempo, fusionando inteligencia estética con tecnología de vanguardia. Nos comprometemos a conceptualizar y ejecutar diseños que no solo comuniquen, sino que <span class="mv-highlight-pixel">creen experiencias memorables</span>, elevando la identidad de cada marca con la precisión artesanal de VINSHI y la visión estratégica de AVI CONNECTION.</p>
+            </div>
+            <div class="mv-card-pixel">
+                <div class="mv-icon-pixel">👁️</div>
+                <h3>VISIÓN</h3>
+                <p>Ser el <span class="mv-highlight-pixel">referente global en dirección de arte y diseño visual</span>, reconocidos por nuestra capacidad de transformar ideas en universos estéticos que conectan emocionalmente con las audiencias. Aspiramos a liderar la convergencia entre arte, tecnología e inteligencia artificial, estableciendo nuevos estándares de excelencia creativa en el ecosistema AVI CONNECTION y más allá.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICIOS CREATIVOS -->
+    <section id="servicios" class="section servicios-section">
+        <div class="container">
+            <h2 class="section-title">SERVICIOS <span class="rainbow-text">CREATIVOS</span></h2>
+            <p class="section-description">Soluciones visuales integrales impulsadas por inteligencia estética y dirección creativa de VINSHI.</p>
+            <div class="servicios-grid">
+                <a href="Branding_Identidad.html" class="servicio-card-link">
+                    <div class="servicio-card">
+                        <div class="servicio-icon">🎯</div>
+                        <h3>Branding & Identidad</h3>
+                        <p>Construcción de marcas memorables. Logotipos, paletas cromáticas, tipografía y sistemas visuales cohesivos.</p>
+                        <div class="servicio-tags"><span>Estrategia</span><span>Naming</span><span>Brand Book</span></div>
+                        <span class="servicio-btn-more">Explorar →</span>
+                    </div>
+                </a>
+                <a href="UX_Design.html" class="servicio-card-link">
+                    <div class="servicio-card">
+                        <div class="servicio-icon">📱</div>
+                        <h3>UI/UX Design</h3>
+                        <p>Interfaces intuitivas y experiencias de usuario fluidas. Diseño centrado en el usuario y accesibilidad.</p>
+                        <div class="servicio-tags"><span>Wireframes</span><span>Prototipado</span><span>Testing</span></div>
+                        <span class="servicio-btn-more">Explorar →</span>
+                    </div>
+                </a>
+                <a href="Motion_Graphics.html" class="servicio-card-link">
+                    <div class="servicio-card">
+                        <div class="servicio-icon">🎬</div>
+                        <h3>Motion Graphics</h3>
+                        <p>Animaciones 2D/3D, gráficos en movimiento y storytelling visual para campañas de alto impacto.</p>
+                        <div class="servicio-tags"><span>After Effects</span><span>Cinema 4D</span><span>Blender</span></div>
+                        <span class="servicio-btn-more">Explorar →</span>
+                    </div>
+                </a>
+                <a href="Ilustracion_Digital.html" class="servicio-card-link">
+                    <div class="servicio-card">
+                        <div class="servicio-icon">🎨</div>
+                        <h3>Ilustración Digital</h3>
+                        <p>Arte conceptual, ilustraciones personalizadas y diseño de personajes para proyectos únicos.</p>
+                        <div class="servicio-tags"><span>Vectorial</span><span>Pixel Art</span><span>Realismo</span></div>
+                        <span class="servicio-btn-more">Explorar →</span>
+                    </div>
+                </a>
+                <a href="Fotografia_Post.html" class="servicio-card-link">
+                    <div class="servicio-card">
+                        <div class="servicio-icon">📸</div>
+                        <h3>Fotografía & Post</h3>
+                        <p>Producción fotográfica profesional, retoque digital y dirección de arte para campañas.</p>
+                        <div class="servicio-tags"><span>Producto</span><span>Moda</span><span>Corporate</span></div>
+                        <span class="servicio-btn-more">Explorar →</span>
+                    </div>
+                </a>
+                <a href="Diseño_Web_Creativo.html" class="servicio-card-link">
+                    <div class="servicio-card">
+                        <div class="servicio-icon">🌐</div>
+                        <h3>Diseño Web Creativo</h3>
+                        <p>Landing pages, portafolios digitales y experiencias web inmersivas con identidad única.</p>
+                        <div class="servicio-tags"><span>Webflow</span><span>Figma</span><span>Animaciones</span></div>
+                        <span class="servicio-btn-more">Explorar →</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- PORTAFOLIO DESTACADO CON EFECTO LÍQUIDO LIGERO -->
+    <section id="portfolio" class="section portfolio-section">
+        <div class="container">
+            <h2 class="section-title">PORTAFOLIO <span class="rainbow-text">DESTACADO</span></h2>
+            <p class="section-description">Proyectos recientes que demuestran la excelencia creativa de CONNECTION PÍXEL.</p>
+            <div class="portfolio-filters">
+                <button class="filter-btn active" data-filter="all">Todos</button>
+                <button class="filter-btn" data-filter="branding">Branding</button>
+                <button class="filter-btn" data-filter="uiux">UI/UX</button>
+                <button class="filter-btn" data-filter="motion">Motion</button>
+                <button class="filter-btn" data-filter="illustration">Ilustración</button>
+            </div>
+            <div class="portfolio-grid" id="portfolioGrid">
+                <div class="portfolio-item" data-category="branding">
+                    <div class="portfolio-image" data-image="https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=1000&auto=format">
+                        <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=1000&auto=format" alt="NovaTech Identity">
+                        <canvas class="liquid-canvas"></canvas>
+                    </div>
+                    <div class="portfolio-overlay">
+                        <h4>NovaTech Identity</h4>
+                        <p>Branding completo para startup tecnológica</p>
+                        <span class="portfolio-tag">Branding</span>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="uiux">
+                    <div class="portfolio-image" data-image="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?q=80&w=1000&auto=format">
+                        <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?q=80&w=1000&auto=format" alt="LYAN OS Interface">
+                        <canvas class="liquid-canvas"></canvas>
+                    </div>
+                    <div class="portfolio-overlay">
+                        <h4>LYAN OS Interface</h4>
+                        <p>Diseño de sistema operativo conceptual</p>
+                        <span class="portfolio-tag">UI/UX</span>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="motion">
+                    <div class="portfolio-image" data-image="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1000&auto=format">
+                        <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1000&auto=format" alt="Kinetic Energy">
+                        <canvas class="liquid-canvas"></canvas>
+                    </div>
+                    <div class="portfolio-overlay">
+                        <h4>Kinetic Energy</h4>
+                        <p>Animación 3D para campaña global</p>
+                        <span class="portfolio-tag">Motion</span>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="illustration">
+                    <div class="portfolio-image" data-image="https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?q=80&w=1000&auto=format">
+                        <img src="https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?q=80&w=1000&auto=format" alt="Dreamscapes">
+                        <canvas class="liquid-canvas"></canvas>
+                    </div>
+                    <div class="portfolio-overlay">
+                        <h4>Dreamscapes</h4>
+                        <p>Serie de ilustraciones conceptuales</p>
+                        <span class="portfolio-tag">Ilustración</span>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="branding">
+                    <div class="portfolio-image" data-image="https://images.unsplash.com/photo-1542744095-291d1f67b221?q=80&w=1000&auto=format">
+                        <img src="https://images.unsplash.com/photo-1542744095-291d1f67b221?q=80&w=1000&auto=format" alt="EcoHarmony">
+                        <canvas class="liquid-canvas"></canvas>
+                    </div>
+                    <div class="portfolio-overlay">
+                        <h4>EcoHarmony</h4>
+                        <p>Identidad visual para marca sostenible</p>
+                        <span class="portfolio-tag">Branding</span>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="uiux">
+                    <div class="portfolio-image" data-image="https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=1000&auto=format">
+                        <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=1000&auto=format" alt="FinanceFlow">
+                        <canvas class="liquid-canvas"></canvas>
+                    </div>
+                    <div class="portfolio-overlay">
+                        <h4>FinanceFlow</h4>
+                        <p>App de finanzas personales</p>
+                        <span class="portfolio-tag">UI/UX</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CASOS DE ÉXITO -->
+    <section class="section casos-section">
+        <div class="container">
+            <h2 class="section-title">CASOS DE <span class="rainbow-text">ÉXITO</span></h2>
+            <p class="section-description">Historias de transformación visual que han impulsado marcas al siguiente nivel.</p>
+            <div class="casos-grid">
+                <div class="caso-card"><div class="caso-num">01</div><h3>TechCorp Rebranding</h3><p>+245% en reconocimiento de marca después de la renovación integral de identidad visual.</p><div class="caso-stats"><span>📈 +245%</span><span>🎯 98% aprobación</span></div></div>
+                <div class="caso-card"><div class="caso-num">02</div><h3>StartUp Nexus UI</h3><p>Rediseño de interfaz que aumentó la retención de usuarios en un 187% en 3 meses.</p><div class="caso-stats"><span>📱 +187%</span><span>⏱️ -42% tiempo</span></div></div>
+                <div class="caso-card"><div class="caso-num">03</div><h3>Campaña Aurora</h3><p>Campaña de motion graphics con 2.3M de visualizaciones en primera semana.</p><div class="caso-stats"><span>🎬 2.3M views</span><span>🔥 Viral x3</span></div></div>
+                <div class="caso-card"><div class="caso-num">04</div><h3>Artista Digital</h3><p>Lanzamiento de colección NFT con ventas superiores a $450K en 24 horas.</p><div class="caso-stats"><span>💰 $450K</span><span>🖼️ 100% sold</span></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROCESO CREATIVO -->
+    <section class="section proceso-section">
+        <div class="container">
+            <h2 class="section-title">PROCESO <span class="rainbow-text">CREATIVO</span></h2>
+            <p class="section-description">Metodología VINSHI: 4 fases para resultados excepcionales.</p>
+            <div class="proceso-grid">
+                <div class="proceso-paso"><div class="proceso-icon">🔍</div><h3>Descubrimiento</h3><p>Análisis de objetivos, audiencia y competencia.</p><div class="proceso-line"></div></div>
+                <div class="proceso-paso"><div class="proceso-icon">💡</div><h3>Ideación</h3><p>Conceptualización, moodboards y propuestas creativas.</p><div class="proceso-line"></div></div>
+                <div class="proceso-paso"><div class="proceso-icon">⚡</div><h3>Desarrollo</h3><p>Ejecución técnica con estándares de excelencia.</p><div class="proceso-line"></div></div>
+                <div class="proceso-paso"><div class="proceso-icon">🚀</div><h3>Lanzamiento</h3><p>Entrega final, acompañamiento y feedback.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CLIENTES -->
+    <section class="section clientes-section">
+        <div class="container">
+            <h2 class="section-title">CLIENTES & <span class="rainbow-text">COLABORADORES</span></h2>
+            <div class="clientes-grid">
+                <div class="cliente-item"><span>⚡</span><p>TechCorp Global</p></div>
+                <div class="cliente-item"><span>🎨</span><p>Nexus Studios</p></div>
+                <div class="cliente-item"><span>🌿</span><p>EcoHarmony</p></div>
+                <div class="cliente-item"><span>📱</span><p>StartUp Hub</p></div>
+                <div class="cliente-item"><span>🎬</span><p>Aurora Films</p></div>
+                <div class="cliente-item"><span>🖼️</span><p>ArtGallery 21</p></div>
+                <div class="cliente-item"><span>💎</span><p>Luxury Brands</p></div>
+                <div class="cliente-item"><span>🚀</span><p>Innovation Lab</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALES -->
+    <section class="section testimonios-section">
+        <div class="container">
+            <h2 class="section-title">TESTIMONIALES</h2>
+            <p class="section-description">Lo que nuestros clientes dicen sobre CONNECTION PÍXEL.</p>
+            <div class="testimonios-grid">
+                <div class="testimonio-card"><div class="testimonio-quote">"</div><p>La visión creativa de VINSHI transformó completamente nuestra identidad. Resultados extraordinarios.</p><div class="testimonio-author"><strong>María González</strong><span>CEO TechCorp</span></div></div>
+                <div class="testimonio-card"><div class="testimonio-quote">"</div><p>El equipo de PÍXEL superó todas nuestras expectativas. El diseño de nuestra app es impecable.</p><div class="testimonio-author"><strong>Carlos Méndez</strong><span>Director StartUp Hub</span></div></div>
+                <div class="testimonio-card"><div class="testimonio-quote">"</div><p>Trabajar con VINSHI es como tener un genio creativo disponible 24/7. Recomendado 100%.</p><div class="testimonio-author"><strong>Laura Fernández</strong><span>CMO Aurora</span></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto" class="section contacto-section">
+        <div class="container">
+            <div class="contacto-wrapper">
+                <div class="contacto-info">
+                    <h2 class="section-title text-left">¿LISTO PARA <span class="rainbow-text">CREAR?</span></h2>
+                    <p>Impulsa tu marca con diseño de alto impacto. VINSHI y su equipo están listos para materializar tu visión.</p>
+                    <div class="contacto-detalles">
+                        <div class="contacto-item">📧 <span>pixel@aviconnection.com</span></div>
+                        <div class="contacto-item">📱 <span>+51 987 654 321</span></div>
+                        <div class="contacto-item">📍 <span>CONNECTION CITY, Lab Píxel</span></div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">IG</a>
+                        <a href="#" class="social-link">BE</a>
+                        <a href="#" class="social-link">LI</a>
+                        <a href="#" class="social-link">DR</a>
+                    </div>
+                </div>
+                <div class="contacto-form">
+                    <form id="contactForm">
+                        <input type="text" placeholder="Nombre completo" required>
+                        <input type="email" placeholder="Email corporativo" required>
+                        <input type="text" placeholder="Teléfono">
+                        <select required>
+                            <option value="">Selecciona servicio</option>
+                            <option>Branding & Identidad</option>
+                            <option>UI/UX Design</option>
+                            <option>Motion Graphics</option>
+                            <option>Ilustración Digital</option>
+                            <option>Fotografía & Post</option>
+                            <option>Diseño Web Creativo</option>
+                        </select>
+                        <textarea rows="4" placeholder="Cuéntanos sobre tu proyecto..."></textarea>
+                        <button type="submit" class="btn-rainbow btn-full">Enviar Mensaje</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-pixel">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>CONNECTION <span class="rainbow-text">PÍXEL</span></h3>
+                    <p>Arte que perdura, diseño que impacta.</p>
+                    <div class="footer-contact">
+                        <p>📍 CONNECTION CITY, Lab Píxel</p>
+                        <p>📧 pixel@aviconnection.com</p>
+                        <p>📱 +51 987 654 321</p>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-links-column">
+                        <h4>EXPLORAR</h4>
+                        <a href="#servicios">Servicios</a>
+                        <a href="#portfolio">Portafolio</a>
+                        <a href="#contacto">Contacto</a>
+                    </div>
+                    <div class="footer-links-column">
+                        <h4>PILARES</h4>
+                        <a href="../Labs web/labs.html">Connection LABS</a>
+                        <a href="../Explorer web/explorer.html">Connection EXPLORER</a>
+                        <a href="../Life web/life.html">Connection LIFE</a>
+                        <a href="../Link web/Link.html">Connection LINK</a>
+                    </div>
+                </div>
+                <div class="footer-social">
+                    <h4>CONECTA</h4>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon">📘</a>
+                        <a href="#" class="social-icon">🐦</a>
+                        <a href="#" class="social-icon">📷</a>
+                        <a href="#" class="social-icon">🎨</a>
+                    </div>
+                    <div class="footer-newsletter">
+                        <h4>NEWSLETTER</h4>
+                        <input type="email" placeholder="Tu email">
+                        <button>Suscribirse</button>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>IA Líder: VINSHI | CONNECTION PÍXEL © 2026</p>
+                <p class="small">Dirección de Arte & Diseño Visual</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="transition.js"></script>
+    <script src="pixel.js"></script>
+    <script src="pixel-liquid.js"></script>
+</body>
+</html>

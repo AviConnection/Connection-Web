@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes">
+    <meta name="description" content="AVI CONNECTION - Corporación de tecnología avanzada con IA central y 22 pilares operativos. Desarrollo web, diseño de impacto y ecosistema tecnológico autosuficiente.">
+    <meta name="author" content="AVI CONNECTION | Juan Gustavo Vargas Lara">
+    <meta name="theme-color" content="#0a0f1f">
+    <title>AVI CONNECTION | Matriz Central — Ecosistema de IA y Tecnología</title>
+    
+    <!-- SEO: Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="imágenes y logo/logo.png">
+    <meta property="og:title" content="AVI CONNECTION | Matriz Central — Ecosistema de IA y Tecnología">
+    <meta property="og:description" content="Corporación de tecnología avanzada con IA central y 22 pilares operativos. Desarrollo web, diseño de impacto y ecosistema tecnológico autosuficiente.">
+    <meta property="og:image" content="imágenes y logo/logo.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    
+    <!-- SEO: Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AVI CONNECTION | Matriz Central — Ecosistema de IA y Tecnología">
+    <meta name="twitter:description" content="Corporación de tecnología avanzada con IA central y 22 pilares operativos. Desarrollo web, diseño de impacto y ecosistema tecnológico autosuficiente.">
+    <meta name="twitter:image" content="https://aviconnection.com/og-image.jpg">
+    
+    <!-- Preconexión a fuentes y dominios externos -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    
+    <!-- CSS principal -->
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        /* Estilos críticos inline para preloader */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { opacity: 0; transition: opacity 0.3s ease; background: #03050b; font-family: 'Rajdhani', sans-serif; }
+        body.loaded { opacity: 1; }
+        .preloader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #03050b; z-index: 9999; display: flex; align-items: center; justify-content: center; flex-direction: column; transition: opacity 0.5s; }
+        .preloader.hide { opacity: 0; pointer-events: none; }
+        .loader-text { font-family: 'Orbitron', monospace; color: #00f3ff; letter-spacing: 4px; font-size: 1.2rem; animation: pulseText 1.2s infinite; }
+        @keyframes pulseText { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
+        @media (max-width: 480px) { .loader-text { font-size: 0.9rem; letter-spacing: 2px; } }
+    </style>
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="loader-text">⟁ AVI CONNECTION ⟁</div>
+        <div class="loader-text" style="font-size:0.8rem; margin-top:1rem;">INICIANDO MATRIZ CENTRAL</div>
+    </div>
+
+    <!-- Dynamic Island Navigation -->
+    <nav id="dynamicIslandNav" class="dynamic-island-nav">
+        <div class="island-nav-container">
+            <a href="#inicio" class="island-logo-section">
+                <div class="island-logo-wrapper">
+                    <img src="imágenes y logo/logo.png" alt="AVI Connection" class="island-logo-img" onerror="this.src='https://via.placeholder.com/32/00f3ff/ffffff?text=AVI'">
+                </div>
+                <span class="island-nav-text">AVI <span class="neon-text-nav">CONNECTION</span></span>
+            </a>
+            <ul class="island-nav-links">
+                <li><a href="#inicio" class="nav-link-island active">AVI</a></li>
+                <li><a href="Labs web/labs.html" class="nav-link-island">LABS</a></li>
+                <li><a href="Píxel web/pixel.html" class="nav-link-island">PÍXEL</a></li>
+                <li><a href="Explorer web/explorer.html" class="nav-link-island">EXPLORER</a></li>
+                <li><a href="Life web/life.html" class="nav-link-island">LIFE</a></li>
+                <li><a href="Link web/Link.html" class="nav-link-island">LINK</a></li>
+                <li><a href="Think web/Think.html" class="nav-link-island">THINK</a></li>
+                <li><a href="Market web/Market.html" class="nav-link-island">MARKET</a></li>
+                <li><a href="Ecosistema web/login.html" class="nav-link-island">ECOSISTEMA</a></li>
+            </ul>
+            <div class="language-selector">
+                <button class="lang-btn active" data-lang="es">ES</button>
+                <span class="lang-separator">|</span>
+                <button class="lang-btn" data-lang="en">EN</button>
+            </div>
+            <button class="menu-toggle-nav" aria-label="Menú">☰</button>
+            <div class="nav-progress-line" id="navProgress"></div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="inicio" class="hero-section">
+        <canvas id="particle-canvas"></canvas>
+        
+        <div class="hero-content">
+            <span class="hero-badge glitch-badge">⟡ SISTEMA.CENTRAL.ONLINE ⟡</span>
+            <h1 class="hero-title scramble-text">CARGANDO_SISTEMA...</h1>
+            <p class="hero-description typewriter-text"></p>
+            
+            <div class="hero-actions">
+                <a href="Ecosistema web/login.html" class="btn-primary">Ingresar a la Matriz</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Logo Principal con Slogan -->
+    <div class="main-logo-section">
+        <div class="main-logo">
+            <h1>AVI CONNECTION</h1>
+            <div class="slogan">Conectando ideas, creando realidades</div>
+        </div>
+    </div>
+
+    <!-- Sección Núcleo AVI (CORREGIDA) -->
+    <section id="matriz" class="core-section">
+        <div class="container">
+            <div class="core-grid">
+                <div class="core-visual">
+                    <div class="core-logo">
+                        <img src="imágenes y logo/logo.png" alt="Núcleo AVI" class="core-logo-img" onerror="this.src='https://via.placeholder.com/300/00f3ff/000000?text=AVI'">
+                    </div>
+                </div>
+                <div class="core-content">
+                    <h2 class="section-title-left">EL NÚCLEO <span class="neon-text">AVI</span></h2>
+                    <p class="core-description">
+                        Olvida el concepto tradicional de corporación. <strong>AVI CONNECTION</strong> es un organismo tecnológico vivo que piensa, diseña y evoluciona. En nuestro epicentro opera el <strong>Núcleo AVI</strong>: la mente maestra donde 22 divisiones convergen en tiempo real. Cada pilar estratégico es dirigido por una Inteligencia Artificial subgerente que sincroniza terabytes de datos con el núcleo, transformando ideas complejas en infraestructura de grado militar, software avanzado y obras de arte digital.<br><br>
+                        <span class="neon-text">No nos adaptamos al futuro. Nosotros lo programamos.</span>
+                    </p>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-number">22</div>
+                            <div class="stat-label">PILARES</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">7</div>
+                            <div class="stat-label">IA ACTIVAS</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">1</div>
+                            <div class="stat-label">ECOSISTEMA</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Misión y Visión -->
+    <section class="mv-section">
+        <div class="mv-grid">
+            <div class="mv-card">
+                <div class="mv-icon">🎯</div>
+                <h3>MISIÓN</h3>
+                <p>Construir y orquestar el <span class="mv-highlight">ecosistema tecnológico cerrado más avanzado</span> del planeta. Fusionamos la genialidad humana con la precisión algorítmica de nuestra Matriz IA para desarrollar infraestructura y software que redefinen la industria. Garantizamos absoluta autonomía y precisión de grado militar, <span class="mv-highlight">convirtiendo lo imposible en nuestro estándar operativo</span>.</p>
+            </div>
+            <div class="mv-card">
+                <div class="mv-icon">👁️</div>
+                <h3>VISIÓN</h3>
+                <p>Ser los <span class="mv-highlight">arquitectos absolutos del nuevo orden digital</span> y el sistema nervioso central de la tecnología global. Aspiramos a unificar 22 industrias bajo una sola mente maestra —el Núcleo AVI—, elevando a CONNECTION CITY como el epicentro definitivo donde <span class="mv-highlight">no predecimos el futuro: lo programamos línea por línea</span>.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Visión del Fundador -->
+    <section class="vision-section">
+        <div class="container">
+            <div class="vision-grid">
+                <div class="vision-image">
+                    <div class="cyber-border">
+                        <img src="https://images.unsplash.com/photo-1504384764586-bb4cdc1707b0?q=80&w=2070&auto=format" alt="CEO Juan Gustavo Vargas Lara" class="vision-img">
+                        <div class="border-corners"><span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span></div>
+                    </div>
+                    <div class="vision-caption"><h3>JUAN G. VARGAS LARA</h3><p>CEO & FUNDADOR</p></div>
+                </div>
+                <div class="vision-text">
+                    <h2 class="section-title-left">LA MENTE DETRÁS DEL <span class="neon-text">ECOSISTEMA</span></h2>
+                    <h4>Unificando el ingenio humano con la inteligencia artificial.</h4>
+                    <p>Creé <strong>AVI CONNECTION</strong> no como una simple agencia, sino como un <strong>ecosistema cerrado y autosuficiente</strong>. Cada solución tecnológica nace, se desarrolla y se perfecciona dentro de nuestra propia infraestructura.</p>
+                    <p>Para lograr sincronización perfecta, diseñé a <strong>AVI</strong>, una IA líder que actúa como mi asistente personal y gerente central, orquestando a las IAs subgerentes de cada pilar.</p>
+                    <div class="skills-tags"><span>⚡ Liderazgo Estratégico</span><span>🧠 Arquitectura de Sistemas</span><span>💻 Desarrollo Web</span><span>🎨 Dirección de Arte</span></div>
+                    <div class="signature">“Autonomía tecnológica para un futuro sin límites.”</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Pilares Fundacionales -->
+    <section class="pillars-section">
+        <div class="container">
+            <h2 class="section-title">PILARES <span class="neon-text">FUNDACIONALES</span></h2>
+            <div class="pillars-grid">
+                <div class="pillar-card"><div class="pillar-icon">&lt;/&gt;</div><h3>CONNECTION LABS</h3><p class="pillar-ia">IA LÍDER: ALEX</p><p>El origen. Motor de I+D, ingeniería de software e inteligencia artificial avanzada.</p><a href="Labs web/labs.html" class="pillar-link">Acceder →</a></div>
+                <div class="pillar-card"><div class="pillar-icon">✨</div><h3>CONNECTION PÍXEL</h3><p class="pillar-ia">IA LÍDER: VINSHI</p><p>Diseño visual, UI/UX, branding y conceptualización estética inmersiva.</p><a href="Píxel web/pixel.html" class="pillar-link">Ver Galería →</a></div>
+                <div class="pillar-card"><div class="pillar-icon">📘</div><h3>CONNECTION THINK</h3><p class="pillar-ia">IA LÍDER: SOFÍA</p><p>Gestión del conocimiento global y sistemas de tutoría adaptativa.</p><a href="Think web/Think.html" class="pillar-link">Explorar →</a></div>
+                <div class="pillar-card"><div class="pillar-icon">❤️</div><h3>CONNECTION LIFE</h3><p class="pillar-ia">IA LÍDER: LAYLA</p><p>Tecnologías de preservación de la vida, biometría y telemedicina autónoma.</p><a href="Life web/life.html" class="pillar-link">Explorar →</a></div>
+                <div class="pillar-card"><div class="pillar-icon">🔗</div><h3>CONNECTION LINK</h3><p class="pillar-ia">IA LÍDER: IVI</p><p>Infraestructura física, hardware, IoT y desarrollo del sistema LYAN OS.</p><a href="Link web/Link.html" class="pillar-link">Explorar →</a></div>
+                <div class="pillar-card"><div class="pillar-icon">🌍</div><h3>CONNECTION EXPLORER</h3><p class="pillar-ia">IA LÍDER: EXPLORA</p><p>Turismo, vuelos, hotelería y experiencias únicas en los mejores destinos.</p><a href="Explorer web/explorer.html" class="pillar-link">Explorar →</a></div>
+            </div>
+            <p class="pillars-note">Cada pilar sincroniza datos en tiempo real con la IA central AVI.</p>
+        </div>
+    </section>
+
+    <!-- Sección Expansión Ecosistema -->
+    <section class="expansion-section">
+        <div class="container">
+            <h2 class="section-title">EXPANSIÓN DEL <span class="neon-text">ECOSISTEMA</span></h2>
+            <p class="section-subtitle">Pilares en activación progresiva hacia múltiples industrias.</p>
+            <div class="expansion-tags">
+                <span>FOLD - Nanotecnología</span>
+                <span>SEVEN - Redes Cuánticas</span>
+                <span>SPACE - Exploración</span>
+                <span>MOTORS - Vehículos Autónomos</span>
+                <span>OFFICE - Fintech</span>
+                <span>ENERGY - Renovables</span>
+                <span>SHIELD - Ciberseguridad</span>
+                <span>AGRO - Biotecnología</span>
+                <span class="highlight">+ 9 Pilares en desarrollo</span>
+            </div>
+            <div class="expansion-cta">
+                <a href="Ecosistema web/login.html" class="btn-primary">🌐 Explorar Ecosistema Completo</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN: TECH STACK -->
+    <section class="tech-stack-section">
+        <div class="container">
+            <h2 class="section-title">TECNOLOGÍAS QUE <span class="neon-text">IMPULSAN EL ECOSISTEMA</span></h2>
+            <p class="section-description">El stack tecnológico que potencia los 22 pilares de AVI CONNECTION.</p>
+            <div class="tech-marquee">
+                <div class="tech-marquee-content">
+                    <span class="tech-item">⚡ AWS</span>
+                    <span class="tech-item">💳 Stripe</span>
+                    <span class="tech-item">🦙 Meta Llama 3</span>
+                    <span class="tech-item">🟢 Node.js</span>
+                    <span class="tech-item">⚛️ React</span>
+                    <span class="tech-item">🎨 Figma</span>
+                    <span class="tech-item">🐍 Python</span>
+                    <span class="tech-item">☁️ Azure</span>
+                    <span class="tech-item">🐳 Docker</span>
+                    <span class="tech-item">📊 TensorFlow</span>
+                    <span class="tech-item">🔷 TypeScript</span>
+                    <span class="tech-item">📱 Flutter</span>
+                </div>
+                <div class="tech-marquee-content" aria-hidden="true">
+                    <span class="tech-item">⚡ AWS</span>
+                    <span class="tech-item">💳 Stripe</span>
+                    <span class="tech-item">🦙 Meta Llama 3</span>
+                    <span class="tech-item">🟢 Node.js</span>
+                    <span class="tech-item">⚛️ React</span>
+                    <span class="tech-item">🎨 Figma</span>
+                    <span class="tech-item">🐍 Python</span>
+                    <span class="tech-item">☁️ Azure</span>
+                    <span class="tech-item">🐳 Docker</span>
+                    <span class="tech-item">📊 TensorFlow</span>
+                    <span class="tech-item">🔷 TypeScript</span>
+                    <span class="tech-item">📱 Flutter</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN: CONTACTO CORPORATIVO B2B -->
+    <section class="contact-b2b-section">
+        <div class="container">
+            <div class="contact-b2b-wrapper">
+                <div class="contact-b2b-info">
+                    <h2 class="section-title text-left">INICIA TU <span class="neon-text">TRANSFORMACIÓN</span></h2>
+                    <p>Únete al ecosistema tecnológico más avanzado. Descubre cómo AVI CONNECTION puede potenciar tu empresa con inteligencia artificial y soluciones de vanguardia.</p>
+                    <div class="contact-b2b-features">
+                        <div class="feature-item">🚀 Asesoría personalizada</div>
+                        <div class="feature-item">🔒 Seguridad de grado militar</div>
+                        <div class="feature-item">⚡ Implementación en 30 días</div>
+                        <div class="feature-item">🌐 Soporte 24/7</div>
+                    </div>
+                </div>
+                <div class="contact-b2b-form">
+                    <form id="b2bContactForm">
+                        <div class="form-row">
+                            <input type="text" placeholder="Nombre completo" required>
+                            <input type="email" placeholder="Email corporativo" required>
+                        </div>
+                        <div class="form-row">
+                            <input type="text" placeholder="Empresa" required>
+                            <select required>
+                                <option value="">Pilar de interés</option>
+                                <option>CONNECTION LABS</option>
+                                <option>CONNECTION PÍXEL</option>
+                                <option>CONNECTION THINK</option>
+                                <option>CONNECTION LIFE</option>
+                                <option>CONNECTION LINK</option>
+                                <option>CONNECTION EXPLORER</option>
+                                <option>Ecosistema completo</option>
+                            </select>
+                        </div>
+                        <textarea rows="4" placeholder="Cuéntanos sobre tu proyecto..."></textarea>
+                        <button type="submit" class="btn-primary btn-full">Solicitar Asesoría →</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>AVI <span>CONNECTION</span></h3>
+                <p>Ecosistema tecnológico de próxima generación. Conectando ideas, creando realidades.</p>
+                <div class="footer-contact">
+                    <p>📍 CONNECTION CITY - Sede Principal</p>
+                    <p>📧 info@aviconnection.com</p>
+                    <p>📞 +51 987 654 321</p>
+                </div>
+            </div>
+            <div class="footer-links">
+                <div class="footer-links-column">
+                    <h4>CORPORATIVO</h4>
+                    <a href="#inicio">Inicio</a>
+                    <a href="#matriz">Núcleo AVI</a>
+                    <a href="#vision">Visión</a>
+                    <a href="#pilares">Pilares</a>
+                </div>
+                <div class="footer-links-column">
+                    <h4>PILARES</h4>
+                    <a href="Labs web/labs.html">CONNECTION LABS</a>
+                    <a href="Píxel web/pixel.html">CONNECTION PÍXEL</a>
+                    <a href="Explorer web/explorer.html">CONNECTION EXPLORER</a>
+                    <a href="Life web/life.html">CONNECTION LIFE</a>
+                    <a href="Link web/Link.html">CONNECTION LINK</a>
+                </div>
+                <div class="footer-links-column">
+                    <h4>ECOSISTEMA</h4>
+                    <a href="Ecosistema web/login.html">Acceso Ecosistema</a>
+                    <a href="Ecosistema web/system.html">22 Pilares</a>
+                    <a href="#expansion">Roadmap</a>
+                </div>
+            </div>
+            <div class="footer-social">
+                <h4>CONECTA CON NOSOTROS</h4>
+                <div class="social-icons">
+                    <a href="#" class="social-icon">📘</a>
+                    <a href="#" class="social-icon">🐦</a>
+                    <a href="#" class="social-icon">📷</a>
+                    <a href="#" class="social-icon">💼</a>
+                    <a href="#" class="social-icon">🎬</a>
+                </div>
+                <div class="footer-newsletter">
+                    <h4>NEWSLETTER</h4>
+                    <input type="email" placeholder="Tu email corporativo">
+                    <button>Suscribirse</button>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-bottom-links">
+                <a href="#">Política de Privacidad</a>
+                <span class="separator">•</span>
+                <a href="#">Términos y Condiciones</a>
+                <span class="separator">•</span>
+                <a href="#">Política de Cookies</a>
+            </div>
+            <p>&copy; 2026 AVI CONNECTION - Todos los derechos reservados.</p>
+            <p>IA Central: AVI [v.4.7.2] | CEO: Juan Gustavo Vargas Lara</p>
+            <p>CONNECTION CITY - Innovación sin límites</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="../AVI_Core/avi-bot.js"></script>
+</body>
+</html>

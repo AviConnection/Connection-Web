@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="CONNECTION EXPLORER - Tu agencia de viajes integral. Vuelos a todo Perú, hoteles exclusivos y experiencias turísticas únicas. Sede principal en Tarapoto - San Martín.">
+    <meta name="theme-color" content="#00ffaa">
+    <title>CONNECTION EXPLORER | Turismo, Vuelos y Hotelería</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Montserrat:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="explorer.css">
+    <style>
+        .preloader-explorer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #051010, #0a1f1a);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            transition: opacity 0.6s ease;
+        }
+        .preloader-explorer.hide { opacity: 0; pointer-events: none; }
+        .loader-plane {
+            width: 80px;
+            height: 80px;
+            position: relative;
+            animation: flyPlane 1s ease-in-out infinite;
+        }
+        .loader-plane::before {
+            content: '✈';
+            font-size: 3rem;
+            color: #00ffaa;
+            position: absolute;
+            left: 0;
+            animation: planeMove 0.8s ease-in-out infinite alternate;
+        }
+        @keyframes planeMove {
+            from { transform: translateX(-10px); }
+            to { transform: translateX(10px); }
+        }
+        @keyframes flyPlane {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+        .loader-text {
+            margin-top: 20px;
+            font-family: 'Orbitron', monospace;
+            color: #00ffaa;
+            letter-spacing: 4px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="preloader-explorer" id="preloaderExplorer">
+        <div class="loader-plane"></div>
+        <div class="loader-text">✈ CONNECTION EXPLORER ✈</div>
+        <div class="loader-text" style="font-size:0.7rem;">Descubriendo nuevos destinos...</div>
+    </div>
+
+    <!-- Dynamic Island Navigation -->
+    <nav id="dynamicIsland" class="dynamic-island">
+        <div class="island-content">
+            <a href="system.html" class="island-logo-section">
+                <div class="island-logo-wrapper">
+                    <img src="../imágenes y logo/logo.png" alt="AVI Logo" class="island-logo-img" onerror="this.src='https://via.placeholder.com/45/00ffaa/ffffff?text=E'">
+                    <div class="logo-pulse"></div>
+                </div>
+                <span class="island-text">CONNECTION <span class="explorer-text">EXPLORER</span></span>
+            </a>
+            <ul class="island-links">
+                <li><a href="../index.html" class="nav-link">AVI</a></li>
+                <li><a href="../Labs web/labs.html" class="nav-link">Labs</a></li>
+                <li><a href="../Píxel web/pixel.html" class="nav-link">Píxel</a></li>
+                <li><a href="explorer.html" class="nav-link active">Explorer</a></li>
+                <li><a href="../Life web/life.html" class="nav-link">Life</a></li>
+                <li><a href="../Link web/Link.html" class="nav-link">Link</a></li>
+                <li><a href="../Think web/Think.html" class="nav-link">Think</a></li>
+            </ul>
+            <button class="menu-toggle-explorer" aria-label="Abrir menú">☰</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="explorer-hero">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span>🌴</span>
+                <span class="badge-text">SEDE PRINCIPAL: TARAPOTO - SAN MARTÍN</span>
+                <span>✈</span>
+            </div>
+            <h1 class="hero-title">
+                CONNECTION <span class="hero-title-gradient">EXPLORER</span>
+            </h1>
+            <p class="hero-subtitle">
+                Descubre los mejores destinos del Perú con la mejor experiencia de viaje.<br>
+                Vuelos, hoteles y tours exclusivos al mejor precio.
+            </p>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <div class="stat-number">15+</div>
+                    <div class="stat-label">Destinos Nacionales</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">12</div>
+                    <div class="stat-label">Aerolíneas Aliadas</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">98%</div>
+                    <div class="stat-label">Satisfacción Cliente</div>
+                </div>
+            </div>
+            <div class="hero-buttons">
+                <a href="#vuelos" class="btn-hero-primary">
+                    <span>✈ Buscar Vuelos</span>
+                </a>
+                <a href="#hoteles" class="btn-hero-secondary">
+                    <span>🏨 Reservar Hotel</span>
+                </a>
+            </div>
+        </div>
+        <div class="scroll-hint">
+            <span>EXPLORAR</span>
+            <div class="scroll-line"></div>
+        </div>
+    </header>
+
+    <!-- Sección de Búsqueda de Vuelos -->
+    <section id="vuelos" class="flights-section">
+        <div class="container">
+            <div class="section-badge">✈ VUELOS NACIONALES</div>
+            <h2 class="section-title">Encuentra tu <span class="explorer-text">próximo destino</span></h2>
+            <p class="section-description">Las mejores aerolíneas del Perú a tu alcance. Compara precios y elige la mejor opción.</p>
+
+            <!-- Formulario de Búsqueda -->
+            <div class="search-card">
+                <div class="search-tabs">
+                    <button class="search-tab active" data-tab="roundtrip">Ida y Vuelta</button>
+                    <button class="search-tab" data-tab="oneway">Solo Ida</button>
+                </div>
+                <form id="flightSearchForm" class="search-form">
+                    <div class="search-row">
+                        <div class="search-group">
+                            <label>✈ Desde</label>
+                            <select id="origin" required>
+                                <option value="">Selecciona origen</option>
+                                <option value="LIM">Lima (LIM) - Jorge Chávez</option>
+                                <option value="AQP">Arequipa (AQP) - Rodríguez Ballón</option>
+                                <option value="CUZ">Cusco (CUZ) - Alejandro Velasco</option>
+                                <option value="TRU">Trujillo (TRU) - Capitán Martínez</option>
+                                <option value="PIU">Piura (PIU) - Capitán Concha</option>
+                                <option value="IQT">Iquitos (IQT) - Coronel FAP</option>
+                                <option value="TAR">Tarapoto (TPP) - Cadete FAP</option>
+                                <option value="PCL">Pucallpa (PCL) - Capitán Roldán</option>
+                                <option value="CHM">Chimbote (CHM) - Teniente FAP</option>
+                                <option value="JUL">Juliaca (JUL) - Inca Manco Cápac</option>
+                            </select>
+                        </div>
+                        <div class="search-group">
+                            <label>📍 Hacia</label>
+                            <select id="destination" required>
+                                <option value="">Selecciona destino</option>
+                                <option value="LIM">Lima (LIM) - Jorge Chávez</option>
+                                <option value="AQP">Arequipa (AQP) - Rodríguez Ballón</option>
+                                <option value="CUZ">Cusco (CUZ) - Alejandro Velasco</option>
+                                <option value="TRU">Trujillo (TRU) - Capitán Martínez</option>
+                                <option value="PIU">Piura (PIU) - Capitán Concha</option>
+                                <option value="IQT">Iquitos (IQT) - Coronel FAP</option>
+                                <option value="TAR">Tarapoto (TPP) - Cadete FAP</option>
+                                <option value="PCL">Pucallpa (PCL) - Capitán Roldán</option>
+                                <option value="CHM">Chimbote (CHM) - Teniente FAP</option>
+                                <option value="JUL">Juliaca (JUL) - Inca Manco Cápac</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="search-row">
+                        <div class="search-group">
+                            <label>📅 Fecha Ida</label>
+                            <input type="date" id="departDate" required>
+                        </div>
+                        <div class="search-group" id="returnDateGroup">
+                            <label>📅 Fecha Vuelta</label>
+                            <input type="date" id="returnDate">
+                        </div>
+                        <div class="search-group">
+                            <label>👥 Pasajeros</label>
+                            <input type="number" id="passengers" min="1" max="9" value="1" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-search">Buscar Vuelos ✈</button>
+                </form>
+            </div>
+
+            <!-- Resultados de Vuelos -->
+            <div id="flightResults" class="flight-results" style="display: none;">
+                <h3>✈ Resultados de Vuelos</h3>
+                <div id="resultsList" class="results-list"></div>
+            </div>
+
+            <!-- Aerolíneas Asociadas -->
+            <div class="airlines-section">
+                <h3 class="airlines-title">Aerolíneas Asociadas</h3>
+                <div class="airlines-grid">
+                    <div class="airline-card">
+                        <div class="airline-icon">✈</div>
+                        <h4>LATAM Airlines</h4>
+                        <p>La aerolínea líder en Sudamérica</p>
+                    </div>
+                    <div class="airline-card">
+                        <div class="airline-icon">🛩️</div>
+                        <h4>Sky Airline</h4>
+                        <p>Vuelos económicos a todo el Perú</p>
+                    </div>
+                    <div class="airline-card">
+                        <div class="airline-icon">✈</div>
+                        <h4>JetSmart Perú</h4>
+                        <p>Low cost con los mejores precios</p>
+                    </div>
+                    <div class="airline-card">
+                        <div class="airline-icon">🛫</div>
+                        <h4>Star Perú</h4>
+                        <p>Vuelos regionales con excelente servicio</p>
+                    </div>
+                    <div class="airline-card">
+                        <div class="airline-icon">✈</div>
+                        <h4>Atsa Airlines</h4>
+                        <p>Especialistas en la selva peruana</p>
+                    </div>
+                    <div class="airline-card">
+                        <div class="airline-icon">🛩️</div>
+                        <h4>Saeta Airlines</h4>
+                        <p>Conectando el norte del Perú</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Hoteles -->
+    <section id="hoteles" class="hotels-section">
+        <div class="container">
+            <div class="section-badge">🏨 HOTELES EXCLUSIVOS</div>
+            <h2 class="section-title">Alojamientos <span class="explorer-text">Premium</span></h2>
+            <p class="section-description">Los mejores hoteles en los destinos más populares del Perú.</p>
+
+            <div class="hotels-grid">
+                <div class="hotel-card">
+                    <div class="hotel-image" style="background-image: url('https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1000&auto=format');"></div>
+                    <div class="hotel-info">
+                        <h3>DoubleTree by Hilton</h3>
+                        <div class="hotel-location">📍 Tarapoto - San Martín</div>
+                        <div class="hotel-rating">★★★★★ 4.8</div>
+                        <p>Hotel de lujo con piscina, spa y vistas a la naturaleza.</p>
+                        <div class="hotel-price">Desde S/ 450<span>/noche</span></div>
+                        <button class="btn-hotel" onclick="reservarHotel('DoubleTree by Hilton')">Reservar</button>
+                    </div>
+                </div>
+                <div class="hotel-card">
+                    <div class="hotel-image" style="background-image: url('https://images.unsplash.com/photo-1582719508461-905c673771fd?q=80&w=1000&auto=format');"></div>
+                    <div class="hotel-info">
+                        <h3>La Patarashca Resort</h3>
+                        <div class="hotel-location">📍 Tarapoto - San Martín</div>
+                        <div class="hotel-rating">★★★★★ 4.7</div>
+                        <p>Resort ecológico con piscinas naturales y restaurante gourmet.</p>
+                        <div class="hotel-price">Desde S/ 380<span>/noche</span></div>
+                        <button class="btn-hotel" onclick="reservarHotel('La Patarashca Resort')">Reservar</button>
+                    </div>
+                </div>
+                <div class="hotel-card">
+                    <div class="hotel-image" style="background-image: url('https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?q=80&w=1000&auto=format');"></div>
+                    <div class="hotel-info">
+                        <h3>Casa Andina Standard</h3>
+                        <div class="hotel-location">📍 Cusco - Cusco</div>
+                        <div class="hotel-rating">★★★★☆ 4.5</div>
+                        <p>Ubicación céntrica, ideal para conocer Machu Picchu.</p>
+                        <div class="hotel-price">Desde S/ 320<span>/noche</span></div>
+                        <button class="btn-hotel" onclick="reservarHotel('Casa Andina Standard')">Reservar</button>
+                    </div>
+                </div>
+                <div class="hotel-card">
+                    <div class="hotel-image" style="background-image: url('https://images.unsplash.com/photo-1584132967334-10e028bd69f7?q=80&w=1000&auto=format');"></div>
+                    <div class="hotel-info">
+                        <h3>Wyndham Costa del Sol</h3>
+                        <div class="hotel-location">📍 Arequipa - Arequipa</div>
+                        <div class="hotel-rating">★★★★★ 4.9</div>
+                        <p>Lujo y confort en la Ciudad Blanca.</p>
+                        <div class="hotel-price">Desde S/ 520<span>/noche</span></div>
+                        <button class="btn-hotel" onclick="reservarHotel('Wyndham Costa del Sol')">Reservar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Tours y Experiencias -->
+    <section id="tours" class="tours-section">
+        <div class="container">
+            <div class="section-badge">🌿 TOURS Y EXPERIENCIAS</div>
+            <h2 class="section-title">Descubre <span class="explorer-text">lo mejor del Perú</span></h2>
+            <p class="section-description">Experiencias únicas que te conectarán con la naturaleza y cultura peruana.</p>
+
+            <div class="tours-grid">
+                <div class="tour-card">
+                    <div class="tour-icon">🌄</div>
+                    <h3>Machu Picchu</h3>
+                    <p>Tour guiado a la maravilla del mundo. Incluye tren, entrada y guía profesional.</p>
+                    <div class="tour-price">Desde S/ 890</div>
+                    <button class="btn-tour" onclick="reservarTour('Machu Picchu')">Reservar Tour</button>
+                </div>
+                <div class="tour-card">
+                    <div class="tour-icon">🏞️</div>
+                    <h3>Laguna Azul - Sauce</h3>
+                    <p>Excursión a la hermosa laguna de Sauce, Tarapoto. Incluye transporte y almuerzo.</p>
+                    <div class="tour-price">Desde S/ 120</div>
+                    <button class="btn-tour" onclick="reservarTour('Laguna Azul')">Reservar Tour</button>
+                </div>
+                <div class="tour-card">
+                    <div class="tour-icon">🦙</div>
+                    <h3>Islas Uros - Puno</h3>
+                    <p>Recorrido por las islas flotantes de los Uros en el Lago Titicaca.</p>
+                    <div class="tour-price">Desde S/ 180</div>
+                    <button class="btn-tour" onclick="reservarTour('Islas Uros')">Reservar Tour</button>
+                </div>
+                <div class="tour-card">
+                    <div class="tour-icon">🏜️</div>
+                    <h3>Líneas de Nazca</h3>
+                    <p>Sobrevuelo a las misteriosas líneas de Nazca.</p>
+                    <div class="tour-price">Desde S/ 450</div>
+                    <button class="btn-tour" onclick="reservarTour('Líneas de Nazca')">Reservar Tour</button>
+                </div>
+                <div class="tour-card">
+                    <div class="tour-icon">🌊</div>
+                    <h3>Máncora</h3>
+                    <p>Pack playero con alojamiento y excursiones en la mejor playa del norte.</p>
+                    <div class="tour-price">Desde S/ 650</div>
+                    <button class="btn-tour" onclick="reservarTour('Máncora')">Reservar Tour</button>
+                </div>
+                <div class="tour-card">
+                    <div class="tour-icon">🌴</div>
+                    <h3>Reserva Pacaya Samiria</h3>
+                    <p>Aventura en la selva amazónica, observación de fauna y flora.</p>
+                    <div class="tour-price">Desde S/ 780</div>
+                    <button class="btn-tour" onclick="reservarTour('Pacaya Samiria')">Reservar Tour</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Paquetes Especiales -->
+    <section class="packages-section">
+        <div class="container">
+            <div class="section-badge">🎁 PAQUETES ESPECIALES</div>
+            <h2 class="section-title">Ofertas <span class="explorer-text">Imperdibles</span></h2>
+            <p class="section-description">Paquetes todo incluido con los mejores descuentos.</p>
+
+            <div class="packages-grid">
+                <div class="package-card featured">
+                    <div class="package-tag">HOT SALE</div>
+                    <h3>Tarapoto Mágico</h3>
+                    <p>4 días / 3 noches en Tarapoto. Incluye vuelo, hotel y tours a cataratas.</p>
+                    <div class="package-price">S/ 899</div>
+                    <div class="package-old-price">S/ 1,299</div>
+                    <button class="btn-package" onclick="reservarPaquete('Tarapoto Mágico')">Reservar Ahora</button>
+                </div>
+                <div class="package-card">
+                    <div class="package-tag">OFERTA</div>
+                    <h3>Cusco Imperial</h3>
+                    <p>5 días / 4 noches. Incluye vuelo, hotel y tour a Machu Picchu.</p>
+                    <div class="package-price">S/ 1,490</div>
+                    <div class="package-old-price">S/ 2,100</div>
+                    <button class="btn-package" onclick="reservarPaquete('Cusco Imperial')">Reservar Ahora</button>
+                </div>
+                <div class="package-card">
+                    <div class="package-tag">PROMO</div>
+                    <h3>Aventura Amazónica</h3>
+                    <p>3 días / 2 noches en Iquitos. Alojamiento en lodge selvático.</p>
+                    <div class="package-price">S/ 1,250</div>
+                    <div class="package-old-price">S/ 1,750</div>
+                    <button class="btn-package" onclick="reservarPaquete('Aventura Amazónica')">Reservar Ahora</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Testimonios -->
+    <section class="testimonials-explorer">
+        <div class="container">
+            <div class="section-badge">⭐ TESTIMONIALES</div>
+            <h2 class="section-title">Lo que dicen <span class="explorer-text">nuestros viajeros</span></h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">"</div>
+                    <p>Excelente servicio. Viajé a Tarapoto con CONNECTION EXPLORER y todo fue perfecto. Los vuelos, el hotel y los tours superaron mis expectativas."</p>
+                    <div class="testimonial-author">
+                        <strong>María Fernández</strong>
+                        <span>Viajó a Tarapoto</span>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">"</div>
+                    <p>La mejor agencia de viajes. Encontré vuelos económicos a Cusco y el tour a Machu Picchu fue increíble. Recomiendo 100%."</p>
+                    <div class="testimonial-author">
+                        <strong>Carlos Mendoza</strong>
+                        <span>Viajó a Cusco</span>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">"</div>
+                    <p>La atención es excelente, resolvieron todas mis dudas. Los paquetes tienen los mejores precios. Volveré a viajar con ellos."</p>
+                    <div class="testimonial-author">
+                        <strong>Laura Pinedo</strong>
+                        <span>Viajó a Máncora</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-explorer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>CONNECTION <span class="explorer-text">EXPLORER</span></h3>
+                    <p>Tu puerta de entrada a los mejores destinos del Perú</p>
+                    <div class="footer-address">
+                        <span>📍 Sede Principal: Tarapoto - San Martín</span>
+                        <span>📞 +51 942 123 456</span>
+                        <span>✉ explorer@aviconnection.com</span>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Enlaces Rápidos</h4>
+                    <a href="#vuelos">Vuelos</a>
+                    <a href="#hoteles">Hoteles</a>
+                    <a href="#tours">Tours</a>
+                    <a href="system.html">Ecosistema AVI</a>
+                </div>
+                <div class="footer-social">
+                    <h4>Síguenos</h4>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon">📘</a>
+                        <a href="#" class="social-icon">📷</a>
+                        <a href="#" class="social-icon">🐦</a>
+                        <a href="#" class="social-icon">🎵</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>IA LÍDER: EXPLORA | CONNECTION EXPLORER © 2026</p>
+                <p class="small">Descubre el Perú con nosotros - Sede principal en la Ciudad de las Palmeras, Tarapoto</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="explorer.js"></script>
+    <script>
+        // Preloader
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloaderExplorer');
+            if (preloader) {
+                setTimeout(() => {
+                    preloader.classList.add('hide');
+                    setTimeout(() => {
+                        preloader.style.display = 'none';
+                    }, 600);
+                }, 1000);
+            }
+            document.body.classList.add('loaded');
+        });
+
+        // Dynamic Island Navigation
+        const menuToggle = document.querySelector('.menu-toggle-explorer');
+        const navLinks = document.querySelector('.island-links');
+        const navbar = document.getElementById('dynamicIsland');
+        
+        if (menuToggle && navLinks) {
+            menuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('open');
+                menuToggle.classList.toggle('active');
+            });
+        }
+        
+        window.addEventListener('scroll', () => {
+            if (navbar) {
+                if (window.scrollY > 50) navbar.classList.add('scrolled');
+                else navbar.classList.remove('scrolled');
+            }
+        });
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if (targetId && targetId !== '#') {
+                    const target = document.querySelector(targetId);
+                    if (target) {
+                        e.preventDefault();
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        if (navLinks) navLinks.classList.remove('open');
+                    }
+                }
+            });
+        });
+        
+        // Búsqueda de vuelos
+        const flightForm = document.getElementById('flightSearchForm');
+        const flightResults = document.getElementById('flightResults');
+        const resultsList = document.getElementById('resultsList');
+        
+        // Aerolíneas con sus precios base
+        const airlines = [
+            { name: 'LATAM Airlines', priceMultiplier: 1.2, icon: '✈', quality: 'Premium' },
+            { name: 'Sky Airline', priceMultiplier: 0.9, icon: '🛩️', quality: 'Económico' },
+            { name: 'JetSmart Perú', priceMultiplier: 0.8, icon: '✈', quality: 'Low Cost' },
+            { name: 'Star Perú', priceMultiplier: 1.0, icon: '🛫', quality: 'Regional' },
+            { name: 'Atsa Airlines', priceMultiplier: 0.85, icon: '✈', quality: 'Regional' },
+            { name: 'Saeta Airlines', priceMultiplier: 0.88, icon: '🛩️', quality: 'Regional' }
+        ];
+        
+        // Precios base por ruta (en soles)
+        const routePrices = {
+            'LIM-AQP': 180, 'AQP-LIM': 180,
+            'LIM-CUZ': 220, 'CUZ-LIM': 220,
+            'LIM-TRU': 150, 'TRU-LIM': 150,
+            'LIM-PIU': 170, 'PIU-LIM': 170,
+            'LIM-IQT': 280, 'IQT-LIM': 280,
+            'LIM-TAR': 210, 'TAR-LIM': 210,
+            'LIM-PCL': 200, 'PCL-LIM': 200,
+            'LIM-CHM': 140, 'CHM-LIM': 140,
+            'LIM-JUL': 190, 'JUL-LIM': 190,
+            'AQP-CUZ': 160, 'CUZ-AQP': 160,
+            'TRU-PIU': 120, 'PIU-TRU': 120,
+            'IQT-TAR': 150, 'TAR-IQT': 150
+        };
+        
+        function getFlightPrice(origin, destination) {
+            const route = `${origin}-${destination}`;
+            let basePrice = routePrices[route] || 250;
+            return basePrice;
+        }
+        
+        flightForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const origin = document.getElementById('origin').value;
+            const destination = document.getElementById('destination').value;
+            const departDate = document.getElementById('departDate').value;
+            const returnDate = document.getElementById('returnDate').value;
+            const passengers = parseInt(document.getElementById('passengers').value);
+            const tripType = document.querySelector('.search-tab.active').dataset.tab;
+            
+            if (!origin || !destination) {
+                alert('Por favor selecciona origen y destino');
+                return;
+            }
+            
+            if (origin === destination) {
+                alert('El origen y destino no pueden ser iguales');
+                return;
+            }
+            
+            const originName = document.getElementById('origin').options[document.getElementById('origin').selectedIndex].text;
+            const destName = document.getElementById('destination').options[document.getElementById('destination').selectedIndex].text;
+            
+            const basePrice = getFlightPrice(origin, destination);
+            
+            // Generar vuelos de diferentes aerolíneas
+            let flightsHTML = '';
+            airlines.forEach(airline => {
+                let price = basePrice * airline.priceMultiplier;
+                if (tripType === 'roundtrip') price = price * 1.8;
+                const totalPrice = price * passengers;
+                
+                flightsHTML += `
+                    <div class="flight-card">
+                        <div class="flight-airline">
+                            <span class="flight-icon">${airline.icon}</span>
+                            <div>
+                                <h4>${airline.name}</h4>
+                                <span class="flight-quality">${airline.quality}</span>
+                            </div>
+                        </div>
+                        <div class="flight-details">
+                            <div class="flight-route">
+                                <span>${originName.split('(')[0]}</span>
+                                <span>→</span>
+                                <span>${destName.split('(')[0]}</span>
+                            </div>
+                            <div class="flight-date">
+                                📅 ${departDate} ${tripType === 'roundtrip' ? ` - ${returnDate}` : ''}
+                            </div>
+                            <div class="flight-passengers">👥 ${passengers} pasajero${passengers > 1 ? 's' : ''}</div>
+                        </div>
+                        <div class="flight-price">
+                            <div class="price">S/ ${Math.round(totalPrice)}</div>
+                            <div class="price-per">por ${passengers} ${passengers > 1 ? 'personas' : 'persona'}</div>
+                            <button class="btn-select" onclick="seleccionarVuelo('${airline.name}', ${Math.round(totalPrice)}, '${originName}', '${destName}', '${departDate}')">Seleccionar</button>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            resultsList.innerHTML = flightsHTML;
+            flightResults.style.display = 'block';
+            flightResults.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+        
+        function seleccionarVuelo(airline, price, origin, destination, date) {
+            alert(`✅ Has seleccionado ${airline}\n📍 Ruta: ${origin} → ${destination}\n📅 Fecha: ${date}\n💰 Total: S/ ${price}\n\nUn asesor se contactará contigo para completar la reserva.`);
+        }
+        
+        function reservarHotel(hotelName) {
+            alert(`🏨 Has solicitado reserva en ${hotelName}\n\nUn asesor de CONNECTION EXPLORER se contactará contigo para confirmar disponibilidad y precios.`);
+        }
+        
+        function reservarTour(tourName) {
+            alert(`🌿 Has solicitado el tour: ${tourName}\n\nUn asesor te contactará para coordinar los detalles de tu experiencia.`);
+        }
+        
+        function reservarPaquete(packageName) {
+            alert(`🎁 Has solicitado el paquete: ${packageName}\n\nAprovecha esta oferta especial. Un asesor te contactará para confirmar tu reserva.`);
+        }
+        
+        // Tabs de búsqueda (Ida y Vuelta / Solo Ida)
+        const searchTabs = document.querySelectorAll('.search-tab');
+        const returnDateGroup = document.getElementById('returnDateGroup');
+        
+        searchTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                searchTabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                
+                if (tab.dataset.tab === 'oneway') {
+                    returnDateGroup.style.opacity = '0.5';
+                    document.getElementById('returnDate').disabled = true;
+                } else {
+                    returnDateGroup.style.opacity = '1';
+                    document.getElementById('returnDate').disabled = false;
+                }
+            });
+        });
+        
+        // Fecha mínima para hoy
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('departDate').min = today;
+        document.getElementById('returnDate').min = today;
+        
+        console.log('%c✈ CONNECTION EXPLORER | IA LÍDER: EXPLORA', 'color: #00ffaa; font-size: 14px; font-weight: bold');
+        console.log('%c✓ Sede Principal: Tarapoto - San Martín', 'color: #00ffaa');
+        console.log('%c✓ Aerolíneas asociadas: 6 | Destinos: 10+', 'color: #00ff55');
+    </script>
+</body>
+</html>
